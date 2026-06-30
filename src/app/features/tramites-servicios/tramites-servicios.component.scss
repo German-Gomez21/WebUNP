@@ -1,0 +1,341 @@
+/* Tramites y Servicios Styles */
+
+.tramites-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.tramites-hero {
+    background: linear-gradient(135deg, var(--govco-blue, #004884) 0%, #002d52 100%);
+    padding: 60px 0 80px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #FF6B35 0%, #F7931E 100%);
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    opacity: 0.9;
+
+    a {
+        color: white;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+
+    .material-icons {
+        font-size: 16px;
+    }
+}
+
+.tramites-hero__title {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.tramites-hero__subtitle {
+    font-size: 18px;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0.95;
+}
+
+.tramites-hero__actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* Search Section */
+.search-section {
+    margin-top: -40px;
+    position: relative;
+    z-index: 20;
+    margin-bottom: 40px;
+}
+
+.search-box {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    
+    &__input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: #f1f3f5;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+
+        &:focus-within {
+            border-color: #FF6B35;
+            background: white;
+        }
+
+        .material-icons {
+            color: #6c757d;
+        }
+
+        input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            color: #212529;
+            &::placeholder { color: #adb5bd; }
+        }
+    }
+}
+
+.categories-filter {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid #dee2e6;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #495057;
+
+    &:hover {
+        background: #f8f9fa;
+        border-color: #ced4da;
+    }
+
+    &.active {
+        background: #FF6B35;
+        color: white;
+        border-color: #FF6B35;
+        box-shadow: 0 4px 12px rgba(255,107,53,0.25);
+    }
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.tramite-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    &__header {
+        padding: 24px;
+        background: #f8f9fa;
+        border-bottom: 1px solid #eee;
+
+        .tag {
+            background: #e7f5ff;
+            color: #228be6;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #004884;
+        margin: 0;
+    }
+
+    &__body {
+        padding: 24px;
+        flex-grow: 1;
+    }
+
+    &__desc {
+        color: #495057;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+
+    &__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #6c757d;
+            font-size: 14px;
+
+            .material-icons {
+                font-size: 18px;
+                color: #adb5bd;
+            }
+        }
+    }
+
+    &__footer {
+        padding: 24px;
+        border-top: 1px solid #eee;
+        display: flex;
+        gap: 12px;
+        
+        .btn { flex: 1; }
+    }
+}
+
+/* Channels Section */
+.channels-section {
+    background: #004884;
+    padding: 80px 0;
+    color: white;
+
+    .section-title {
+        color: white;
+        text-align: center;
+        margin-bottom: 48px;
+        font-size: 32px;
+    }
+}
+
+.channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.channel-card {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+
+    &__icon {
+        background: #FF6B35;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    &__info {
+        h4 { margin: 0 0 8px; font-size: 18px; }
+        .value { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+        .horario { margin: 0; font-size: 13px; opacity: 0.8; }
+    }
+}
+
+/* Common Components (Placeholder if not in global) */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    &--primary {
+        background: #FF6B35;
+        color: white;
+        &:hover { background: #e85a2b; }
+    }
+
+    &--white {
+        background: white;
+        color: #004884;
+        &:hover { background: #f8f9fa; }
+    }
+
+    &--outline {
+        background: transparent;
+        border: 2px solid #004884;
+        color: #004884;
+        &:hover { background: #004884; color: white; }
+    }
+
+    &--sm {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tramites-hero__title { font-size: 32px; }
+    .tramites-hero__actions { flex-direction: column; }
+    .results-grid { grid-template-columns: 1fr; }
+    .search-section { margin-top: -20px; }
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #eee;
+        border-top-color: #FF6B35;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+    }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

@@ -1,0 +1,19 @@
+<div class="footer__column footer__column--social">
+    <h4 class="footer__title">Gobierno en Línea</h4>
+    <ul class="footer__links">
+        @for (link of govLinks(); track link.nombre) {
+            <app-footer-link 
+                [link]="link"
+                (linkClicked)="onLinkClick($event)" />
+        }
+    </ul>
+    
+    <h4 class="footer__title footer__title--social">Síguenos</h4>
+    <div class="footer__social">
+        @for (social of socialMedia(); track social.nombre) {
+            <app-social-link 
+                [social]="social"
+                (socialClicked)="onSocialClick($event)" />
+        }
+    </div>
+</div>

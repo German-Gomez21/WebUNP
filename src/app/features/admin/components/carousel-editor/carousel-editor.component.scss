@@ -1,0 +1,691 @@
+// Variables institucionales UNP
+$primary-blue: #1e3a8a;
+$secondary-blue: #3366CC;
+$dark-gray: #2c3e50;
+$light-gray: #f8f9fa;
+$success-green: #10b981;
+$error-red: #ef4444;
+$warning-yellow: #f59e0b;
+
+// Mixins para animaciones
+@mixin slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin button-styles {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-editor {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+  
+  // Header del editor
+  .editor-header {
+    background: white;
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    .editor-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: $dark-gray;
+        font-weight: 600;
+      }
+    }
+    
+    .editor-controls {
+      display: flex;
+      gap: 12px;
+      
+      .btn {
+        @include button-styles;
+        
+        &--primary {
+          background: $primary-blue;
+          color: white;
+          
+          &:hover {
+            background: darken($primary-blue, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+          }
+          
+          &.active {
+            background: $secondary-blue;
+          }
+        }
+        
+        &--secondary {
+          background: white;
+          color: $primary-blue;
+          border: 2px solid $primary-blue;
+          
+          &:hover {
+            background: $primary-blue;
+            color: white;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+  
+  // Contenido principal
+  .editor-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  // Panel lateral
+  .editor-sidebar {
+    width: 320px;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+    
+    &.editing {
+      width: 400px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .slide-navigation {
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      
+      h3 {
+        margin: 0 0 15px 0;
+        font-size: 1.1rem;
+        color: $dark-gray;
+        font-weight: 600;
+      }
+      
+      .slides-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        .slide-item {
+          display: flex;
+          align-items: center;
+          padding: 12px;
+          border: 2px solid transparent;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          
+          &:hover {
+            background: $light-gray;
+            border-color: $primary-blue;
+          }
+          
+          &.active {
+            background: rgba($primary-blue, 0.1);
+            border-color: $primary-blue;
+          }
+          
+          .slide-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            
+            .slide-thumbnail {
+              width: 40px;
+              height: 40px;
+              border-radius: 6px;
+              background-size: cover;
+              background-position: center;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              font-size: 14px;
+            }
+            
+            .slide-info {
+              flex: 1;
+              min-width: 0;
+              
+              .slide-title {
+                display: block;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: $dark-gray;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              
+              .slide-status {
+                display: inline-block;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                margin-top: 4px;
+                
+                &.draft {
+                  background: $warning-yellow;
+                  color: white;
+                }
+                
+                &.published {
+                  background: $success-green;
+                  color: white;
+                }
+                
+                &.archived {
+                  background: $dark-gray;
+                  color: white;
+                }
+              }
+            }
+          }
+          
+          .slide-actions {
+            display: flex;
+            gap: 4px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+          }
+          
+          &:hover .slide-actions {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  
+  // Formulario de edición
+  .editor-form {
+    padding: 20px;
+    
+    h3 {
+      margin: 0 0 20px 0;
+      font-size: 1.2rem;
+      color: $dark-gray;
+      font-weight: 600;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: $dark-gray;
+        font-size: 0.9rem;
+      }
+      
+      .form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba($primary-blue, 0.1);
+        }
+      }
+      
+      textarea.form-control {
+        resize: vertical;
+        min-height: 80px;
+      }
+      
+      .error-message {
+        display: block;
+        margin-top: 4px;
+        color: $error-red;
+        font-size: 0.8rem;
+      }
+    }
+    
+    // Selector de iconos
+    .icon-selector {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      
+      select {
+        flex: 1;
+      }
+      
+      .icon-preview {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $light-gray;
+        color: $primary-blue;
+        font-size: 18px;
+      }
+    }
+    
+    // Selector de gradientes
+    .gradient-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      
+      .gradient-option {
+        padding: 8px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          border-color: $primary-blue;
+        }
+        
+        &.selected {
+          border-color: $primary-blue;
+          box-shadow: 0 0 0 3px rgba($primary-blue, 0.1);
+        }
+        
+        .gradient-preview {
+          width: 100%;
+          height: 40px;
+          border-radius: 4px;
+          margin-bottom: 4px;
+        }
+        
+        .gradient-name {
+          font-size: 0.8rem;
+          color: $dark-gray;
+        }
+      }
+    }
+    
+    // Upload de imágenes
+    .image-upload {
+      .upload-area {
+        border: 2px dashed #e5e7eb;
+        border-radius: 8px;
+        padding: 40px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: $primary-blue;
+          background: rgba($primary-blue, 0.02);
+        }
+        
+        i {
+          font-size: 2rem;
+          color: $primary-blue;
+          margin-bottom: 12px;
+        }
+        
+        p {
+          margin: 4px 0;
+          color: $dark-gray;
+          
+          &.upload-hint {
+            font-size: 0.8rem;
+            color: #6b7280;
+          }
+        }
+      }
+      
+      .image-preview {
+        margin-top: 12px;
+        position: relative;
+        
+        img {
+          width: 100%;
+          max-height: 200px;
+          object-fit: cover;
+          border-radius: 6px;
+        }
+        
+        .btn-remove {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: $error-red;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+        }
+      }
+    }
+    
+    // Radio buttons
+    .background-options {
+      .radio-group {
+        display: flex;
+        gap: 16px;
+        
+        .radio-label {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          
+          input[type="radio"] {
+            margin: 0;
+          }
+        }
+      }
+    }
+    
+    // Botones de acción
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      
+      .btn {
+        @include button-styles;
+        
+        &--primary {
+          background: $primary-blue;
+          color: white;
+          
+          &:hover:not(:disabled) {
+            background: darken($primary-blue, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+          }
+          
+          &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
+        }
+        
+        &--secondary {
+          background: white;
+          color: $primary-blue;
+          border: 2px solid $primary-blue;
+          
+          &:hover {
+            background: $light-gray;
+          }
+        }
+      }
+    }
+  }
+  
+  // Vista previa
+  .preview-container {
+    flex: 1;
+    background: #f8fafc;
+    overflow-y: auto;
+    
+    .preview-header {
+      background: white;
+      padding: 20px 30px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: $dark-gray;
+        font-weight: 600;
+      }
+      
+      .preview-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        
+        .slide-counter {
+          background: $primary-blue;
+          color: white;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+        
+        .btn {
+          @include button-styles;
+        }
+      }
+    }
+    
+    .slide-preview-large {
+      height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      
+      .slide-content {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .slide-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-text {
+          text-align: center;
+          color: white;
+          z-index: 1;
+          padding: 40px;
+          
+          .slide-icon-large {
+            font-size: 3rem;
+            margin-bottom: 20px;
+          }
+          
+          .slide-title-large {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+          }
+          
+          .slide-subtitle-large {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+          }
+          
+          .slide-cta-large {
+            @include button-styles;
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            
+            &:hover {
+              background: rgba(255, 255, 255, 0.3);
+              transform: translateY(-2px);
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Botones de icono
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: $light-gray;
+  }
+  
+  &--danger {
+    &:hover {
+      background: rgba($error-red, 0.1);
+      color: $error-red;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .carousel-editor {
+    .editor-content {
+      flex-direction: column;
+    }
+    
+    .editor-sidebar {
+      width: 100%;
+      height: 200px;
+      border-right: none;
+      border-bottom: 1px solid #e5e7eb;
+      
+      &.editing {
+        height: auto;
+        box-shadow: none;
+      }
+      
+      .slide-navigation {
+        .slides-list {
+          flex-direction: row;
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+      }
+    }
+    
+    .preview-container {
+      .slide-preview-large {
+        height: calc(100vh - 300px);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-editor {
+    .editor-header {
+      padding: 15px 20px;
+      
+      .editor-title {
+        h2 {
+          font-size: 1.2rem;
+        }
+      }
+      
+      .editor-controls {
+        gap: 8px;
+        
+        .btn {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
+    .editor-sidebar {
+      .slide-navigation {
+        padding: 15px;
+        
+        h3 {
+          font-size: 1rem;
+        }
+      }
+    }
+    
+    .preview-container {
+      .preview-header {
+        padding: 15px 20px;
+        
+        h3 {
+          font-size: 1rem;
+        }
+      }
+      
+      .slide-preview-large {
+        .slide-text {
+          padding: 20px;
+          
+          .slide-icon-large {
+            font-size: 2rem;
+          }
+          
+          .slide-title-large {
+            font-size: 1.8rem;
+          }
+          
+          .slide-subtitle-large {
+            font-size: 1rem;
+          }
+          
+          .slide-cta-large {
+            padding: 10px 20px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

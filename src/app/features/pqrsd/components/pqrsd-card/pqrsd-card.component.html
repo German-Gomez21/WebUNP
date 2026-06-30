@@ -1,0 +1,11 @@
+<article class="pqrsd-card" [ngClass]="{ 'pqrsd-card--primary': variant === 'primary', 'pqrsd-card--featured': featured }">
+  <div class="pqrsd-card__icon" aria-hidden="true">
+    <span class="material-icons">{{ icon }}</span>
+  </div>
+  <div class="pqrsd-card__content">
+    <h3>{{ title }}</h3>
+    <p>{{ description }}</p>
+    <p class="pqrsd-card__meta" *ngIf="meta">{{ meta }}</p>
+    <a *ngIf="link" class="pqrsd-card__link" [routerLink]="link">Ir a la sección</a>
+  </div>
+</article>

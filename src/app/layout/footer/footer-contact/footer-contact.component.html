@@ -1,0 +1,15 @@
+<div class="footer__contact">
+    <h4 class="footer__title">Información de Contacto</h4>
+    <app-contact-item 
+        icon="phone" 
+        [value]="contactInfo().telefono" />
+    <app-contact-item 
+        icon="email" 
+        [value]="contactInfo().correo" />
+    <app-contact-item 
+        icon="location_on" 
+        [value]="contactInfo().direccion" />
+    <app-contact-item 
+        icon="schedule" 
+        [value]="contactInfo().horario" />
+</div>

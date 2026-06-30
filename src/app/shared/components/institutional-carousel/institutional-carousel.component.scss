@@ -1,0 +1,310 @@
+/* =====================================================
+   Institutional Carousel - Styles
+   UNP | Unidad Nacional de Protección
+   ===================================================== */
+
+/* --- Section wrapper --- */
+.inst-carousel-section {
+  padding: 72px 0 80px;
+  background-color: #ffffff;
+}
+
+/* --- Section header --- */
+.inst-carousel-section__header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.inst-carousel-section__title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 16px;
+  letter-spacing: -0.3px;
+}
+
+.inst-carousel-section__divider {
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35, #F7931E);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* --- Wrapper containing the carousel --- */
+.inst-carousel-section__wrapper {
+  max-width: 1300px;
+}
+
+/* ─── Carousel Container ──────────────────────────────── */
+.inst-carousel {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 8px rgba(255, 255, 255, 0),
+    0 2px 8px rgba(255, 255, 255, 0);
+  user-select: none;
+}
+
+/* ─── Track & Slides ──────────────────────────────────── */
+.inst-carousel__track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 24 / 7;
+
+  @media (max-width: 768px) {
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (max-width: 480px) {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+.inst-carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+  }
+}
+
+/* ─── Background image ────────────────────────────────── */
+.inst-carousel__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  transition: transform 0.65s ease;
+
+  .inst-carousel__slide--active & {
+    transform: scale(1);
+  }
+}
+
+/* ─── Gradient overlay for text readability ───────────── */
+.inst-carousel__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.101) 0%,
+      rgba(0, 0, 0, 0) 60%,
+       transparent 100%);
+
+  @media (max-width: 768px) {
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 60%,
+        transparent 100%);
+  }
+}
+
+/* ─── Content ─────────────────────────────────────────── */
+.inst-carousel__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 44px 52px;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 32px 28px;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px 20px;
+  }
+}
+
+.inst-carousel__title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  max-width: 540px;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.15rem;
+  }
+}
+
+.inst-carousel__subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 480px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
+/* ─── CTA Button ──────────────────────────────────────── */
+.inst-carousel__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #FF6B35;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+  align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+
+  &:hover {
+    background: #e85a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.45);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+/* ─── Navigation Arrows ───────────────────────────────── */
+.inst-carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  backdrop-filter: blur(8px);
+
+  .material-icons {
+    font-size: 28px;
+  }
+
+  &:hover {
+    background: rgba(255, 107, 53, 0.85);
+    border-color: #FF6B35;
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  &:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  &--prev {
+    left: 16px;
+  }
+
+  &--next {
+    right: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+
+    .material-icons {
+      font-size: 22px;
+    }
+  }
+}
+
+/* ─── Indicators / Dots ──────────────────────────────── */
+.inst-carousel__indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.inst-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.227);
+  border: none;
+  cursor: pointer;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+  padding: 0;
+
+  &--active {
+    width: 28px;
+    background: #FF6B35;
+  }
+
+  &:hover:not(&--active) {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #FF6B35;
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Dark Mode ───────────────────────────────────────── */
+body.modo_oscuro-govco .inst-carousel-section {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+body.modo_oscuro-govco .inst-carousel-section__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .inst-carousel__title,
+body.modo_oscuro-govco .inst-carousel__subtitle {
+  color: #ffffff !important;
+}
+
+body.modo_oscuro-govco .inst-carousel {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}

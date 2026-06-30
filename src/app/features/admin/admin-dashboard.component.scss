@@ -1,0 +1,235 @@
+// Variables institucionales UNP
+$primary-blue: #1e3a8a;
+$secondary-blue: #3366CC;
+$dark-gray: #2c3e50;
+$light-gray: #f8fafc;
+$border-color: #e5e7eb;
+$text-muted: #6b7280;
+$error-red: #dc3545;
+
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header del dashboard
+.dashboard-header {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+    .dashboard-logo {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .dashboard-title {
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: $dark-gray;
+        font-weight: 600;
+      }
+      
+      .dashboard-subtitle {
+        margin: 4px 0 0 0;
+        font-size: 0.9rem;
+        color: $text-muted;
+      }
+    }
+  }
+  
+  .dashboard-nav {
+    display: flex;
+    gap: 8px;
+    
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: $dark-gray;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      
+      &:hover {
+        background: $light-gray;
+        color: $primary-blue;
+      }
+      
+      &.active {
+        background: $primary-blue;
+        color: white;
+      }
+      
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $dark-gray;
+      font-size: 0.9rem;
+      
+      i {
+        font-size: 1.2rem;
+      }
+    }
+    
+    .btn-logout {
+      padding: 8px 16px;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      background: white;
+      color: $text-muted;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      
+      &:hover {
+        background: $error-red;
+        color: white;
+        border-color: $error-red;
+      }
+    }
+  }
+}
+
+// Contenido principal
+.dashboard-main {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+// Footer del dashboard
+.dashboard-footer {
+  background: white;
+  padding: 16px 24px;
+  border-top: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .footer-info {
+    text-align: center;
+    
+    p {
+      margin: 4px 0;
+      font-size: 0.8rem;
+      color: $text-muted;
+      
+      &:first-child {
+        font-weight: 500;
+        color: $dark-gray;
+      }
+    }
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 16px;
+    
+    .footer-link {
+      color: $text-muted;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      
+      &:hover {
+        color: $primary-blue;
+      }
+      
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    
+    .dashboard-brand {
+      order: 2;
+    }
+    
+    .dashboard-nav {
+      order: 1;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .dashboard-user {
+      order: 3;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 12px 16px;
+    
+    .dashboard-brand {
+      .dashboard-logo {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .dashboard-title {
+        h1 {
+          font-size: 1.2rem;
+        }
+        
+        .dashboard-subtitle {
+          font-size: 0.8rem;
+        }
+      }
+    }
+    
+    .dashboard-nav {
+      .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        
+        i {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

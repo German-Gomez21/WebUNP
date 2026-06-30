@@ -1,0 +1,257 @@
+<section class="pqrsd-page" aria-labelledby="pqrsd-title">
+  <div class="pqrsd-page__hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a routerLink="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">PQRSD</span>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Atención ciudadana</p>
+          <h1 id="pqrsd-title">PQRSD</h1>
+          <p class="hero-subtitle">Presenta, consulta y da seguimiento a tus peticiones, quejas, reclamos, sugerencias y denuncias frente a la Unidad Nacional de Protección.</p>
+          <div class="hero-actions">
+            <a class="btn btn--primary" routerLink="/pqrsd" fragment="radicacion">Radicar una PQRSD</a>
+            <a class="btn btn--secondary" routerLink="/linea-vida-103">Línea Vida 103</a>
+          </div>
+          <ul class="hero-highlights" aria-label="Canales de apoyo rápidos">
+            <li><span class="material-icons" aria-hidden="true">language</span> Canal virtual</li>
+            <li><span class="material-icons" aria-hidden="true">mail</span> Correo institucional</li>
+            <li><span class="material-icons" aria-hidden="true">phone_in_talk</span> Línea de orientación</li>
+          </ul>
+        </div>
+
+        <div class="hero-card" aria-label="Resumen de orientación">
+          <h2>¿Qué puede hacer aquí?</h2>
+          <ul>
+            <li>Entender qué es una PQRSD y en qué casos corresponde.</li>
+            <li>Identificar la categoría adecuada para su solicitud.</li>
+            <li>Conocer los canales, tiempos y documentos de apoyo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pqrsd-page__content">
+    <section class="section-card" aria-labelledby="definicion-title">
+      <div class="section-card__header">
+        <p class="eyebrow">¿Qué significa PQRSD?</p>
+        <h2 id="definicion-title">Una ruta clara para la atención ciudadana</h2>
+      </div>
+      <div class="definition-grid">
+        <div>
+          <p>Las PQRSD son mecanismos de participación y atención ciudadana para presentar solicitudes, inquietudes, reclamos, sugerencias o denuncias. Su propósito es asegurar que la entidad responda de manera clara, oportuna y con trazabilidad.</p>
+          <p>No todo asunto debe canalizarse por este medio: cuando se trate de situaciones de riesgo inminente o emergencias, la prioridad es contactar a los canales de respuesta inmediata y a la Línea Vida 103.</p>
+        </div>
+        <div class="definition-box">
+          <h3>Para quién está dirigido</h3>
+          <p>Ciudadanos, grupos organizados, personas en situación de riesgo y quienes requieran orientación sobre trámites o procedimientos de protección.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="accesos-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Acceso rápido</p>
+        <h2 id="accesos-title">Encuentre ayuda en pocos pasos</h2>
+      </div>
+      <div class="card-grid">
+        <app-pqrsd-card
+          *ngFor="let acceso of accesosRapidos"
+          [title]="acceso.titulo"
+          [description]="acceso.descripcion"
+          [icon]="acceso.icono"
+          [link]="acceso.enlace"
+          [variant]="acceso.tipo === 'primario' ? 'primary' : 'secondary'"
+          [featured]="acceso.destacado ?? false"
+        ></app-pqrsd-card>
+      </div>
+    </section>
+
+    <section class="section-card" id="radicacion" aria-labelledby="radicacion-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Canal de radicación</p>
+        <h2 id="radicacion-title">Presente su solicitud de forma guiada</h2>
+      </div>
+      <div class="radication-grid">
+        <div class="radication-card">
+          <h3>Cómo radicar una PQRSD</h3>
+          <ol>
+            <li>Identifique el tipo de solicitud que desea presentar.</li>
+            <li>Prepare los datos básicos y, si aplica, los soportes.</li>
+            <li>Use el canal virtual o el canal oficial indicado por la entidad.</li>
+            <li>Conserve el número de radicado para seguimiento.</li>
+          </ol>
+          <div class="support-box">
+            <h4>Recomendaciones</h4>
+            <p>Sea claro y preciso al describir la situación, indique fechas, hechos y la respuesta esperada. Si su solicitud es anónima, la entidad evaluará su viabilidad.</p>
+          </div>
+        </div>
+        <div class="radication-card">
+          <h3>Qué debe preparar</h3>
+          <ul>
+            <li>Identificación o datos básicos del solicitante.</li>
+            <li>Descripción breve y clara de la situación.</li>
+            <li>Soportes que aporten contexto, si existen.</li>
+            <li>Información sobre el canal o entidad involucrada.</li>
+          </ul>
+          <a class="text-link" routerLink="/pqrsd" fragment="faq">Ver preguntas frecuentes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="tipos-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Tipos de solicitudes</p>
+        <h2 id="tipos-title">Seleccione la categoría que mejor se ajuste</h2>
+      </div>
+      <div class="card-grid">
+        <app-pqrsd-card
+          *ngFor="let tipo of tipos"
+          [title]="tipo.titulo"
+          [description]="tipo.descripcion"
+          [icon]="tipo.icono"
+          [meta]="tipo.ejemplo"
+          [variant]="'secondary'"
+        ></app-pqrsd-card>
+      </div>
+    </section>
+
+    <section class="section-card" id="ruta" aria-labelledby="ruta-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Ruta paso a paso</p>
+        <h2 id="ruta-title">Así se desarrolla el proceso</h2>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card" *ngFor="let paso of pasos; let i = index">
+          <span class="step-number">0{{ i + 1 }}</span>
+          <h3>{{ paso.titulo }}</h3>
+          <p>{{ paso.descripcion }}</p>
+          <small>{{ paso.detalle }}</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="canales-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Canales de atención</p>
+        <h2 id="canales-title">Conozca los medios oficiales</h2>
+      </div>
+      <div class="card-grid">
+        <article class="channel-card" *ngFor="let canal of canales">
+          <div class="channel-card__icon">
+            <span class="material-icons" aria-hidden="true">{{ canal.icono }}</span>
+          </div>
+          <div>
+            <h3>{{ canal.titulo }}</h3>
+            <p>{{ canal.descripcion }}</p>
+            <span class="badge" *ngIf="canal.etiqueta">{{ canal.etiqueta }}</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="documentos-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Normatividad y documentos</p>
+        <h2 id="documentos-title">Materiales de apoyo y referencia</h2>
+      </div>
+      <div class="list-grid">
+        <article class="list-card" *ngFor="let documento of documentos">
+          <div class="list-card__head">
+            <span class="material-icons" aria-hidden="true">{{ documento.icono }}</span>
+            <h3>{{ documento.titulo }}</h3>
+          </div>
+          <p>{{ documento.descripcion }}</p>
+          <span class="badge" [ngClass]="documento.estado === 'disponible' ? 'badge--success' : 'badge--neutral'">{{ documento.estado === 'disponible' ? 'Disponible' : 'Próximamente' }}</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-card" aria-labelledby="informes-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Informes de PQRSD</p>
+        <h2 id="informes-title">Consulte los reportes institucionales</h2>
+      </div>
+      <div class="table-card">
+        <div class="table-card__row table-card__row--head">
+          <span>Periodo</span>
+          <span>Documento</span>
+          <span>Estado</span>
+        </div>
+        <div class="table-card__row" *ngFor="let informe of informes">
+          <span>{{ informe.periodo }}</span>
+          <div>
+            <strong>{{ informe.titulo }}</strong>
+            <p>{{ informe.descripcion }}</p>
+          </div>
+          <span class="badge" [ngClass]="informe.estado === 'disponible' ? 'badge--success' : 'badge--neutral'">{{ informe.estado === 'disponible' ? 'Disponible' : 'Próximamente' }}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card" id="faq" aria-labelledby="faq-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2 id="faq-title">Respuestas claras para su trámite</h2>
+      </div>
+      <div class="faq-list" *ngIf="!isLoading; else loading">
+        <article class="faq-item" *ngFor="let item of faqs">
+          <h3>
+            <button class="faq-item__button" type="button" [attr.aria-expanded]="openFaqId === item.id" (click)="toggleFaq(item.id)">
+              <span>{{ item.pregunta }}</span>
+              <span class="material-icons" aria-hidden="true">{{ openFaqId === item.id ? 'expand_less' : 'expand_more' }}</span>
+            </button>
+          </h3>
+          <div class="faq-item__answer" *ngIf="openFaqId === item.id">
+            <p>{{ item.respuesta }}</p>
+          </div>
+        </article>
+      </div>
+      <ng-template #loading>
+        <p class="empty-state">Cargando información de ayuda…</p>
+      </ng-template>
+    </section>
+
+    <section class="section-card" id="trato-digno" aria-labelledby="trato-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Carta de trato digno</p>
+        <h2 id="trato-title">Una atención basada en derechos y buen servicio</h2>
+      </div>
+      <div class="highlight-banner">
+        <div>
+          <h3>La carta de trato digno orienta a la entidad y al ciudadano sobre los principios de atención.</h3>
+          <p>Su propósito es reforzar la confianza en los procesos de atención y asegurar que la experiencia sea respetuosa, clara y oportuna.</p>
+        </div>
+        <a class="btn btn--primary" routerLink="/pqrsd">Consultar documento</a>
+      </div>
+    </section>
+
+    <section class="section-card section-card--final" aria-labelledby="contacto-title">
+      <div class="section-card__header">
+        <p class="eyebrow">Ayuda y soporte</p>
+        <h2 id="contacto-title">Cierre claro para la ciudadanía</h2>
+      </div>
+      <div class="final-grid">
+        <div>
+          <h3>¿No sabe qué categoría elegir?</h3>
+          <p>Use el canal de orientación y la entidad le indicará la ruta apropiada para su solicitud.</p>
+        </div>
+        <div>
+          <h3>Canales de apoyo</h3>
+          <ul>
+            <li>Canal virtual para radicación y seguimiento.</li>
+            <li>Línea Vida 103 para apoyo inmediato en situaciones de riesgo.</li>
+            <li>Directorio institucional para orientación adicional.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+    <!-- Carrusel Institucional -->
+    <app-institutional-carousel></app-institutional-carousel>

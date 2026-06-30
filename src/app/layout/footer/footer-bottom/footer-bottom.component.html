@@ -1,0 +1,17 @@
+<div class="footer__bottom">
+    <div class="container">
+        <div class="footer__bottom-content">
+            <div class="footer__copyright">
+                <p>&copy; {{ currentYear() }} Unidad Nacional de Protección - UNP. 
+                Todos los derechos reservados.</p>
+            </div>
+            <div class="footer__bottom-links">
+                @for (link of institutionalLinks(); track link.nombre) {
+                    <app-footer-link 
+                        [link]="link"
+                        (linkClicked)="onLinkClick($event)" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

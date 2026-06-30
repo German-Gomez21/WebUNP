@@ -1,0 +1,91 @@
+/* Component Specific Overrides for Linea Vida 103 */
+
+/* Using global CSS variables instead of local ones to match the exact homepage style */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--background-light, #f8f9fa);
+  border-radius: var(--border-radius-lg, 12px);
+  overflow: hidden;
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0, 0, 0, 0.12));
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Margin Bottom reset for columns */
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Enhancing accessibility focus inherited from GOV.CO main styles */
+*:focus-visible {
+  outline: 3px solid #ffcc00 !important; /* GOV.CO standard yellow focus indicator */
+  outline-offset: 2px !important;
+  border-radius: 4px;
+}
+
+/* Ensure service cards are fully uniform in this view */
+.service-card {
+  background: var(--white, #fff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--border-radius-md, 8px);
+  padding: 30px 20px;
+  text-align: center;
+  transition: all var(--transition-smooth, 0.3s ease);
+  height: 100%;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.08));
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,0.12));
+  border-color: var(--primary-color, #3366CC);
+}
+
+.service-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.service-card__icon .material-icons {
+  font-size: 32px;
+}
+
+.service-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-primary, #2c3e50);
+}
+
+.service-card__description {
+  color: var(--text-secondary, #6c757d);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Generic Info Card Layout */
+.info-section-card {
+  background: var(--white, #fff);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--border-radius-md, 8px);
+  height: 100%;
+  transition: all var(--transition-smooth, 0.3s ease);
+}
+.info-section-card:hover {
+  border-color: var(--primary-color, #3366CC);
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,0.12));
+}

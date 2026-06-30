@@ -1,0 +1,1733 @@
+/* Global styles for UNP Application */
+/* This file ensures compatibility with existing CSS structure */
+/* Updated: Fixed CSS duplication issue + Dark Mode Implementation */
+
+/* Import existing main CSS */
+@import 'assets/css/main.css';
+
+/* Light mode explicit overrides for footer (Fix for white text issue) */
+body.modo_claro-govco .footer__card-container,
+body.modo_claro-govco .footer__card-container * {
+  color: #000000 !important;
+}
+
+body.modo_claro-govco .footer__description,
+body.modo_claro-govco .footer__column-title,
+body.modo_claro-govco .footer__contact-label,
+body.modo_claro-govco .footer__contact-value,
+body.modo_claro-govco .footer__copyright,
+body.modo_claro-govco .footer__legal-link,
+body.modo_claro-govco .footer__social-title,
+body.modo_claro-govco .footer__link {
+  color: #000000 !important;
+}
+
+body.modo_claro-govco .footer__link:hover,
+body.modo_claro-govco .footer__legal-link:hover,
+body.modo_claro-govco .footer__contact-value:hover {
+  color: #FF6B35 !important;
+}
+
+body.modo_claro-govco .footer__contact-item .material-icons {
+  color: #FF6B35 !important;
+}
+
+/* Dark Mode CSS Variables */
+:root {
+  --dark-bg-primary: #333333;
+  --dark-bg-secondary: #2a2a2a;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #e0e0e0;
+  --dark-border: #555555;
+  --dark-header-bg: #2a2a2a;
+  --dark-section-gray: #2a2a2a;
+}
+
+/* Dark Mode Base Styles */
+body.modo_oscuro-govco {
+  background-color: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco,
+body.modo_oscuro-govco * {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Except for brand colors or specific states */
+body.modo_oscuro-govco .text-primary,
+body.modo_oscuro-govco .btn--primary,
+body.modo_oscuro-govco .active,
+body.modo_oscuro-govco .material-icons.active {
+  color: #ffffff !important;
+}
+
+/* White backgrounds to dark - ENFORCED */
+body.modo_oscuro-govco,
+body.modo_oscuro-govco main,
+body.modo_oscuro-govco section,
+body.modo_oscuro-govco footer,
+body.modo_oscuro-govco .header,
+body.modo_oscuro-govco .main-content,
+body.modo_oscuro-govco .section,
+body.modo_oscuro-govco .section:not(.section--blue),
+body.modo_oscuro-govco div[class*="section"],
+body.modo_oscuro-govco .container-fluid,
+body.modo_oscuro-govco .bg-white {
+  background-color: var(--dark-bg-primary) !important;
+  background: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+/* Specific card backgrounds to dark */
+body.modo_oscuro-govco .card,
+body.modo_oscuro-govco .banner-card,
+body.modo_oscuro-govco .info-section-card,
+body.modo_oscuro-govco .tramite-card,
+body.modo_oscuro-govco .news-card,
+body.modo_oscuro-govco .footer__card-container,
+body.modo_oscuro-govco .search-box,
+body.modo_oscuro-govco .category-btn,
+body.modo_oscuro-govco .faq-item,
+body.modo_oscuro-govco .faq-question,
+body.modo_oscuro-govco .faq-answer {
+  background-color: var(--dark-bg-secondary) !important;
+  background: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+/* Gray backgrounds to dark */
+body.modo_oscuro-govco .section--gray,
+body.modo_oscuro-govco .bg-gray,
+body.modo_oscuro-govco .section--white,
+body.modo_oscuro-govco div[class*="section--white"],
+body.modo_oscuro-govco div[class*="section--gray"] {
+  background-color: var(--dark-bg-secondary) !important;
+  background: var(--dark-bg-secondary) !important;
+}
+
+/* Header specific dark mode */
+body.modo_oscuro-govco .header {
+  background-color: var(--dark-header-bg) !important;
+}
+
+body.modo_oscuro-govco .header__search-container {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .header__search-input {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__search-input::placeholder {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Navigation dark mode */
+body.modo_oscuro-govco .header__nav {
+  border-top-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .header__dropdown-content {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Icons to white in dark mode - Comprehensive coverage */
+body.modo_oscuro-govco .material-icons,
+body.modo_oscuro-govco .header__search-icon,
+body.modo_oscuro-govco .header__mobile-menu-btn,
+body.modo_oscuro-govco .header__nav-arrow,
+body.modo_oscuro-govco .header__dropdown-icon,
+body.modo_oscuro-govco .service-card__icon-text,
+body.modo_oscuro-govco .hero__icon,
+body.modo_oscuro-govco .section__icon,
+body.modo_oscuro-govco .news-card__icon,
+body.modo_oscuro-govco .content-card__icon,
+body.modo_oscuro-govco .article-card__icon,
+body.modo_oscuro-govco .faq-icon,
+body.modo_oscuro-govco .contact-icon,
+body.modo_oscuro-govco .banner__icon,
+body.modo_oscuro-govco .carousel__icon,
+body.modo_oscuro-govco .btn__icon,
+body.modo_oscuro-govco .link__icon,
+body.modo_oscuro-govco .menu__icon,
+body.modo_oscuro-govco .footer__icon,
+body.modo_oscuro-govco .social__icon,
+body.modo_oscuro-govco .search__icon,
+body.modo_oscuro-govco .filter__icon,
+body.modo_oscuro-govco .pagination__icon,
+body.modo_oscuro-govco .accordion__icon,
+body.modo_oscuro-govco .tabs__icon,
+body.modo_oscuro-govco .modal__icon,
+body.modo_oscuro-govco .tooltip__icon,
+body.modo_oscuro-govco .alert__icon,
+body.modo_oscuro-govco .notification__icon,
+body.modo_oscuro-govco .breadcrumb__icon,
+body.modo_oscuro-govco .step__icon,
+body.modo_oscuro-govco .badge__icon,
+body.modo_oscuro-govco .tag__icon,
+body.modo_oscuro-govco .chip__icon,
+body.modo_oscuro-govco .avatar__icon,
+body.modo_oscuro-govco .card__icon,
+body.modo_oscuro-govco .list__icon,
+body.modo_oscuro-govco .table__icon,
+body.modo_oscuro-govco .form__icon,
+body.modo_oscuro-govco .input__icon,
+body.modo_oscuro-govco .textarea__icon,
+body.modo_oscuro-govco .select__icon,
+body.modo_oscuro-govco .checkbox__icon,
+body.modo_oscuro-govco .radio__icon,
+body.modo_oscuro-govco .switch__icon,
+body.modo_oscuro-govco .slider__icon,
+body.modo_oscuro-govco .progress__icon,
+body.modo_oscuro-govco .spinner__icon,
+body.modo_oscuro-govco .loading__icon,
+body.modo_oscuro-govco .error__icon,
+body.modo_oscuro-govco .success__icon,
+body.modo_oscuro-govco .warning__icon,
+body.modo_oscuro-govco .info__icon,
+body.modo_oscuro-govco .help__icon,
+body.modo_oscuro-govco .close__icon,
+body.modo_oscuro-govco .expand__icon,
+body.modo_oscuro-govco .collapse__icon,
+body.modo_oscuro-govco .add__icon,
+body.modo_oscuro-govco .remove__icon,
+body.modo_oscuro-govco .edit__icon,
+body.modo_oscuro-govco .delete__icon,
+body.modo_oscuro-govco .save__icon,
+body.modo_oscuro-govco .cancel__icon,
+body.modo_oscuro-govco .upload__icon,
+body.modo_oscuro-govco .download__icon,
+body.modo_oscuro-govco .share__icon,
+body.modo_oscuro-govco .print__icon,
+body.modo_oscuro-govco .copy__icon,
+body.modo_oscuro-govco .paste__icon,
+body.modo_oscuro-govco .cut__icon,
+body.modo_oscuro-govco .undo__icon,
+body.modo_oscuro-govco .redo__icon,
+body.modo_oscuro-govco .refresh__icon,
+body.modo_oscuro-govco .sync__icon,
+body.modo_oscuro-govco .settings__icon,
+body.modo_oscuro-govco .config__icon,
+body.modo_oscuro-govco .tools__icon,
+body.modo_oscuro-govco .admin__icon,
+body.modo_oscuro-govco .user__icon,
+body.modo_oscuro-govco .group__icon,
+body.modo_oscuro-govco .team__icon,
+body.modo_oscuro-govco .organization__icon,
+body.modo_oscuro-govco .department__icon,
+body.modo_oscuro-govco .location__icon,
+body.modo_oscuro-govco .map__icon,
+body.modo_oscuro-govco .directions__icon,
+body.modo_oscuro-govco .phone__icon,
+body.modo_oscuro-govco .email__icon,
+body.modo_oscuro-govco .website__icon,
+body.modo_oscuro-govco .calendar__icon,
+body.modo_oscuro-govco .time__icon,
+body.modo_oscuro-govco .date__icon,
+body.modo_oscuro-govco .schedule__icon,
+body.modo_oscuro-govco .event__icon,
+body.modo_oscuro-govco .reminder__icon,
+body.modo_oscuro-govco .alarm__icon,
+body.modo_oscuro-govco .clock__icon,
+body.modo_oscuro-govco .timer__icon,
+body.modo_oscuro-govco .stopwatch__icon {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Special icon cases that need different colors in dark mode */
+body.modo_oscuro-govco .icon-primary,
+body.modo_oscuro-govco .icon-accent,
+body.modo_oscuro-govco .icon-brand {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .icon-secondary {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .icon-success {
+  color: #28a745 !important;
+}
+
+body.modo_oscuro-govco .icon-warning {
+  color: #ffc107 !important;
+}
+
+body.modo_oscuro-govco .icon-error {
+  color: #dc3545 !important;
+}
+
+body.modo_oscuro-govco .icon-info {
+  color: #17a2b8 !important;
+}
+
+/* Icon containers and backgrounds */
+body.modo_oscuro-govco .icon-container,
+body.modo_oscuro-govco .icon-wrapper,
+body.modo_oscuro-govco .icon-bg {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Hover states for icons */
+body.modo_oscuro-govco .icon-hover:hover,
+body.modo_oscuro-govco .material-icons:hover {
+  color: var(--primary-color) !important;
+}
+
+/* SVG icons */
+body.modo_oscuro-govco svg {
+  fill: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco svg.icon-primary {
+  fill: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco svg.icon-secondary {
+  fill: var(--dark-text-secondary) !important;
+}
+
+/* Links and buttons */
+body.modo_oscuro-govco .header__nav-link {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__dropdown-link {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Mobile navigation */
+body.modo_oscuro-govco .header__mobile-nav-content {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-nav-header {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-nav-title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-nav-link {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-nav-item {
+  border-color: var(--dark-border) !important;
+}
+
+/* Section headers */
+body.modo_oscuro-govco .section__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .section__subtitle {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Accessibility bar dark mode adaptation */
+body.modo_oscuro-govco .barra-accesibilidad-govco {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-contraste,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-reducir,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-aumentar {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-contraste::after,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-reducir::after,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-aumentar::after {
+  background-color: var(--dark-text-primary) !important;
+  color: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-contraste:hover::after,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-reducir:hover::after,
+body.modo_oscuro-govco .barra-accesibilidad-govco .icon-aumentar:hover::after {
+  background-color: var(--dark-text-primary) !important;
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .barra-accesibilidad-govco #titlecontraste,
+body.modo_oscuro-govco .barra-accesibilidad-govco #titledisminuir,
+body.modo_oscuro-govco .barra-accesibilidad-govco #titleaumentar {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .active-barra-accesibilidad-govco {
+  background-color: var(--primary-color) !important;
+}
+
+/* Search results dark mode */
+body.modo_oscuro-govco .header__search-results {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+body.modo_oscuro-govco .header__search-item {
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .header__search-item:hover {
+  background-color: rgba(51, 102, 204, 0.1) !important;
+}
+
+body.modo_oscuro-govco .header__search-item-title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__search-item-description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .header__search-item-icon {
+  color: var(--primary-color) !important;
+}
+
+/* Mobile menu button dark mode */
+body.modo_oscuro-govco .header__mobile-menu-btn {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-menu-btn:hover {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-toggle-line {
+  background-color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .header__mobile-toggle:hover .header__mobile-toggle-line {
+  background-color: var(--primary-color) !important;
+}
+
+/* Accessibility button dark mode */
+body.modo_oscuro-govco .header__accessibility-btn {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+/* PQRSD dark mode overrides */
+body.modo_oscuro-govco app-pqrsd .pqrsd-page {
+  background: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .pqrsd-page__hero {
+  background: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .hero-card,
+body.modo_oscuro-govco app-pqrsd .section-card,
+body.modo_oscuro-govco app-pqrsd .definition-box,
+body.modo_oscuro-govco app-pqrsd .radication-card,
+body.modo_oscuro-govco app-pqrsd .support-box,
+body.modo_oscuro-govco app-pqrsd .channel-card,
+body.modo_oscuro-govco app-pqrsd .list-card,
+body.modo_oscuro-govco app-pqrsd .step-card,
+body.modo_oscuro-govco app-pqrsd .highlight-banner,
+body.modo_oscuro-govco app-pqrsd .faq-item,
+body.modo_oscuro-govco app-pqrsd .table-card,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card {
+  background: #333 !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .pqrsd-card--featured {
+  background: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .section-card__header h2,
+body.modo_oscuro-govco app-pqrsd .hero-card h2,
+body.modo_oscuro-govco app-pqrsd .radication-card h3,
+body.modo_oscuro-govco app-pqrsd .channel-card h3,
+body.modo_oscuro-govco app-pqrsd .list-card h3,
+body.modo_oscuro-govco app-pqrsd .step-card h3,
+body.modo_oscuro-govco app-pqrsd .faq-item__button,
+body.modo_oscuro-govco app-pqrsd .highlight-banner h3,
+body.modo_oscuro-govco app-pqrsd .final-grid h3,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card__content h3,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card__meta {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .hero-subtitle,
+body.modo_oscuro-govco app-pqrsd .definition-grid p,
+body.modo_oscuro-govco app-pqrsd .radication-card p,
+body.modo_oscuro-govco app-pqrsd .channel-card p,
+body.modo_oscuro-govco app-pqrsd .list-card p,
+body.modo_oscuro-govco app-pqrsd .faq-item__answer,
+body.modo_oscuro-govco app-pqrsd .table-card p,
+body.modo_oscuro-govco app-pqrsd .highlight-banner p,
+body.modo_oscuro-govco app-pqrsd .final-grid p,
+body.modo_oscuro-govco app-pqrsd .final-grid li,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card__content p,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card__link {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .channel-card__icon,
+body.modo_oscuro-govco app-pqrsd .list-card__head .material-icons,
+body.modo_oscuro-govco app-pqrsd .pqrsd-card__icon {
+  background: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .faq-item__button {
+  background: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .faq-item__answer {
+  background: var(--dark-bg-primary) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .table-card__row {
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco app-pqrsd .section-card--final {
+  background: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .header__accessibility-btn:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+body.modo_oscuro-govco .header__accessibility-icon {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Footer and other elements */
+body.modo_oscuro-govco .footer {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .footer__card-container {
+  background-color: var(--dark-bg-secondary) !important;
+  color: var(--dark-text-primary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Footer text elements - ensure all text is white in dark mode */
+body.modo_oscuro-govco .footer__description,
+body.modo_oscuro-govco .footer__column-title,
+body.modo_oscuro-govco .footer__contact-label,
+body.modo_oscuro-govco .footer__contact-value,
+body.modo_oscuro-govco .footer__copyright,
+body.modo_oscuro-govco .footer__legal-link,
+body.modo_oscuro-govco .footer__social-title,
+body.modo_oscuro-govco .footer__link {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Footer links with proper hover states */
+body.modo_oscuro-govco .footer__link:hover {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .footer__legal-link:hover {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .footer__contact-value:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Footer responsive dark mode - TABLET (768px y menos) */
+@media (max-width: 768px) {
+
+  body.modo_oscuro-govco .footer__card-container,
+  body.modo_oscuro-govco .footer__card-container *,
+  body.modo_oscuro-govco .footer__card-container .footer__description,
+  body.modo_oscuro-govco .footer__card-container .footer__column-title,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-label,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-value,
+  body.modo_oscuro-govco .footer__card-container .footer__copyright,
+  body.modo_oscuro-govco .footer__card-container .footer__legal-link,
+  body.modo_oscuro-govco .footer__card-container .footer__social-title {
+    color: var(--dark-text-primary) !important;
+  }
+
+  body.modo_oscuro-govco .footer__card-container .footer__link {
+    color: var(--dark-text-primary) !important;
+  }
+
+  body.modo_oscuro-govco .footer__card-container .footer__link:hover {
+    color: var(--primary-color) !important;
+  }
+}
+
+/* Footer responsive dark mode - PANTALLAS PEQUEÑAS (600px y menos) */
+@media (max-width: 600px) {
+
+  body.modo_oscuro-govco .footer__card-container,
+  body.modo_oscuro-govco .footer__card-container *,
+  body.modo_oscuro-govco .footer__card-container .footer__description,
+  body.modo_oscuro-govco .footer__card-container .footer__column-title,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-label,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-value,
+  body.modo_oscuro-govco .footer__card-container .footer__copyright,
+  body.modo_oscuro-govco .footer__card-container .footer__legal-link,
+  body.modo_oscuro-govco .footer__card-container .footer__social-title {
+    color: var(--dark-text-primary) !important;
+  }
+
+  body.modo_oscuro-govco .footer__card-container .footer__link {
+    color: var(--dark-text-primary) !important;
+  }
+
+  body.modo_oscuro-govco .footer__card-container .footer__link:hover {
+    color: var(--primary-color) !important;
+  }
+}
+
+/* Footer responsive dark mode - MÓVIL (480px y menos) */
+@media (max-width: 480px) {
+
+  body.modo_oscuro-govco .footer__card-container,
+  body.modo_oscuro-govco .footer__card-container *,
+  body.modo_oscuro-govco .footer__card-container h1,
+  body.modo_oscuro-govco .footer__card-container h2,
+  body.modo_oscuro-govco .footer__card-container h3,
+  body.modo_oscuro-govco .footer__card-container h4,
+  body.modo_oscuro-govco .footer__card-container h5,
+  body.modo_oscuro-govco .footer__card-container h6,
+  body.modo_oscuro-govco .footer__card-container p,
+  body.modo_oscuro-govco .footer__card-container span,
+  body.modo_oscuro-govco .footer__card-container a,
+  body.modo_oscuro-govco .footer__card-container li,
+  body.modo_oscuro-govco .footer__card-container div,
+  body.modo_oscuro-govco .footer__card-container .footer__description,
+  body.modo_oscuro-govco .footer__card-container .footer__column-title,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-label,
+  body.modo_oscuro-govco .footer__card-container .footer__contact-value,
+  body.modo_oscuro-govco .footer__card-container .footer__link,
+  body.modo_oscuro-govco .footer__card-container .footer__copyright,
+  body.modo_oscuro-govco .footer__card-container .footer__legal-link,
+  body.modo_oscuro-govco .footer__card-container .footer__social-title {
+    color: var(--dark-text-primary) !important;
+  }
+
+  body.modo_oscuro-govco .footer__card-container .footer__link:hover {
+    color: var(--primary-color) !important;
+  }
+
+  /* Mantener iconos naranja en modo oscuro */
+  body.modo_oscuro-govco .footer__card-container .material-icons,
+  body.modo_oscuro-govco .footer__card-container .footer__social-icon {
+    color: #FF6B35 !important;
+  }
+}
+
+body.modo_oscuro-govco .footer__bottom {
+  background-color: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+  border-top: 1px solid var(--dark-border) !important;
+}
+
+/* Social media icons in dark mode */
+body.modo_oscuro-govco .social__icon,
+body.modo_oscuro-govco .footer__social-icon,
+body.modo_oscuro-govco .social-icon,
+body.modo_oscuro-govco .footer-social-icon {
+  color: var(--dark-text-primary) !important;
+  fill: var(--dark-text-primary) !important;
+}
+
+/* SVG social media icons - change to white in dark mode */
+body.modo_oscuro-govco .footer__social-icon img,
+body.modo_oscuro-govco img.footer__social-icon {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+}
+
+body.modo_oscuro-govco .social__icon:hover,
+body.modo_oscuro-govco .footer__social-icon:hover,
+body.modo_oscuro-govco .social-icon:hover,
+body.modo_oscuro-govco .footer-social-icon:hover {
+  color: var(--primary-color) !important;
+  fill: var(--primary-color) !important;
+}
+
+/* SVG social media icons hover - change to blue in dark mode */
+body.modo_oscuro-govco .footer__social-link:hover .footer__social-icon img,
+body.modo_oscuro-govco .footer__social-link:hover img.footer__social-icon {
+  filter: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(200deg) !important;
+  -webkit-filter: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(200deg) !important;
+}
+
+body.modo_oscuro-govco .gov-bar {
+  background-color: #333333 !important;
+}
+
+/* Links and interactive elements */
+body.modo_oscuro-govco a:not(.header__nav-link):not(.header__dropdown-link) {
+  color: #c1c1c1 !important;
+}
+
+body.modo_oscuro-govco a:not(.header__nav-link):not(.header__dropdown-link):hover {
+  color: var(--primary-light) !important;
+}
+
+/* Cards and content boxes */
+body.modo_oscuro-govco .card,
+body.modo_oscuro-govco .content-box {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Form elements */
+body.modo_oscuro-govco input:not(.header__search-input),
+body.modo_oscuro-govco textarea,
+body.modo_oscuro-govco select {
+  background-color: #2a2a2a00 !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco input:not(.header__search-input)::placeholder,
+body.modo_oscuro-govco textarea::placeholder,
+body.modo_oscuro-govco select::placeholder {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Service Cards Dark Mode */
+body.modo_oscuro-govco .service-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .service-card:hover {
+  background-color: var(--dark-bg-primary) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 16px rgba(51, 102, 204, 0.2) !important;
+}
+
+body.modo_oscuro-govco .service-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .service-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .service-card__detail {
+  color: var(--dark-text-secondary) !important;
+}
+
+
+body.modo_oscuro-govco .service-card__icon {
+  background-color: var(--dark-bg-primary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .service-card__icon-text {
+  color: var(--primary-color) !important;
+}
+
+/* Hero Section - PRESERVE ORIGINAL DESIGN */
+/* Hero section maintains original gradients and colors in dark mode */
+
+/* Preserve hero carousel original design but allow images and gradients */
+body.modo_oscuro-govco .hero {
+  background: none !important;
+}
+
+body.modo_oscuro-govco .hero-carousel {
+  background: none !important;
+}
+
+/* Allow hero carousel items to show gradients and images */
+body.modo_oscuro-govco .hero-carousel__item {
+  background: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__background {
+  background: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__overlay {
+  background: inherit !important;
+}
+
+/* Preserve hero content original colors */
+body.modo_oscuro-govco .hero-carousel__title {
+  color: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__subtitle {
+  color: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__cta {
+  background: inherit !important;
+  color: inherit !important;
+  border: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__cta-icon {
+  color: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__cta-text {
+  color: inherit !important;
+}
+
+/* Preserve hero controls original design */
+body.modo_oscuro-govco .hero-carousel__control {
+  background: inherit !important;
+  color: inherit !important;
+  border: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__control:hover {
+  background: inherit !important;
+  color: inherit !important;
+}
+
+/* Preserve hero indicators original design */
+body.modo_oscuro-govco .hero-carousel__indicator {
+  background: inherit !important;
+  border: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__indicator--active {
+  background: inherit !important;
+}
+
+/* Ensure hero icons maintain original colors */
+body.modo_oscuro-govco .hero .material-icons,
+body.modo_oscuro-govco .hero-carousel .material-icons {
+  color: inherit !important;
+}
+
+/* Comprehensive preservation of hero section in dark mode */
+body.modo_oscuro-govco .hero,
+body.modo_oscuro-govco .hero-carousel {
+  background: inherit !important;
+  color: inherit !important;
+  border: inherit !important;
+}
+
+/* Allow specific hero elements to show their original styles */
+body.modo_oscuro-govco .hero-carousel__item,
+body.modo_oscuro-govco .hero-carousel__background,
+body.modo_oscuro-govco .hero-carousel__overlay,
+body.modo_oscuro-govco .hero-carousel__content,
+body.modo_oscuro-govco .hero-carousel__caption,
+body.modo_oscuro-govco .hero-carousel__title,
+body.modo_oscuro-govco .hero-carousel__subtitle,
+body.modo_oscuro-govco .hero-carousel__cta,
+body.modo_oscuro-govco .hero-carousel__control,
+body.modo_oscuro-govco .hero-carousel__indicator {
+  background: inherit !important;
+  color: inherit !important;
+  border: inherit !important;
+}
+
+/* Allow specific hover effects for hero controls */
+body.modo_oscuro-govco .hero-carousel__control:hover {
+  opacity: 0.8 !important;
+}
+
+/* Ensure hero images and gradients work properly in dark mode */
+body.modo_oscuro-govco .hero-carousel__item[style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__background[style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1 !important;
+}
+
+/* Ensure overlay provides proper text contrast */
+body.modo_oscuro-govco .hero-carousel__overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure content stays above background elements */
+body.modo_oscuro-govco .hero-carousel__content {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* Fallback: if images don't load, show gradients */
+body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]) {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]):nth-child(2) {
+  background: linear-gradient(135deg, #dc2626, #f87171) !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]):nth-child(3) {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+}
+
+/* News and Content Cards */
+body.modo_oscuro-govco .news-card,
+body.modo_oscuro-govco .content-card,
+body.modo_oscuro-govco .article-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-card__title,
+body.modo_oscuro-govco .content-card__title,
+body.modo_oscuro-govco .article-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-card__description,
+body.modo_oscuro-govco .content-card__description,
+body.modo_oscuro-govco .article-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .news-card__date,
+body.modo_oscuro-govco .content-card__date,
+body.modo_oscuro-govco .article-card__date {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* FAQ Section */
+body.modo_oscuro-govco .faq-item {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .faq-question {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .faq-answer {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Contact Forms */
+body.modo_oscuro-govco .contact-form,
+body.modo_oscuro-govco .form-container {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .contact-form__label,
+body.modo_oscuro-govco .form-label {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Tables */
+body.modo_oscuro-govco table {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco th {
+  background-color: var(--dark-bg-primary) !important;
+  color: var(--dark-text-primary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco td {
+  color: var(--dark-text-primary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco tr:nth-child(even) {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+/* Banners and Carousels */
+body.modo_oscuro-govco .banner,
+body.modo_oscuro-govco .carousel {
+  background-color: var(--dark-bg-secondary) !important;
+}
+
+body.modo_oscuro-govco .banner__title,
+body.modo_oscuro-govco .carousel__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .banner__description,
+body.modo_oscuro-govco .carousel__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Buttons and Interactive Elements */
+body.modo_oscuro-govco .btn:not(.header__accessibility-btn):not(.header__mobile-menu-btn) {
+  background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .btn:not(.header__accessibility-btn):not(.header__mobile-menu-btn):hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* Lists and Navigation Items */
+body.modo_oscuro-govco .list-item,
+body.modo_oscuro-govco .nav-item {
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .list-item:hover,
+body.modo_oscuro-govco .nav-item:hover {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+/* Specific Section Overrides */
+body.modo_oscuro-govco .section:nth-child(even) {
+  background-color: #333 !important;
+}
+
+body.modo_oscuro-govco .section:nth-child(odd) {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+/* Ensure proper contrast for all text elements */
+body.modo_oscuro-govco h1,
+body.modo_oscuro-govco h2,
+body.modo_oscuro-govco h3,
+body.modo_oscuro-govco h4,
+body.modo_oscuro-govco h5,
+body.modo_oscuro-govco h6 {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco p,
+body.modo_oscuro-govco span,
+body.modo_oscuro-govco div {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Links with proper contrast */
+body.modo_oscuro-govco a {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco a:hover {
+  color: var(--primary-light) !important;
+}
+
+/* Info Section Cards (Conoce la UNP) */
+body.modo_oscuro-govco .info-section-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .info-section-card:hover {
+  background-color: var(--dark-bg-primary) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 16px rgba(51, 102, 204, 0.2) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__item {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__item-icon {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__link {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .info-section-card__link:hover {
+  color: var(--primary-light) !important;
+}
+
+/* Banner Cards (Servicios Principales) */
+body.modo_oscuro-govco .banner-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .banner-card:hover {
+  background-color: var(--dark-bg-primary) !important;
+  box-shadow: 0 4px 16px rgba(51, 102, 204, 0.2) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado {
+  background-color: var(--dark-bg-secondary) !important;
+  border-left-color: var(--primary-color) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Override inline styles for banner cards in dark mode */
+body.modo_oscuro-govco .banner-card[style*="border-left"] {
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado[style*="border-left"] {
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card__icon[style*="background-color"] {
+  background-color: var(--dark-bg-primary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .banner-card__icon-text[style*="color"] {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card__icon {
+  background-color: var(--dark-bg-primary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .banner-card__icon-text {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .banner-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .banner-card__link {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card__link:hover {
+  color: var(--primary-light) !important;
+}
+
+body.modo_oscuro-govco .banner-card__arrow-icon {
+  color: var(--primary-color) !important;
+}
+
+/* Additional styles for banner card content in dark mode */
+body.modo_oscuro-govco .banner-card--destacado .banner-card__icon {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__icon-text {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__link {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__link:hover {
+  color: var(--primary-light) !important;
+}
+
+body.modo_oscuro-govco .banner-card--destacado .banner-card__arrow-icon {
+  color: var(--primary-color) !important;
+}
+
+/* Ensure all banner cards with inline styles are properly styled */
+body.modo_oscuro-govco .banners-grid .banner-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .banners-grid .banner-card--destacado {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+/* Ultra-specific selectors for the first banner card */
+body.modo_oscuro-govco section.section .container .banners-grid .banner-card.banner-card--destacado {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco section.section .container .banners-grid .banner-card.banner-card--destacado[style] {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+/* Force override any inline styles on the first card */
+body.modo_oscuro-govco .banner-card:first-child {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .banner-card:first-child .banner-card__icon {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .banner-card:first-child .banner-card__icon-text {
+  color: var(--primary-color) !important;
+}
+
+
+/* News Cards */
+body.modo_oscuro-govco .news-card {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-card:hover {
+  background-color: var(--dark-bg-primary) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 16px rgba(51, 102, 204, 0.2) !important;
+}
+
+body.modo_oscuro-govco .news-card__icon {
+  color: white !important;
+}
+
+body.modo_oscuro-govco .news-card__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-card__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .news-card__date,
+body.modo_oscuro-govco .news-card__category {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .news-card__link {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .news-card__link:hover {
+  color: var(--primary-light) !important;
+}
+
+/* News Carousel Controls */
+body.modo_oscuro-govco .news-carousel__btn {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-carousel__btn:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+body.modo_oscuro-govco .news-carousel__indicator {
+  background-color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .news-carousel__indicator--active {
+  background-color: var(--primary-color) !important;
+}
+
+/* Contact Channels */
+body.modo_oscuro-govco .contact-channel {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .contact-channel:hover {
+  background-color: var(--dark-bg-primary) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 16px rgba(51, 102, 204, 0.2) !important;
+}
+
+body.modo_oscuro-govco .contact-channel__icon {
+  background-color: var(--dark-bg-primary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .contact-channel__icon-text {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .contact-channel__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .contact-channel__value {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .contact-channel__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* FAQ Items */
+body.modo_oscuro-govco .faq-item {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .faq-item:hover {
+  background-color: var(--dark-bg-primary) !important;
+  border-color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .faq-item__question {
+  background-color: transparent !important;
+  color: var(--dark-text-primary) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .faq-item__question:hover {
+  background-color: var(--dark-bg-primary) !important;
+}
+
+body.modo_oscuro-govco .faq-item__question-text {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .faq-item__toggle-icon {
+  color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .faq-item__answer {
+  background-color: var(--dark-bg-primary) !important;
+  color: var(--dark-text-secondary) !important;
+  border-top: 1px solid var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .faq-item__answer-content {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .faq-item__answer-content p {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Services List (from ¿Qué hace la UNP?) */
+body.modo_oscuro-govco .services-list {
+  background-color: var(--dark-bg-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+body.modo_oscuro-govco .services-list__title {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .services-list__item {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .services-list__icon {
+  color: var(--primary-color) !important;
+}
+
+/* Grid layouts for cards */
+body.modo_oscuro-govco .info-sections-grid,
+body.modo_oscuro-govco .banners-grid,
+body.modo_oscuro-govco .news-carousel,
+body.modo_oscuro-govco .contact-channels {
+  gap: 20px;
+}
+
+/* Section text content */
+body.modo_oscuro-govco .section__text {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .section__content {
+  color: var(--dark-text-primary) !important;
+}
+
+/* Special section overrides */
+body.modo_oscuro-govco .section--blue .contact-channel {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: var(--primary-color) !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel__title {
+  color: white !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel__value {
+  color: white !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel__description {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel__icon {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.modo_oscuro-govco .section--blue .contact-channel__icon-text {
+  color: white !important;
+}
+
+/* Additional Angular-specific styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* Responsive Text Sizes - Toda la página con 4px más */
+/* Tablet (768px y menos) */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px !important;
+  }
+
+  * {
+    font-size: 16px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: calc(1.2em + 4px) !important;
+  }
+
+  p,
+  span,
+  div,
+  li,
+  a,
+  button {
+    font-size: 16px !important;
+  }
+
+  .container * {
+    font-size: 16px !important;
+  }
+}
+
+/* Pantallas pequeñas (600px y menos) */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px !important;
+  }
+
+  * {
+    font-size: 16px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: calc(1.2em + 4px) !important;
+  }
+
+  p,
+  span,
+  div,
+  li,
+  a,
+  button {
+    font-size: 14px !important;
+  }
+
+  .container * {
+    font-size: 14px !important;
+  }
+}
+
+/* Móvil (480px y menos) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px !important;
+  }
+
+  * {
+    font-size: 14px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: calc(1.2em + 4px) !important;
+  }
+
+  p,
+  span,
+  div,
+  li,
+  a,
+  button {
+    font-size: 14px !important;
+  }
+
+  .container * {
+    font-size: 14px !important;
+  }
+}
+
+/* Ensure Material Icons load properly */
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Angular routing animations */
+router-outlet+* {
+  animation: fade-in 0.4s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fix for any Angular-specific class conflicts */
+.ng-star-inserted {
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Ensure proper spacing for Angular components */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+/* Angular form validation styles */
+.ng-invalid.ng-touched {
+  border-color: #dc3545 !important;
+}
+
+.ng-valid.ng-touched {
+  border-color: #28a745 !important;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Error states */
+.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+/* Trámites y Servicios Dark Mode Overrides */
+body.modo_oscuro-govco {
+  .tramites-page {
+    background-color: var(--dark-bg-primary) !important;
+  }
+
+  .tramites-page .search-box {
+    background-color: var(--dark-bg-secondary) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
+  }
+
+  .tramites-page .search-box__input-wrapper {
+    background-color: var(--dark-bg-primary) !important;
+    border-color: var(--dark-border) !important;
+  }
+
+  .tramites-page .search-box__input-wrapper input {
+    color: var(--dark-text-primary) !important;
+  }
+
+  .tramites-page .search-box__input-wrapper .material-icons {
+    color: var(--dark-text-secondary) !important;
+  }
+
+  .tramites-page .category-btn {
+    background-color: var(--dark-bg-secondary) !important;
+    border-color: var(--dark-border) !important;
+    color: var(--dark-text-secondary) !important;
+  }
+
+  .tramites-page .category-btn:hover {
+    background-color: var(--dark-bg-primary) !important;
+    border-color: #FF6B35 !important;
+  }
+
+  .tramites-page .category-btn.active {
+    background-color: #FF6B35 !important;
+    color: white !important;
+    border-color: #FF6B35 !important;
+  }
+
+  .tramites-page .tramite-card {
+    background-color: var(--dark-bg-secondary) !important;
+    border: 1px solid var(--dark-border) !important;
+  }
+
+  .tramites-page .tramite-card__header {
+    background-color: var(--dark-bg-primary) !important;
+    border-bottom: 1px solid var(--dark-border) !important;
+  }
+
+  .tramites-page .tramite-card__title {
+    color: var(--dark-text-primary) !important;
+  }
+
+  .tramites-page .tramite-card .tag {
+    background: rgba(34, 139, 230, 0.2) !important;
+    color: #74c0fc !important;
+  }
+
+  .tramites-page .tramite-card__desc {
+    color: var(--dark-text-secondary) !important;
+  }
+
+  .tramites-page .tramite-card__meta .meta-item {
+    color: var(--dark-text-secondary) !important;
+  }
+
+  .tramites-page .tramite-card__meta .meta-item .material-icons {
+    color: #888 !important;
+  }
+
+  .tramites-page .tramite-card__footer {
+    border-top: 1px solid var(--dark-border) !important;
+  }
+
+  .tramites-page .tramite-card__footer .btn--outline {
+    border-color: #FF6B35 !important;
+    color: #FF6B35 !important;
+  }
+
+  .tramites-page .tramite-card__footer .btn--outline:hover {
+    background: #FF6B35 !important;
+    color: white !important;
+  }
+
+  .tramites-page .empty-state {
+    color: var(--dark-text-secondary) !important;
+  }
+  
+  .tramites-page .loading-spinner p {
+    color: var(--dark-text-secondary) !important;
+  }
+}
+
+/* Logo changes for dark mode */
+body.modo_oscuro-govco .header__logo-img {
+  content: url('assets/images/unp-logo-white.svg') !important;
+}
+
+body.modo_oscuro-govco .footer__logo {
+  content: url('assets/images/unp-logo-white.svg') !important;
+}

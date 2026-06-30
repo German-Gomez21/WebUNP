@@ -1,0 +1,9 @@
+<li class="footer__links-item">
+    <a [href]="link().enlace" 
+       class="footer__link"
+       (click)="onLinkClick(link().enlace)"
+       [target]="isExternal() ? '_blank' : '_self'"
+       [attr.rel]="isExternal() ? 'noopener noreferrer' : null">
+        {{ link().nombre }}
+    </a>
+</li>

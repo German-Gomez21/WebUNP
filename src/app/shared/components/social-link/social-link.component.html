@@ -1,0 +1,8 @@
+<a [href]="social().enlace" 
+   class="footer__social-link"
+   (click)="onSocialClick(social().enlace)"
+   target="_blank"
+   rel="noopener noreferrer"
+   [attr.aria-label]="ariaLabel">
+    <i class="material-icons">{{ social().icono }}</i>
+</a>

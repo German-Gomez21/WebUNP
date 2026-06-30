@@ -1,0 +1,29 @@
+<!-- Main Layout - Estructura exacta del index.html original con Accesibilidad -->
+
+<!-- Barra superior GOV.CO -->
+<div class="gov-bar">
+    <div class="container">
+        <div class="gov-bar__content">
+            <img src="assets/images/gov-logo.png" alt="Gobierno de Colombia" class="gov-bar__logo">
+            <div class="gov-bar__links">
+                <a href="#" class="gov-bar__link">Portal Único del Estado</a>
+                <a href="#" class="gov-bar__link">Gobierno en Línea</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accesibilidad -->
+<app-accessibility-bar></app-accessibility-bar>
+
+<!-- Header -->
+<header-component></header-component>
+
+<!-- Contenido principal -->
+<main class="main-content">
+    <!-- Router Outlet para contenido dinámico -->
+    <router-outlet></router-outlet>
+</main>
+
+<!-- Footer fuera del router-outlet -->
+<app-footer></app-footer>

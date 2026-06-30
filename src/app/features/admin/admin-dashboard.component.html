@@ -1,0 +1,63 @@
+<div class="admin-dashboard">
+  <!-- Header Administrativo -->
+  <header class="dashboard-header">
+    <div class="dashboard-brand">
+      <img src="assets/images/unp-logo.svg" alt="UNP CMS" class="dashboard-logo">
+      <div class="dashboard-title">
+        <h1>Panel de Gestión UNP</h1>
+        <p class="dashboard-subtitle">Sistema de Gestión de Contenidos</p>
+      </div>
+    </div>
+    <nav class="dashboard-nav">
+      <a href="#/carousel" class="nav-link">
+        <i class="fas fa-images"></i>
+        Hero Carousel
+      </a>
+      <a href="#/content" class="nav-link active">
+        <i class="fas fa-newspaper"></i>
+        Contenidos
+      </a>
+      <a href="#/media" class="nav-link">
+        <i class="fas fa-photo-video"></i>
+        Mediateca
+      </a>
+      <a href="#/settings" class="nav-link">
+        <i class="fas fa-cog"></i>
+        Configuración
+      </a>
+    </nav>
+    <div class="dashboard-user">
+      <div class="user-info">
+        <i class="fas fa-user-circle"></i>
+        <span>Administrador</span>
+      </div>
+      <button class="btn-logout">
+        <i class="fas fa-sign-out-alt"></i>
+        Salir
+      </button>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="dashboard-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer Administrativo -->
+  <footer class="dashboard-footer">
+    <div class="footer-info">
+      <p>&copy; {{ currentYear }} Unidad Nacional de Protección - CMS</p>
+      <p>Sistema de Gestión de Contenidos v1.0</p>
+    </div>
+    <div class="footer-links">
+      <a href="#/help" class="footer-link">
+        <i class="fas fa-question-circle"></i>
+        Ayuda
+      </a>
+      <a href="#/docs" class="footer-link">
+        <i class="fas fa-book"></i>
+        Documentación
+      </a>
+    </div>
+  </footer>
+</div>

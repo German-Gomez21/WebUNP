@@ -1,0 +1,70 @@
+/* Responsive Text Sizes - Todo el sitio */
+
+/* Tablet (768px y menos) */
+@media (max-width: 768px) {
+  body {
+    font-size: 18px !important;
+  }
+  
+  .container * {
+    font-size: 16px !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: calc(1.2em + 2px) !important;
+  }
+  
+  p, span, div {
+    font-size: 16px !important;
+  }
+  
+  a {
+    font-size: 16px !important;
+  }
+}
+
+/* Pantallas pequeñas (600px y menos) */
+@media (max-width: 600px) {
+  body {
+    font-size: 18px !important;
+  }
+  
+  .container * {
+    font-size: 16px !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: calc(1.2em + 2px) !important;
+  }
+  
+  p, span, div {
+    font-size: 16px !important;
+  }
+  
+  a {
+    font-size: 16px !important;
+  }
+}
+
+/* Móvil (480px y menos) */
+@media (max-width: 480px) {
+  body {
+    font-size: 18px !important;
+  }
+  
+  .container * {
+    font-size: 16px !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: calc(1.2em + 2px) !important;
+  }
+  
+  p, span, div {
+    font-size: 16px !important;
+  }
+  
+  a {
+    font-size: 16px !important;
+  }
+}

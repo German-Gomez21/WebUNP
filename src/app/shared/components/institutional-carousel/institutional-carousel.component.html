@@ -1,0 +1,64 @@
+<!-- Sección de Carrusel Institucional UNP -->
+<section class="inst-carousel-section" aria-label="Novedades de la UNP">
+  <div class="inst-carousel-section__header container">
+    <h2 class="inst-carousel-section__title">{{ sectionTitle }}</h2>
+    <!--div class="inst-carousel-section__divider" aria-hidden="true"></div-->
+  </div>
+
+  <div class="inst-carousel-section__wrapper container">
+    <div class="inst-carousel" role="region" aria-roledescription="carrusel" (touchstart)="onTouchStart($event)"
+      (touchend)="onTouchEnd($event)">
+      <!-- Slides -->
+      <div class="inst-carousel__track">
+        @for (item of items; track item.id; let i = $index) {
+        <div class="inst-carousel__slide" [class.inst-carousel__slide--active]="isActive(i)"
+          [style.background]="item.fallbackGradient || 'linear-gradient(135deg, #004884, #002d52)'" role="group"
+          [attr.aria-roledescription]="'diapositiva'" [attr.aria-label]="(i + 1) + ' de ' + totalSlides()"
+          [attr.aria-hidden]="!isActive(i)">
+          <!-- Background image -->
+          <div class="inst-carousel__bg" [style.background-image]="'url(' + item.image + ')'" [attr.aria-hidden]="true">
+            <div class="inst-carousel__overlay"></div>
+          </div>
+
+          <!-- Content overlay -->
+          @if (item.title || item.subtitle || item.ctaText) {
+          <div class="inst-carousel__content">
+            @if (item.title) {
+            <!--h3 class="inst-carousel__title">{{ item.title }}</h3-->
+            }
+            @if (item.subtitle) {
+            <!--p class="inst-carousel__subtitle">{{ item.subtitle }}</p-->
+            }
+            @if (item.ctaText && item.ctaLink) {
+            <!--button class="inst-carousel__cta" (click)="navigate(item.ctaLink)" type="button">
+              <span>{{ item.ctaText }}</span>
+              <i class="material-icons" aria-hidden="true">arrow_forward</i>
+            </button-->
+            }
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- Prev / Next Controls -->
+      <button class="inst-carousel__nav inst-carousel__nav--prev" (click)="prev()" type="button"
+        aria-label="Diapositiva anterior">
+        <i class="material-icons" aria-hidden="true">chevron_left</i>
+      </button>
+      <button class="inst-carousel__nav inst-carousel__nav--next" (click)="next()" type="button"
+        aria-label="Siguiente diapositiva">
+        <i class="material-icons" aria-hidden="true">chevron_right</i>
+      </button>
+
+      <!-- Indicators -->
+      <div class="inst-carousel__indicators" role="tablist" aria-label="Diapositivas">
+        @for (item of items; track item.id; let i = $index) {
+        <button class="inst-carousel__dot" [class.inst-carousel__dot--active]="isActive(i)" (click)="goTo(i)"
+          type="button" role="tab" [attr.aria-selected]="isActive(i)"
+          [attr.aria-label]="'Ir a diapositiva ' + (i + 1)"></button>
+        }
+      </div>
+    </div>
+  </div>
+</section>

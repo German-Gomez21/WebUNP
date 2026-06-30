@@ -1,0 +1,29 @@
+/* Main Layout Component Styles */
+/* Solo estilos del layout, sin duplicar header */
+
+.main-content {
+  transition: all 0.3s ease;
+  min-height: calc(100vh - 200px);
+  padding-top: 0px;
+}
+
+/* Router outlet styling */
+router-outlet {
+  display: block;
+}
+
+/* Animaciones de transición */
+main {
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
