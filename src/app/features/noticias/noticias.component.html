@@ -1,0 +1,101 @@
+<section class="news-page" aria-labelledby="news-title">
+  <div class="news-page__hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a routerLink="/" class="breadcrumb__link">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span class="breadcrumb__current">Noticias</span>
+      </nav>
+
+      <div class="news-page__hero-content">
+        <div>
+          <p class="news-page__eyebrow">Comunicaciones institucionales</p>
+          <h1 id="news-title" class="news-page__title">Noticias de la Unidad Nacional de Protección</h1>
+          <p class="news-page__description">Conozca los hechos, avances y decisiones institucionales más relevantes para la ciudadanía y las personas bajo esquema de protección.</p>
+        </div>
+        <div class="news-page__hero-card" *ngIf="!loading() && noticiaDestacada()">
+          <span class="news-page__pill">Noticia destacada</span>
+          <h2 class="news-page__hero-card-title">{{ noticiaDestacada().titulo }}</h2>
+          <p class="news-page__hero-card-text">{{ noticiaDestacada().resumen }}</p>
+          <a class="news-page__hero-link" [routerLink]="['/noticias', noticiaDestacada().slug]">Leer noticia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container news-page__content">
+    <div class="news-page__toolbar" role="search" aria-label="Filtros de noticias">
+      <label class="news-page__search" for="news-search">
+        <span class="material-icons" aria-hidden="true">search</span>
+        <input id="news-search" type="search" placeholder="Buscar noticias" [value]="busqueda()" (input)="onBusqueda($event)" />
+      </label>
+
+      <div class="news-page__filters" aria-label="Filtrar por categoría">
+        <button
+          *ngFor="let categoria of categorias()"
+          class="news-page__filter"
+          [class.news-page__filter--active]="categoriaSeleccionada() === categoria.id"
+          type="button"
+          (click)="aplicarFiltroCategoria(categoria.id)">
+          {{ categoria.nombre }}
+        </button>
+      </div>
+
+      <button class="news-page__clear" type="button" (click)="limpiarFiltros()">Limpiar filtros</button>
+    </div>
+
+    <div *ngIf="loading()" class="news-page__skeleton" aria-live="polite">
+      <div class="news-card-skeleton" *ngFor="let item of [1,2,3]"></div>
+    </div>
+
+    <div *ngIf="!loading() && noticiasFiltradas().length === 0" class="news-page__empty" role="status">
+      <h2>No se encontraron resultados</h2>
+      <p>Intente con otro término de búsqueda o cambie los filtros seleccionados.</p>
+    </div>
+
+    <div *ngIf="!loading() && noticiasFiltradas().length > 0" class="news-page__grid">
+      <article class="news-card" *ngFor="let noticia of noticiasPaginadas(); let $index = index">
+        <a class="news-card__link" [routerLink]="['/noticias', noticia.slug]" [attr.aria-label]="'Leer más sobre ' + noticia.titulo">
+          <img [src]="noticia.imagen || fallbackImage" [alt]="noticia.titulo" class="news-card__image" width="640" height="400" [attr.loading]="$index < 2 ? 'eager' : 'lazy'" [attr.fetchpriority]="$index < 2 ? 'high' : 'auto'" decoding="async" (error)="onImageError($event)" />
+          <div class="news-card__content">
+            <div class="news-card__meta">
+              <span class="news-card__category">{{ noticia.categoria }}</span>
+              <time [attr.datetime]="noticia.fecha">{{ noticia.fecha | date:'dd MMM yyyy':'':'es' }}</time>
+            </div>
+            <h2 class="news-card__title">{{ noticia.titulo }}</h2>
+            <p class="news-card__summary">{{ noticia.resumen }}</p>
+            <div class="news-card__footer">
+              <span class="news-card__author" *ngIf="noticia.autor">Por {{ noticia.autor }}</span>
+              <span class="news-card__read-more">Leer más</span>
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
+
+    <nav class="news-page__pagination" aria-label="Paginación de noticias" *ngIf="!loading() && totalPaginas() > 1">
+      <button
+        type="button"
+        class="news-page__pagination-btn"
+        [disabled]="paginaActual() === 1"
+        (click)="cambiarPagina(paginaActual() - 1)">
+        Anterior
+      </button>
+      <button
+        *ngFor="let pagina of [].constructor(totalPaginas()); let i = index"
+        type="button"
+        class="news-page__pagination-btn"
+        [class.news-page__pagination-btn--active]="paginaActual() === i + 1"
+        (click)="cambiarPagina(i + 1)">
+        {{ i + 1 }}
+      </button>
+      <button
+        type="button"
+        class="news-page__pagination-btn"
+        [disabled]="paginaActual() === totalPaginas()"
+        (click)="cambiarPagina(paginaActual() + 1)">
+        Siguiente
+      </button>
+    </nav>
+  </div>
+</section>

@@ -34,7 +34,15 @@ export class DataService {
         fecha: "2024-04-15",
         resumen: "La Unidad Nacional de Protección anuncia nuevas medidas para garantizar la seguridad de líderes y defensores de derechos humanos en todo el territorio nacional.",
         categoria: "Protección",
-        imagen: "assets/images/noticia1.jpg"
+        imagen: "assets/images/hero-protection.jpg",
+        slug: "unp-fortalece-programa-de-proteccion-para-lideres-sociales",
+        subtitulo: "Nuevas medidas de seguridad para defensores y líderes sociales",
+        contenido: "La Unidad Nacional de Protección presentó una nueva línea de acompañamiento técnico para fortalecer la seguridad integral de líderes sociales, defensores de derechos humanos y personas que participen en procesos de incidencia pública. La medida incluye reforzamiento de protocolos, actualización de herramientas de seguimiento y mayor coordinación interinstitucional.",
+        autor: "Oficina de Comunicaciones",
+        etiquetas: ["Protección", "Seguridad", "Líderes sociales"],
+        destacada: true,
+        tipo: 'destacada' as const,
+        contenidoHtml: "<p>La Unidad Nacional de Protección presentó una nueva línea de acompañamiento técnico para fortalecer la seguridad integral de líderes sociales, defensores de derechos humanos y personas que participen en procesos de incidencia pública.</p><p>La medida incluye reforzamiento de protocolos, actualización de herramientas de seguimiento y mayor coordinación interinstitucional con entidades territoriales y nacionales.</p>"
       },
       {
         id: 2,
@@ -42,7 +50,13 @@ export class DataService {
         fecha: "2024-04-12",
         resumen: "Comunidades y organizaciones pueden solicitar medidas de protección colectiva a través del nuevo proceso digital implementado por la UNP.",
         categoria: "Convocatorias",
-        imagen: "assets/images/noticia2.jpg"
+        imagen: "assets/images/complaint-office.jpg",
+        slug: "convocatoria-abierta-para-esquema-de-proteccion-colectiva",
+        subtitulo: "Proceso digital para comunidades y organizaciones",
+        contenido: "La convocatoria tiene como propósito ampliar el acceso a medidas de protección colectiva para comunidades que afrontan situaciones de riesgo. La UNP habilitó un proceso digital para la presentación de solicitudes y seguimiento de trámites.",
+        autor: "Subdirección de Atención",
+        etiquetas: ["Convocatorias", "Protección colectiva"],
+        contenidoHtml: "<p>La convocatoria tiene como propósito ampliar el acceso a medidas de protección colectiva para comunidades que afrontan situaciones de riesgo.</p><p>La UNP habilitó un proceso digital para la presentación de solicitudes y seguimiento de trámites, lo que reduce tiempos de respuesta y mejora la trazabilidad.</p>"
       },
       {
         id: 3,
@@ -50,7 +64,13 @@ export class DataService {
         fecha: "2024-04-10",
         resumen: "La entidad presenta resultados del primer trimestre del año, destacando el aumento en la cobertura del programa de protección.",
         categoria: "Gestión",
-        imagen: "assets/images/noticia3.jpg"
+        imagen: "assets/images/transparency-office.jpg",
+        slug: "informe-de-gestion-2024-mas-de-8000-personas-protegidas",
+        subtitulo: "Cobertura del programa crece en todo el país",
+        contenido: "El informe de gestión 2024 evidencia el fortalecimiento de la cobertura del programa de protección, con un incremento en el número de personas atendidas y en la implementación de medidas coordinadas con autoridades locales.",
+        autor: "Unidad de Planeación",
+        etiquetas: ["Gestión", "Indicadores"],
+        contenidoHtml: "<p>El informe de gestión 2024 evidencia el fortalecimiento de la cobertura del programa de protección, con un incremento en el número de personas atendidas.</p><p>También se reporta un avance importante en la implementación de medidas coordinadas con autoridades locales y entidades de seguridad.</p>"
       },
       {
         id: 4,
@@ -58,7 +78,13 @@ export class DataService {
         fecha: "2024-04-08",
         resumen: "Se implementa un sistema de respuesta rápida para situaciones de riesgo que amenacen a personas bajo esquema de protección.",
         categoria: "Protocolos",
-        imagen: "assets/images/noticia4.jpg"
+        imagen: "assets/images/protection-special.jpg",
+        slug: "nuevo-protocolo-de-atencion-en-emergencias",
+        subtitulo: "Respuesta rápida en situaciones de alto riesgo",
+        contenido: "Con el fin de reducir tiempos de respuesta, la UNP implementó un protocolo actualizado para la atención de emergencias relacionadas con riesgo inminente, desprotección o eventos de alto impacto.",
+        autor: "Dirección de Operaciones",
+        etiquetas: ["Protocolos", "Emergencias"],
+        contenidoHtml: "<p>Con el fin de reducir tiempos de respuesta, la UNP implementó un protocolo actualizado para la atención de emergencias relacionadas con riesgo inminente.</p><p>El protocolo contempla protocolos de coordinación, despliegue y evaluación inmediata para eventos de alto impacto.</p>"
       },
       {
         id: 5,
@@ -66,9 +92,53 @@ export class DataService {
         fecha: "2024-04-05",
         resumen: "Personal de la unidad completa programa de formación internacional para mejorar la atención a personas en situación de riesgo.",
         categoria: "Formación",
-        imagen: "assets/images/noticia5.jpg"
+        imagen: "assets/images/confidential-identity.jpg",
+        slug: "unp-certifica-500-funcionarios-en-derechos-humanos",
+        subtitulo: "Capacitación especializada para la atención integral",
+        contenido: "Cinco cientos de funcionarios de la UNP culminaron un ciclo formativo especializado en derechos humanos, protección de personas en riesgo y respuesta a situaciones de vulnerabilidad.",
+        autor: "Escuela de Formación",
+        etiquetas: ["Formación", "Capacitación"],
+        contenidoHtml: "<p>Cinco cientos de funcionarios de la UNP culminaron un ciclo formativo especializado en derechos humanos, protección de personas en riesgo y respuesta a situaciones de vulnerabilidad.</p><p>La formación fortalece capacidades técnicas, éticas y operativas en todo el país.</p>"
+      },
+      {
+        id: 6,
+        titulo: "La UNP amplía su red de acompañamiento territorial",
+        fecha: "2024-03-28",
+        resumen: "Nuevos equipos de apoyo reforzarán la presencia institucional en regiones con mayor demanda de protección.",
+        categoria: "Territorio",
+        imagen: "assets/images/hero-linea-vida.jpg",
+        slug: "la-unp-amplia-su-red-de-acompanamiento-territorial",
+        subtitulo: "Mayor cobertura en regiones de alta prioridad",
+        contenido: "La UNP ha ampliado su red de acompañamiento territorial para garantizar una respuesta más cercana y oportuna en regiones de alta prioridad.",
+        autor: "Coordinación Territorial",
+        etiquetas: ["Territorio", "Cobertura"],
+        contenidoHtml: "<p>La UNP ha ampliado su red de acompañamiento territorial para garantizar una respuesta más cercana y oportuna en regiones de alta prioridad.</p><p>La estrategia busca fortalecer la coordinación con autoridades locales y mejorar el acceso a los servicios de protección.</p>"
       }
-    ]).pipe(delay(50)); // Reducido de 300ms a 50ms
+    ]).pipe(delay(10));
+  }
+
+  getNoticiaBySlug(slug: string): Observable<Noticia | undefined> {
+    return this.getNoticias().pipe(
+      map(noticias => noticias.find(noticia => noticia.slug === slug))
+    );
+  }
+
+  getCategorias(): Observable<{ id: string; nombre: string }[]> {
+    return of([
+      { id: 'todas', nombre: 'Todas las categorías' },
+      { id: 'proteccion', nombre: 'Protección' },
+      { id: 'convocatorias', nombre: 'Convocatorias' },
+      { id: 'gestion', nombre: 'Gestión' },
+      { id: 'protocolos', nombre: 'Protocolos' },
+      { id: 'formacion', nombre: 'Formación' },
+      { id: 'territorio', nombre: 'Territorio' }
+    ]).pipe(delay(0));
+  }
+
+  getNoticiasRelacionadas(slug: string, categoria: string): Observable<Noticia[]> {
+    return this.getNoticias().pipe(
+      map(noticias => noticias.filter(noticia => noticia.slug !== slug && noticia.categoria === categoria).slice(0, 3))
+    );
   }
 
   // Datos de accesos rápidos

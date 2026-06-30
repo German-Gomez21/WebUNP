@@ -1,21 +1,13 @@
-import { Component, signal, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-interface NewsItem {
-  id: number;
-  date: string;
-  category: string;
-  title: string;
-  description: string;
-  link: string;
-  gradient: string;
-  icon: string;
-}
+import { Component, signal, AfterViewInit, OnInit } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { DataService } from '../../../../core/services/data.service';
+import { Noticia } from '../../../../core/models/noticia.model';
 
 @Component({
   selector: 'news-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, NgOptimizedImage],
   template: `
         <!-- Noticias -->
         <section class="section section--gray">
@@ -29,20 +21,20 @@ interface NewsItem {
                     <div class="news-carousel__container" 
                          [style.transform]="'translateX(-' + (currentSlide() * 344) + 'px)'">
                         <div class="news-carousel__track">
-                            @for (item of newsItems(); track item.id) {
+                            @for (item of newsItems(); track item.id; let i = $index) {
                                 <div class="news-carousel__item">
                                     <div class="news-card">
-                                        <div class="news-card__image" [style.background]="item.gradient">
-                                            <i class="material-icons news-card__icon">{{ item.icon }}</i>
+                                        <div class="news-card__image">
+                                            <img [ngSrc]="item.imagen || fallbackImage" [alt]="item.titulo" width="640" height="400" [attr.loading]="i < 2 ? 'eager' : 'lazy'" [attr.fetchpriority]="i < 2 ? 'high' : 'auto'" [attr.sizes]="'(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'" decoding="async" (error)="onImageError($event)" />
                                         </div>
                                         <div class="news-card__content">
                                             <div class="news-card__meta">
-                                                <span class="news-card__date">{{ item.date }}</span>
-                                                <span class="news-card__category">{{ item.category }}</span>
+                                                <span class="news-card__date">{{ item.fecha | date:'dd MMM yyyy':'':'es' }}</span>
+                                                <span class="news-card__category">{{ item.categoria }}</span>
                                             </div>
-                                            <h3 class="news-card__title">{{ item.title }}</h3>
-                                            <p class="news-card__description">{{ item.description }}</p>
-                                            <a href="#" class="news-card__link">Leer más <i class="material-icons">arrow_forward</i></a>
+                                            <h3 class="news-card__title">{{ item.titulo }}</h3>
+                                            <p class="news-card__description">{{ item.resumen }}</p>
+                                            <a [routerLink]="item.slug ? ['/noticias', item.slug] : ['/noticias']" class="news-card__link">Leer más <i class="material-icons">arrow_forward</i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -66,11 +58,11 @@ interface NewsItem {
                     
                     <!-- Indicadores -->
                     <div class="news-carousel__indicators">
-                        @for (item of newsItems(); track item.id) {
+                        @for (item of newsItems(); track item.id; let i = $index) {
                             <button class="news-carousel__indicator" 
-                                    [class.news-carousel__indicator--active]="currentSlide() === item.id"
-                                    (click)="goToSlide(item.id)" 
-                                    [attr.aria-label]="'Ir a slide ' + (item.id + 1)"></button>
+                                    [class.news-carousel__indicator--active]="currentSlide() === i"
+                                    (click)="goToSlide(i)" 
+                                    [attr.aria-label]="'Ir a slide ' + (i + 1)"></button>
                         }
                     </div>
                 </div>
@@ -78,72 +70,21 @@ interface NewsItem {
         </section>
   `
 })
-export class NewsComponent implements AfterViewInit {
+export class NewsComponent implements OnInit, AfterViewInit {
   public currentSlide = signal<number>(0);
-  public newsItems = signal<NewsItem[]>([
-    {
-      id: 0,
-      date: "15 de marzo, 2024",
-      category: "Actualidad",
-      title: "UNP fortalece medidas de protección",
-      description: "La Unidad Nacional de Protección implementa nuevas estrategias para garantizar la seguridad de personas en situación de riesgo.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)",
-      icon: "article"
-    },
-    {
-      id: 1,
-      date: "12 de marzo, 2024",
-      category: "Comunicado",
-      title: "Nuevos canales de atención",
-      description: "Se amplía la cobertura de servicios de atención con la implementación de plataformas digitales para mejor acceso ciudadano.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
-      icon: "campaign"
-    },
-    {
-      id: 2,
-      date: "10 de marzo, 2024",
-      category: "Evento",
-      title: "Foro internacional sobre protección",
-      description: "La UNP participa en encuentro global para compartir experiencias en protección de derechos humanos y sociales.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #667EEA 0%, #764BA2 100%)",
-      icon: "event"
-    },
-    {
-      id: 3,
-      date: "8 de marzo, 2024",
-      category: "Seguridad",
-      title: "Protocolo de emergencia actualizado",
-      description: "Se implementan nuevos procedimientos de respuesta inmediata para situaciones de alto riesgo y protección ciudadana.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #F093FB 0%, #F5576C 100%)",
-      icon: "security"
-    },
-    {
-      id: 4,
-      date: "5 de marzo, 2024",
-      category: "Comunidad",
-      title: "Programa de protección comunitaria",
-      description: "Se lanza iniciativa para fortalecer la protección en territorios vulnerables del país con apoyo integral.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #FA709A 0%, #FEE140 100%)",
-      icon: "people"
-    },
-    {
-      id: 5,
-      date: "2 de marzo, 2024",
-      category: "Capacitación",
-      title: "Talleres de prevención y autoprotección",
-      description: "Se ofrecen espacios formativos para comunidades en situación de vulnerabilidad y prevención de riesgos.",
-      link: "#",
-      gradient: "linear-gradient(135deg, #30CFD0 0%, #330867 100%)",
-      icon: "school"
-    }
-  ]);
+  public newsItems = signal<Noticia[]>([]);
+  public readonly fallbackImage = 'assets/images/unp-institution.jpg';
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.dataService.getNoticias().subscribe({
+      next: (data) => {
+        this.newsItems.set(data.slice(0, 6));
+        this.currentSlide.set(0);
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.startAutoRotate();
@@ -165,9 +106,18 @@ export class NewsComponent implements AfterViewInit {
     this.currentSlide.set(slideId);
   }
 
+  public onImageError(event: Event): void {
+    const target = event.target as HTMLImageElement | null;
+    if (target) {
+      target.src = this.fallbackImage;
+    }
+  }
+
   private startAutoRotate(): void {
     setInterval(() => {
-      this.nextSlide();
+      if (this.newsItems().length > 0) {
+        this.nextSlide();
+      }
     }, 4000);
   }
 }

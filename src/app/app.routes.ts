@@ -32,6 +32,16 @@ export const routes: Routes = [
     title: 'PQRSD - Unidad Nacional de Protección'
   },
   {
+    path: 'noticias',
+    loadComponent: () => import('./features/noticias/noticias.component').then(m => m.NoticiasComponent),
+    title: 'Noticias - Unidad Nacional de Protección'
+  },
+  {
+    path: 'noticias/:slug',
+    loadComponent: () => import('./features/noticias/noticias-detail.component').then(m => m.NoticiasDetailComponent),
+    title: 'Detalle de noticia - Unidad Nacional de Protección'
+  },
+  {
     path: 'atencion-servicios/pqrsd',
     redirectTo: 'pqrsd',
     pathMatch: 'full'
@@ -42,6 +52,13 @@ export const routes: Routes = [
       .then(m => m.AdminDashboardComponent),
     canActivate: [AuthGuard, AdminGuard],
     title: 'Panel Administrativo - UNP'
+  },
+  {
+    path: 'admin/noticias',
+    loadComponent: () => import('./features/admin/admin-news-panel.component')
+      .then(m => m.AdminNewsPanelComponent),
+    canActivate: [AuthGuard, AdminGuard],
+    title: 'Gestión de Noticias - UNP'
   },
   {
     path: '**',

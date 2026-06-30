@@ -41,12 +41,31 @@ body.modo_claro-govco .footer__contact-item .material-icons {
   --dark-border: #555555;
   --dark-header-bg: #2a2a2a;
   --dark-section-gray: #2a2a2a;
+  --surface-bg: #f7f9fc;
+  --surface-card: #ffffff;
+  --surface-muted: #eef4ff;
+  --surface-border: #dfe7f3;
+  --text-primary: #102a43;
+  --text-secondary: #4b5563;
+  --accent: #3366CC;
 }
 
 /* Dark Mode Base Styles */
 body.modo_oscuro-govco {
+  color-scheme: dark;
   background-color: var(--dark-bg-primary) !important;
   color: var(--dark-text-primary) !important;
+  --surface-bg: #1b2430;
+  --surface-card: #232d3b;
+  --surface-muted: #293445;
+  --surface-border: #3b4757;
+  --text-primary: #f5f7fa;
+  --text-secondary: #d4dbe7;
+  --accent: #68a1ff;
+}
+
+body.modo_claro-govco {
+  color-scheme: light;
 }
 
 body.modo_oscuro-govco,
@@ -90,10 +109,53 @@ body.modo_oscuro-govco .search-box,
 body.modo_oscuro-govco .category-btn,
 body.modo_oscuro-govco .faq-item,
 body.modo_oscuro-govco .faq-question,
-body.modo_oscuro-govco .faq-answer {
+body.modo_oscuro-govco .faq-answer,
+body.modo_oscuro-govco .news-page,
+body.modo_oscuro-govco .news-page__hero,
+body.modo_oscuro-govco .news-page__hero-card,
+body.modo_oscuro-govco .news-page__toolbar,
+body.modo_oscuro-govco .news-page__search,
+body.modo_oscuro-govco .news-page__filter,
+body.modo_oscuro-govco .news-page__clear,
+body.modo_oscuro-govco .news-page__empty,
+body.modo_oscuro-govco .news-page__skeleton,
+body.modo_oscuro-govco .news-detail__article,
+body.modo_oscuro-govco .news-detail__related,
+body.modo_oscuro-govco .news-detail__related-item,
+body.modo_oscuro-govco .news-page__pagination-btn {
   background-color: var(--dark-bg-secondary) !important;
   background: var(--dark-bg-secondary) !important;
   border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-page__title,
+body.modo_oscuro-govco .news-page__description,
+body.modo_oscuro-govco .news-card__title,
+body.modo_oscuro-govco .news-card__summary,
+body.modo_oscuro-govco .news-card__content,
+body.modo_oscuro-govco .news-detail__title,
+body.modo_oscuro-govco .news-detail__subtitle,
+body.modo_oscuro-govco .news-detail__content,
+body.modo_oscuro-govco .news-detail__related-item h3,
+body.modo_oscuro-govco .news-detail__related-item p,
+body.modo_oscuro-govco .news-page__hero-card-title,
+body.modo_oscuro-govco .news-page__hero-card-text {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .news-card__category,
+body.modo_oscuro-govco .news-page__eyebrow,
+body.modo_oscuro-govco .news-page__pill,
+body.modo_oscuro-govco .news-detail__eyebrow,
+body.modo_oscuro-govco .news-card__read-more,
+body.modo_oscuro-govco .news-page__hero-link,
+body.modo_oscuro-govco .news-detail__back-link {
+  color: var(--accent) !important;
+}
+
+body.modo_oscuro-govco .news-page__search input,
+body.modo_oscuro-govco .news-page__search .material-icons {
   color: var(--dark-text-primary) !important;
 }
 

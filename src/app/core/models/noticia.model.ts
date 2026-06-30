@@ -8,6 +8,14 @@ export interface Noticia {
   resumen: string;
   categoria: string;
   imagen: string;
+  slug?: string;
+  subtitulo?: string;
+  contenido?: string;
+  autor?: string;
+  etiquetas?: string[];
+  destacada?: boolean;
+  tipo?: 'destacada' | 'general';
+  contenidoHtml?: string;
 }
 
 export interface AccesoRapido {

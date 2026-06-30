@@ -1,0 +1,189 @@
+<section class="news-admin-panel">
+  <header class="panel-header">
+    <div>
+      <p class="eyebrow">Gestión editorial</p>
+      <h2>Panel de noticias</h2>
+    </div>
+    <button class="btn-primary" type="button" (click)="abrirCrear()">+ Crear noticia</button>
+  </header>
+
+  <section class="summary-grid" *ngIf="modo === 'list'">
+    <article class="summary-card">
+      <span class="summary-label">Publicadas</span>
+      <strong>{{ stats().publicadas }}</strong>
+    </article>
+    <article class="summary-card">
+      <span class="summary-label">Borradores</span>
+      <strong>{{ stats().borradores }}</strong>
+    </article>
+    <article class="summary-card">
+      <span class="summary-label">Programadas</span>
+      <strong>{{ stats().programadas }}</strong>
+    </article>
+    <article class="summary-card">
+      <span class="summary-label">Pendientes</span>
+      <strong>{{ stats().revision }}</strong>
+    </article>
+  </section>
+
+  <section class="control-bar" *ngIf="modo === 'list'">
+    <input type="search" [(ngModel)]="busqueda" placeholder="Buscar por título, autor o categoría" />
+    <select [(ngModel)]="filtroEstado">
+      <option value="todos">Todos los estados</option>
+      <option value="borrador">Borrador</option>
+      <option value="en_revision">En revisión</option>
+      <option value="aprobado">Aprobado</option>
+      <option value="programado">Programado</option>
+      <option value="publicado">Publicado</option>
+      <option value="archivado">Archivado</option>
+      <option value="rechazado">Rechazado</option>
+    </select>
+  </section>
+
+  <section class="table-card" *ngIf="modo === 'list'">
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Estado</th>
+          <th>Autor / dependencia</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let noticia of getNoticiasFiltradas()">
+          <td>
+            <strong>{{ noticia.titulo }}</strong>
+            <div class="muted">{{ noticia.categoria }}</div>
+          </td>
+          <td><span class="status-pill" [ngClass]="noticia.estado">{{ noticia.estado }}</span></td>
+          <td>{{ noticia.autor }} / {{ noticia.dependencia }}</td>
+          <td>{{ noticia.fechaPublicacion || noticia.fecha }}</td>
+          <td class="actions-cell">
+            <button class="btn-link" type="button" (click)="abrirEditar(noticia.id)">Editar</button>
+            <button class="btn-link" type="button" (click)="cambiarEstado(noticia.id, 'publicado')">Publicar</button>
+            <button class="btn-link" type="button" (click)="cambiarEstado(noticia.id, 'programado')">Programar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="editor-card" *ngIf="modo === 'form'">
+    <div class="editor-toolbar">
+      <button class="btn-secondary" type="button" (click)="volverAlListado()">← Volver</button>
+      <div class="toolbar-actions">
+        <button class="btn-secondary" type="button" (click)="formulario.estado = 'borrador'">Guardar borrador</button>
+        <button class="btn-primary" type="button" (click)="guardar()">Guardar y revisar</button>
+      </div>
+    </div>
+
+    <div class="editor-intro">
+      <div>
+        <p class="eyebrow">Creación segura</p>
+        <h3>Registro institucional de noticias</h3>
+        <p>Complete los datos con una estructura clara, una vista previa inmediata y una gestión visual alineada con el portal.</p>
+      </div>
+      <div class="editor-badges">
+        <span>✓ Vista previa</span>
+        <span>✓ Control de estados</span>
+        <span>✓ Subida de imagen</span>
+      </div>
+    </div>
+
+    <div class="editor-grid">
+      <div class="editor-main">
+        <label>
+          <span>Título</span>
+          <input type="text" [(ngModel)]="formulario.titulo" placeholder="Título de la noticia" />
+        </label>
+
+        <label>
+          <span>Subtítulo</span>
+          <input type="text" [(ngModel)]="formulario.subtitulo" placeholder="Bajada o subtítulo" />
+        </label>
+
+        <label>
+          <span>Resumen</span>
+          <textarea rows="3" [(ngModel)]="formulario.resumen" placeholder="Resumen breve para la vista previa"></textarea>
+        </label>
+
+        <label>
+          <span>Cuerpo enriquecido</span>
+          <textarea rows="10" [(ngModel)]="formulario.contenido" placeholder="Texto de la noticia"></textarea>
+        </label>
+
+        <div class="field-group">
+          <label>
+            <span>Imagen principal</span>
+            <div class="image-input-row">
+              <input type="text" [(ngModel)]="formulario.imagen" placeholder="assets/images/uploads/mi-imagen.jpg" />
+              <button class="btn-upload" type="button" (click)="triggerImageUpload()">Subir imagen</button>
+            </div>
+            <input #imageInput id="news-image-input" type="file" accept="image/*" hidden (change)="onImageSelected($event)" />
+            <small class="helper-text">La imagen se almacenará en la ruta indicada y podrá usarse en la vista pública.</small>
+          </label>
+        </div>
+
+        <label>
+          <span>Slug amigable</span>
+          <input type="text" [(ngModel)]="formulario.slug" placeholder="slug-de-la-noticia" />
+        </label>
+      </div>
+
+      <aside class="editor-side">
+        <label>
+          <span>Estado</span>
+          <select [(ngModel)]="formulario.estado">
+            <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Categoría</span>
+          <select [(ngModel)]="formulario.categoria">
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Autor o dependencia responsable</span>
+          <input type="text" [(ngModel)]="formulario.autor" />
+        </label>
+
+        <label>
+          <span>Dependencia</span>
+          <input type="text" [(ngModel)]="formulario.dependencia" />
+        </label>
+
+        <label>
+          <span>Etiquetas</span>
+          <input type="text" [(ngModel)]="formulario.etiquetas" [ngModelOptions]="{ updateOn: 'blur' }" />
+        </label>
+
+        <label>
+          <span>Fecha de publicación</span>
+          <input type="date" [(ngModel)]="formulario.fechaPublicacion" />
+        </label>
+
+        <label>
+          <span>Título SEO</span>
+          <input type="text" [(ngModel)]="formulario.seoTitle" />
+        </label>
+
+        <label>
+          <span>Descripción SEO</span>
+          <textarea rows="3" [(ngModel)]="formulario.seoDescription"></textarea>
+        </label>
+
+        <div class="preview-box">
+          <h3>Vista previa</h3>
+          <p><strong>{{ formulario.titulo || 'Título de la noticia' }}</strong></p>
+          <p>{{ formulario.resumen || 'Resumen breve del contenido' }}</p>
+          <span class="status-pill" [ngClass]="formulario.estado">{{ formulario.estado }}</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+</section>

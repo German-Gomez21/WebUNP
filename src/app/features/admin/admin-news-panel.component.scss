@@ -1,0 +1,368 @@
+$primary-blue: #1e3a8a;
+$secondary-blue: #3366CC;
+$dark: #0f172a;
+$muted: #64748b;
+$border: #dbe3ee;
+$surface: #ffffff;
+$bg: #f8fafc;
+$accent: #eef4ff;
+$accent-strong: #dce8ff;
+
+.news-admin-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $secondary-blue;
+    font-weight: 700;
+    margin: 0 0 4px;
+    font-size: 0.75rem;
+  }
+
+  h2 {
+    margin: 0;
+    color: $dark;
+    font-size: 1.35rem;
+  }
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-link,
+.btn-upload {
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.btn-primary {
+  background: $primary-blue;
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: $accent;
+  color: $primary-blue;
+  padding: 10px 14px;
+}
+
+.btn-upload {
+  background: $primary-blue;
+  color: #fff;
+  padding: 10px 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-link {
+  background: transparent;
+  color: $secondary-blue;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summary-card,
+.table-card,
+.editor-card,
+.control-bar {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.summary-card {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .summary-label {
+    color: $muted;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  strong {
+    font-size: 1.6rem;
+    color: $primary-blue;
+  }
+}
+
+.control-bar {
+  padding: 16px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #d4deea;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font: inherit;
+  color: $dark;
+  background: #ffffff;
+  min-height: 50px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $secondary-blue;
+    box-shadow: 0 0 0 4px rgba(51, 102, 204, 0.15);
+    transform: translateY(-1px);
+  }
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.table-card {
+  overflow: hidden;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: top;
+  }
+
+  th {
+    background: #f8fbff;
+    color: $muted;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .muted {
+    color: $muted;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  .actions-cell {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.editor-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editor-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
+  border: 1px solid $accent-strong;
+  border-radius: 16px;
+  padding: 18px 20px;
+
+  h3 {
+    margin: 4px 0 6px;
+    color: $primary-blue;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+    max-width: 640px;
+  }
+}
+
+.editor-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  span {
+    background: #fff;
+    border: 1px solid $border;
+    color: $dark;
+    border-radius: 999px;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.editor-main,
+.editor-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: $dark;
+
+  span {
+    font-weight: 700;
+    color: $primary-blue;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+}
+
+.field-group {
+  background: linear-gradient(135deg, #fcfdff 0%, #f5f9ff 100%);
+  border: 1px solid $accent-strong;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+}
+
+.image-input-row {
+  display: flex;
+  gap: 10px;
+
+  input {
+    flex: 1;
+    min-height: 50px;
+  }
+}
+
+.helper-text {
+  color: $muted;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.preview-box {
+  background: linear-gradient(135deg, #eef5ff 0%, #f8fbff 100%);
+  border: 1px solid #dce8ff;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  h3 {
+    margin: 0;
+    color: $primary-blue;
+    font-size: 1rem;
+  }
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  width: fit-content;
+
+  &.borrador { background: #f1f5f9; color: #475569; }
+  &.en_revision { background: #fef3c7; color: #92400e; }
+  &.aprobado { background: #dcfce7; color: #166534; }
+  &.programado { background: #dbeafe; color: #1d4ed8; }
+  &.publicado { background: #dcfce7; color: #166534; }
+  &.archivado { background: #e2e8f0; color: #334155; }
+  &.rechazado { background: #fee2e2; color: #b91c1c; }
+}
+
+@media (max-width: 1024px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .editor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel-header,
+  .editor-toolbar,
+  .editor-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .image-input-row {
+    flex-direction: column;
+  }
+}
