@@ -562,7 +562,9 @@ body.modo_oscuro-govco app-pqrsd .table-card__row {
 }
 
 body.modo_oscuro-govco app-pqrsd .section-card--final {
-  background: var(--dark-bg-secondary) !important;
+  background: #333333 !important;
+  border: 1px solid var(--dark-border) !important;  
+ 
 }
 
 body.modo_oscuro-govco .header__accessibility-btn:hover {
@@ -1130,7 +1132,7 @@ body.modo_oscuro-govco .info-section-card__item {
 }
 
 body.modo_oscuro-govco .info-section-card__item-icon {
-  color: var(--primary-color) !important;
+  color: #fff !important;
 }
 
 body.modo_oscuro-govco .info-section-card__link {

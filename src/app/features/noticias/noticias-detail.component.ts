@@ -3,11 +3,12 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { Noticia } from '../../core/models/noticia.model';
+import { InstitutionalCarouselComponent} from '../../shared/components/institutional-carousel/institutional-carousel.component';
 
 @Component({
   selector: 'app-noticias-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, DatePipe],
+  imports: [CommonModule, RouterLink, DatePipe, InstitutionalCarouselComponent],
   templateUrl: './noticias-detail.component.html',
   styleUrls: ['./noticias-detail.component.scss']
 })

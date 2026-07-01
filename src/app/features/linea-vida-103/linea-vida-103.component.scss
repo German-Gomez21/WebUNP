@@ -89,3 +89,36 @@
   border-color: var(--primary-color, #3366CC);
   box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,0.12));
 }
+
+.linea-page__hero {
+  background: linear-gradient(135deg, #0f2c47 0%, #1f4b73 100%);
+  color: #fff;
+  padding: 3rem 0 4rem;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ff7a1a;
+  margin-bottom: 0.75rem;
+}
+
+body.modo_oscuro-govco .eyebrow {
+  color: #ffb074;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+}
