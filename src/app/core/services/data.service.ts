@@ -15,6 +15,20 @@ import {
   CanalAtencionDetalle
 } from '../models/noticia.model';
 
+export interface NormativaDocumento {
+  id: number;
+  titulo: string;
+  categoria: string;
+  tipo: string;
+  numero: string;
+  fecha: string;
+  descripcion: string;
+  estado: string;
+  dependencia: string;
+  formato: string;
+  url: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -121,6 +135,115 @@ export class DataService {
     return this.getNoticias().pipe(
       map(noticias => noticias.find(noticia => noticia.slug === slug))
     );
+  }
+
+  getNormativaDocumentos(): Observable<NormativaDocumento[]> {
+    return of([
+      {
+        id: 1,
+        titulo: 'Ley 1099 de 2006 - Ley de Atención Integral a la Primera Infancia',
+        categoria: 'Leyes y Decretos',
+        tipo: 'Ley',
+        numero: 'Ley 1099 de 2006',
+        fecha: '2006-01-01',
+        descripcion: 'Marco general de protección y desarrollo de la infancia, con incidencia en la atención y coordinación institucional.',
+        estado: 'Vigente',
+        dependencia: 'UNP',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/normativa/leyes-y-decretos/'
+      },
+      {
+        id: 2,
+        titulo: 'Decreto 1066 de 2015 - Decreto Único Reglamentario Sectorial',
+        categoria: 'Leyes y Decretos',
+        tipo: 'Decreto',
+        numero: 'Decreto 1066 de 2015',
+        fecha: '2015-05-26',
+        descripcion: 'Normativa sectorial reglamentaria aplicada a la organización, administración y control de la entidad.',
+        estado: 'Vigente',
+        dependencia: 'Presidencia',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/normativa/decreto-unico-sectorial-decreto-1066-%E2%80%8B-26-%E2%80%8B%E2%80%8Bde-mayo-2%E2%80%8B015/'
+      },
+      {
+        id: 3,
+        titulo: 'Resolución de políticas de protección de la información',
+        categoria: 'Resoluciones',
+        tipo: 'Resolución',
+        numero: 'Resolución 001 de 2024',
+        fecha: '2024-03-15',
+        descripcion: 'Lineamientos internos para la gestión, manejo y cifrado de información sensible y de seguridad institucional.',
+        estado: 'Vigente',
+        dependencia: 'UNP',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/normativa/resoluciones-y-circulares/'
+      },
+      {
+        id: 4,
+        titulo: 'Política de Seguridad de la Información y Protección de Datos Personales',
+        categoria: 'Políticas',
+        tipo: 'Política',
+        numero: 'PSI-001',
+        fecha: '2025-05-01',
+        descripcion: 'Directriz institucional para la protección de datos personales, manejo seguro de información y respuesta a incidentes.',
+        estado: 'Vigente',
+        dependencia: 'UNP',
+        formato: 'HTML',
+        url: 'https://www.unp.gov.co/normativa/politicas-de-seguridad-de-la-informacion-y-proteccion-de-datos-personales/'
+      },
+      {
+        id: 5,
+        titulo: 'Plan Estratégico de la Unidad Nacional de Protección',
+        categoria: 'Políticas',
+        tipo: 'Plan',
+        numero: 'PE-2025',
+        fecha: '2025-02-12',
+        descripcion: 'Plan institucional orientado al fortalecimiento de la protección, la innovación y la mejora continua del servicio.',
+        estado: 'Activo',
+        dependencia: 'UNP',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/'
+      },
+      {
+        id: 6,
+        titulo: 'Normograma institucional de la UNP',
+        categoria: 'Normograma',
+        tipo: 'Normograma',
+        numero: 'NORM-001',
+        fecha: '2026-01-20',
+        descripcion: 'Registro consolidado de normas, disposiciones, directrices y proyectos normativos vigentes para consulta rápida.',
+        estado: 'Actualizado',
+        dependencia: 'SUIJ',
+        formato: 'HTML',
+        url: 'https://www.unp.gov.co/normativa/normograma/'
+      },
+      {
+        id: 7,
+        titulo: 'Circular externa de coordinación con autoridades competentes',
+        categoria: 'Resoluciones',
+        tipo: 'Circular',
+        numero: 'Circular 018 de 2025',
+        fecha: '2025-07-10',
+        descripcion: 'Circular que consolida lineamientos para la coordinación interinstitucional y la atención prioritaria de casos.',
+        estado: 'Vigente',
+        dependencia: 'Ministerio del Interior',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/normativa/resoluciones-y-circulares/'
+      },
+      {
+        id: 8,
+        titulo: 'Manual de seguridad y cumplimiento institucional',
+        categoria: 'Políticas',
+        tipo: 'Manual',
+        numero: 'MS-2025',
+        fecha: '2025-09-18',
+        descripcion: 'Manual técnico para el cumplimiento de protocolos de seguridad, control interno y respuesta a riesgos.',
+        estado: 'Vigente',
+        dependencia: 'SUCOP',
+        formato: 'PDF',
+        url: 'https://www.unp.gov.co/'
+      }
+    ]).pipe(delay(20));
   }
 
   getCategorias(): Observable<{ id: string; nombre: string }[]> {
@@ -246,7 +369,7 @@ export class DataService {
       {
         id: 3,
         tipo: "Dirección Nacional",
-        valor: "Carrera 7 # 32-12, Bogotá D.C.",
+        valor: "Carrera 44 # 20-21 Bogotá D.C.",
         descripcion: "Horario de atención: Lunes a viernes 8:00 a.m. - 5:00 p.m.",
         icono: "location"
       },
@@ -308,7 +431,7 @@ export class DataService {
         titulo: "Línea Vida 103",
         descripcion: "Llama gratis las 24 horas para reportar situaciones de riesgo",
         icono: "phone",
-        color: "#FF6B35",
+        color: "#dc2626",
         enlace: "/linea-vida-103",
         destacado: true
       },
@@ -316,7 +439,7 @@ export class DataService {
         titulo: "Trámites y Servicios",
         descripcion: "Realiza tus solicitudes de protección en línea",
         icono: "description",
-        color: "#3366CC",
+        color: "#dc2626",
         enlace: "/atencion-servicios/tramites",
         destacado: false
       },
@@ -324,7 +447,7 @@ export class DataService {
         titulo: "PQRSD",
         descripcion: "Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias",
         icono: "mail",
-        color: "#28A745",
+        color: "#dc2626",
         enlace: "/atencion-servicios/pqrsd",
         destacado: false
       }
@@ -338,7 +461,7 @@ export class DataService {
         titulo: "La UNP",
         descripcion: "Conoce nuestra misión, visión y estructura organizacional",
         imagen: "assets/images/unp-institution.jpg",
-        enlace: "/la-unp",
+        enlace: "/quienes-somos ",
         items: [
           "¿Quiénes somos?",
           "¿Qué hacemos?",
@@ -450,7 +573,7 @@ export class DataService {
       {
         id: 2,
         tipo: "Sede Principal Bogotá",
-        valor: "Carrera 7 # 32-12",
+        valor: "Carrera 44 # 20-21 Bogotá D.C.",
         descripcion: "Atención al ciudadano personalizada",
         icono: "location_on",
         horario: "Lunes a Viernes 8:00 AM - 5:00 PM"

@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { Noticia } from '../../core/models/noticia.model';
@@ -20,7 +20,8 @@ export class NoticiasDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   public onImageError(event: Event): void {
@@ -39,6 +40,7 @@ export class NoticiasDetailComponent implements OnInit {
         return;
       }
 
+      this.viewportScroller.scrollToPosition([0, 0]);
       this.loading.set(true);
       this.dataService.getNoticiaBySlug(slug).subscribe({
         next: (noticia) => {
@@ -49,6 +51,7 @@ export class NoticiasDetailComponent implements OnInit {
             });
           }
           this.loading.set(false);
+          setTimeout(() => this.viewportScroller.scrollToPosition([0, 0]), 0);
         },
         error: () => this.loading.set(false)
       });

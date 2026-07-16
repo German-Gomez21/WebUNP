@@ -1,0 +1,146 @@
+<section class="transparencia-page">
+  <div class="transparencia-hero">
+    <div class="container">
+      <nav class="transparencia-breadcrumbs" aria-label="Ruta de navegación">
+        <a routerLink="/">Inicio</a>
+        <span class="material-icons">chevron_right</span>
+        <span>Transparencia</span>
+      </nav>
+
+      <div class="transparencia-hero__content">
+        <div>
+          <span class="transparencia-eyebrow">Unidad Nacional de Protección</span>
+          <h1 class="transparencia-hero__title">Transparencia de la Unidad Nacional de Protección</h1>
+          <p class="transparencia-hero__subtitle">
+            Accede a la información institucional, normas, informes y documentos públicos para conocer cómo opera la UNP y cómo se atiende a la ciudadanía.
+          </p>
+        </div>
+
+        <div class="transparencia-hero__stats">
+          <article class="transparencia-stat-card">
+            <span class="transparencia-stat-card__value">{{ documentos().length }}</span>
+            <span class="transparencia-stat-card__label">documentos disponibles</span>
+          </article>
+          <article class="transparencia-stat-card">
+            <span class="transparencia-stat-card__value">24/7</span>
+            <span class="transparencia-stat-card__label">consulta pública</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container transparencia-main">
+    <section class="transparencia-toolbox" aria-label="Buscar y filtrar documentos">
+      <div class="transparencia-search">
+        <span class="material-icons">search</span>
+        <input
+          type="search"
+          [(ngModel)]="busqueda"
+          placeholder="Buscar por título, categoría o tipo de documento"
+          aria-label="Buscar documentos de transparencia"
+        />
+      </div>
+
+      <div class="transparencia-filters">
+        <button
+          *ngFor="let filtro of filtros"
+          type="button"
+          class="transparencia-filter"
+          [class.is-active]="categoriaActiva() === filtro"
+          (click)="setCategoria(filtro)"
+        >
+          {{ filtro }}
+        </button>
+      </div>
+    </section>
+
+    <section class="transparencia-grid">
+      <article class="transparencia-card transparencia-card--feature">
+        <div class="transparencia-card__header">
+          <span class="transparencia-chip">Destacados</span>
+          <h2>Documentos de interés</h2>
+        </div>
+
+        <div class="transparencia-feature-list">
+          <article *ngFor="let documento of destacados()" class="transparencia-feature-item">
+            <div>
+              <span class="transparencia-feature-item__type">{{ documento.tipo }}</span>
+              <h3>{{ documento.titulo }}</h3>
+              <p>{{ documento.resumen }}</p>
+            </div>
+            <a class="transparencia-link" [href]="documento.href">Abrir documento</a>
+          </article>
+        </div>
+      </article>
+
+      <article class="transparencia-card transparencia-card--list">
+        <div class="transparencia-card__header">
+          <span class="transparencia-chip">Listado</span>
+          <h2>Documentos públicos</h2>
+        </div>
+
+        <div class="transparencia-document-list">
+          <article *ngFor="let documento of documentosFiltrados()" class="transparencia-document-item">
+            <div class="transparencia-document-item__meta">
+              <span>{{ documento.categoria }}</span>
+              <span>{{ documento.tipo }}</span>
+              <span>{{ documento.fecha | date: 'dd MMM yyyy' }}</span>
+            </div>
+            <h3>{{ documento.titulo }}</h3>
+            <p>{{ documento.resumen }}</p>
+            <a class="transparencia-link" [href]="documento.href">Descargar / revisar</a>
+          </article>
+
+          <div *ngIf="documentosFiltrados().length === 0" class="transparencia-empty-state">
+            <span class="material-icons">search_off</span>
+            <p>No se encontraron documentos que coincidan con tu búsqueda.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="transparencia-grid transparencia-grid--secondary">
+      <article class="transparencia-card">
+        <div class="transparencia-card__header">
+          <span class="transparencia-chip">Accesos rápidos</span>
+          <h2>Descargas recientes</h2>
+        </div>
+
+        <div class="transparencia-download-list">
+          <a *ngFor="let documento of documentosRecientes()" class="transparencia-download-item" [href]="documento.href">
+            <span class="material-icons">download</span>
+            <div>
+              <strong>{{ documento.titulo }}</strong>
+              <small>{{ documento.fecha | date: 'dd MMM yyyy' }}</small>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <article class="transparencia-card">
+        <div class="transparencia-card__header">
+          <span class="transparencia-chip">Preguntas frecuentes</span>
+          <h2>Información útil</h2>
+        </div>
+
+        <div class="transparencia-accordion">
+          <article *ngFor="let item of acordeones; let index = index" class="transparencia-accordion__item">
+            <button
+              type="button"
+              class="transparencia-accordion__button"
+              [attr.aria-expanded]="indiceAbierto() === index"
+              (click)="toggleAcordeon(index)"
+            >
+              <span>{{ item.titulo }}</span>
+              <span class="material-icons">{{ indiceAbierto() === index ? 'expand_less' : 'expand_more' }}</span>
+            </button>
+            <div *ngIf="indiceAbierto() === index" class="transparencia-accordion__content">
+              <p>{{ item.contenido }}</p>
+            </div>
+          </article>
+        </div>
+      </article>
+    </section>
+  </div>
+</section>

@@ -1,0 +1,142 @@
+<section class="about-page" aria-labelledby="quienes-somos-title">
+  <div class="about-page__hero">
+    <nav class="about-page__breadcrumb" aria-label="Ruta de navegación">
+      <a
+        *ngFor="let item of breadcrumbItems; let last = last"
+        class="about-page__breadcrumb-link"
+        [routerLink]="item.url"
+        [attr.aria-current]="last ? 'page' : null"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <div class="about-page__hero-content">
+      <div class="about-page__hero-copy">
+        <p class="about-page__eyebrow">Institución</p>
+        <h1 id="quienes-somos-title" class="about-page__title">Quiénes Somos</h1>
+        <p class="about-page__intro">
+          La Unidad Nacional de Protección es una entidad comprometida con la protección integral de las personas en situación de riesgo, con una gestión transparente, cercana y orientada al servicio.
+        </p>
+        <div class="about-page__hero-actions">
+          <a class="about-page__primary-link" routerLink="/la-unp">Conocer la UNP</a>
+          <a class="about-page__secondary-link" routerLink="/atencion-servicios/tramites">Ver trámites y servicios</a>
+        </div>
+      </div>
+
+      <div class="about-page__hero-visual" aria-hidden="true">
+        <div class="about-page__visual-card">
+          <svg viewBox="0 0 460 360" role="img" aria-label="Ilustración institucional">
+            <rect x="50" y="70" width="360" height="220" rx="24" fill="#ffffff" />
+            <rect x="86" y="110" width="120" height="120" rx="18" fill="#EEF4FF" />
+            <rect x="230" y="110" width="144" height="24" rx="12" fill="#3366CC" />
+            <rect x="230" y="150" width="110" height="16" rx="8" fill="#7DA2F3" />
+            <rect x="230" y="182" width="126" height="16" rx="8" fill="#7DA2F3" />
+            <circle cx="146" cy="170" r="34" fill="#FF6B35" />
+            <path d="M112 250h68" stroke="#1F3A63" stroke-width="10" stroke-linecap="round" />
+            <path d="M214 250h122" stroke="#1F3A63" stroke-width="10" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-page__section about-page__section--intro" aria-labelledby="institutional-identity">
+    <div class="about-page__section-heading">
+      <p class="about-page__eyebrow">¿Quiénes Somos?</p>
+      <h2 id="institutional-identity">Una institución al servicio de la vida y la dignidad</h2>
+      <p>
+        Trabajamos con un enfoque humano, técnico y coordinado para fortalecer la protección de quienes requieren acompañamiento y respuesta oportuna.
+      </p>
+    </div>
+
+    <div class="about-page__cards">
+      <article class="about-page__card" *ngFor="let item of identityCards">
+        <span class="about-page__card-icon material-icons" [attr.aria-hidden]="true">{{ item.icon }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-page__section about-page__section--split" aria-labelledby="our-mission">
+    <article class="about-page__highlight about-page__highlight--mission">
+      <p class="about-page__eyebrow">Nuestra misión</p>
+      <h2 id="our-mission">Proteger, acompañar y fortalecer la capacidad de respuesta del Estado frente a las necesidades de la ciudadanía.</h2>
+      <p>
+        Nuestra misión se centra en el servicio integral, la prevención del riesgo y la atención oportuna, siempre con enfoque humano y respeto por los derechos.
+      </p>
+    </article>
+
+    <article class="about-page__highlight about-page__highlight--vision">
+      <p class="about-page__eyebrow">Nuestra visión</p>
+      <h2 id="our-vision">Ser una referencia nacional en protección, confianza institucional y gestión responsable para el bienestar colectivo.</h2>
+      <p>
+        Aspiramos a consolidarnos como una entidad moderna, cercana y eficaz, que inspire confianza y mejore la calidad de vida de las personas.
+      </p>
+    </article>
+  </section>
+
+  <section class="about-page__section" aria-labelledby="what-we-do">
+    <div class="about-page__section-heading">
+      <p class="about-page__eyebrow">¿Qué hacemos?</p>
+      <h2 id="what-we-do">Funciones y servicios orientados a la protección integral</h2>
+      <p>
+        Nuestra labor articula acciones institucionales, estrategias de atención y mecanismos de acompañamiento para responder con calidad y coherencia.
+      </p>
+    </div>
+
+    <div class="about-page__function-grid">
+      <article class="about-page__function-card" *ngFor="let item of functions">
+        <span class="about-page__function-icon material-icons" [attr.aria-hidden]="true">{{ item.icon }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-page__section" aria-labelledby="organizational-chart">
+    <div class="about-page__section-heading">
+      <p class="about-page__eyebrow">Organigrama</p>
+      <h2 id="organizational-chart">Una estructura orientada a la coordinación institucional</h2>
+      <p>
+        El diseño organizacional facilita la articulación de funciones, la toma de decisiones y la prestación de servicios con mayor trazabilidad.
+      </p>
+    </div>
+
+    <div class="about-page__org-chart" role="list" aria-label="Organigrama institucional">
+      <article class="about-page__org-node" *ngFor="let node of organizationChart" role="listitem">
+        <span class="about-page__org-level">{{ node.level }}</span>
+        <h3>{{ node.title }}</h3>
+        <p>{{ node.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-page__section" aria-labelledby="institutional-symbols">
+    <div class="about-page__section-heading">
+      <p class="about-page__eyebrow">Símbolos institucionales</p>
+      <h2 id="institutional-symbols">Elementos que representan nuestra identidad</h2>
+      <p>
+        Estos recursos son parte del patrimonio institucional y refuerzan la identidad, la memoria y el reconocimiento público de la entidad.
+      </p>
+    </div>
+
+    <div class="about-page__symbol-grid">
+      <article class="about-page__symbol-card" *ngFor="let symbol of institutionalSymbols">
+        <span class="about-page__symbol-badge material-icons" aria-hidden="true">auto_awesome</span>
+        <h3>{{ symbol.name }}</h3>
+        <p>{{ symbol.description }}</p>
+        <span>{{ symbol.meaning }}</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-page__section about-page__section--closing" aria-labelledby="institutional-message">
+    <div class="about-page__closing-card">
+      <p class="about-page__eyebrow">Mensaje institucional</p>
+      <h2 id="institutional-message">Nuestro compromiso con la ciudadanía</h2>
+      <p>{{ messageBody }}</p>
+    </div>
+  </section>
+</section>

@@ -16,10 +16,28 @@ export const routes: Routes = [
     title: 'La UNP - Unidad Nacional de Protección'
   },
   {
+    path: 'quienes-somos',
+    loadComponent: () => import('./features/quienes-somos/quienes-somos.component')
+      .then(m => m.QuienesSomosComponent),
+    title: 'Quiénes Somos - Unidad Nacional de Protección'
+  },
+  {
     path: 'linea-vida-103',
     loadComponent: () => import('./features/linea-vida-103/linea-vida-103.component')
       .then(m => m.LineaVida103Component),
     title: 'Línea Vida 103 - Unidad Nacional de Protección'
+  },
+  {
+    path: 'transparencia',
+    loadComponent: () => import('./features/transparencia/transparencia.component')
+      .then(m => m.TransparenciaComponent),
+    title: 'Transparencia - Unidad Nacional de Protección'
+  },
+  {
+    path: 'normativa',
+    loadComponent: () => import('./features/normativa/normativa.component')
+      .then(m => m.NormativaComponent),
+    title: 'Normativa - Unidad Nacional de Protección'
   },
   {
     path: 'atencion-servicios/tramites',

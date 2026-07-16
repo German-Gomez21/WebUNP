@@ -1,0 +1,193 @@
+<section class="normativa-page" aria-label="Página de normativa institucional">
+  <div class="normativa-hero">
+    <div class="container">
+      <nav class="normativa-breadcrumbs" aria-label="Ruta de navegación">
+        <a routerLink="/">Inicio</a>
+        <span class="material-icons">chevron_right</span>
+        <span>Normativa</span>
+      </nav>
+
+      <div class="normativa-hero__content">
+        <div>
+          <span class="normativa-eyebrow">Unidad Nacional de Protección</span>
+          <h1 class="normativa-hero__title">Normativa</h1>
+          <p class="normativa-hero__subtitle">Consulta el marco legal que rige nuestra entidad.</p>
+          <p class="normativa-hero__description">
+            Esta sección centraliza el marco jurídico, las políticas, las resoluciones y los documentos de referencia necesarios para consultar la normativa institucional con rapidez, orden y accesibilidad.
+          </p>
+        </div>
+
+        <div class="normativa-hero__stats" aria-label="Indicadores rápidos">
+          <article class="normativa-stat-card">
+            <span class="normativa-stat-card__value">{{ documentos().length }}</span>
+            <span class="normativa-stat-card__label">documentos de referencia</span>
+          </article>
+          <article class="normativa-stat-card">
+            <span class="normativa-stat-card__value">{{ anios().length }}</span>
+            <span class="normativa-stat-card__label">años de vigencia</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container normativa-main">
+    <section class="normativa-toolbox" aria-label="Buscador y filtros de normativa">
+      <div class="normativa-search">
+        <span class="material-icons">search</span>
+        <input
+          type="search"
+          [(ngModel)]="busqueda"
+          placeholder="Buscar por título, número, descripción, dependencia o categoría"
+          aria-label="Buscar normas"
+        />
+      </div>
+
+      <div class="normativa-filter-row">
+        <div class="normativa-filter-group">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" [ngModel]="categoriaActiva()" (ngModelChange)="setCategoria($event)">
+            <option *ngFor="let filtro of filtros" [value]="filtro">{{ filtro }}</option>
+          </select>
+        </div>
+
+        <div class="normativa-filter-group">
+          <label for="tipo">Tipo documental</label>
+          <select id="tipo" [ngModel]="tipoActivo()" (ngModelChange)="setTipo($event)">
+            <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+          </select>
+        </div>
+
+        <div class="normativa-filter-group">
+          <label for="dependencia">Dependencia</label>
+          <select id="dependencia" [ngModel]="dependenciaActiva()" (ngModelChange)="setDependencia($event)">
+            <option *ngFor="let dependencia of dependencias" [value]="dependencia">{{ dependencia }}</option>
+          </select>
+        </div>
+
+        <div class="normativa-filter-group">
+          <label for="anio">Año</label>
+          <select id="anio" [ngModel]="anioActivo()" (ngModelChange)="setAnio($event)">
+            <option value="Todos">Todos</option>
+            <option *ngFor="let anio of anios()" [value]="anio">{{ anio }}</option>
+          </select>
+        </div>
+
+        <button type="button" class="normativa-reset" (click)="limpiarFiltros()">Limpiar filtros</button>
+      </div>
+    </section>
+
+    <section class="normativa-grid">
+      <article class="normativa-card normativa-card--feature">
+        <div class="normativa-card__header">
+          <span class="normativa-chip">Accesos rápidos</span>
+          <h2>Documentos destacados</h2>
+        </div>
+
+        <div class="normativa-feature-list">
+          <article *ngFor="let documento of documentosDestacados()" class="normativa-feature-item">
+            <div class="normativa-feature-item__top">
+              <span class="normativa-pill">{{ documento.categoria }}</span>
+              <span class="normativa-pill normativa-pill--ghost">{{ documento.estado }}</span>
+            </div>
+            <h3>{{ documento.titulo }}</h3>
+            <p>{{ documento.descripcion }}</p>
+            <div class="normativa-meta">
+              <span>{{ documento.numero }}</span>
+              <span>{{ documento.fecha | date: 'dd MMM yyyy' }}</span>
+              <span>{{ documento.dependencia }}</span>
+            </div>
+            <div class="normativa-actions">
+              <a class="normativa-link" [href]="documento.url" target="_blank" rel="noopener noreferrer">Ver</a>
+              <a class="normativa-link" [href]="documento.url" target="_blank" rel="noopener noreferrer">Descargar</a>
+            </div>
+          </article>
+        </div>
+      </article>
+
+      <article class="normativa-card normativa-card--results">
+        <div class="normativa-card__header">
+          <span class="normativa-chip">Resultado</span>
+          <h2>Marco normativo consolidado</h2>
+        </div>
+
+        <div class="normativa-results-grid">
+          <article *ngFor="let documento of documentosFiltrados()" class="normativa-result-card">
+            <div class="normativa-result-card__top">
+              <span class="normativa-pill">{{ documento.tipo }}</span>
+              <span class="normativa-pill normativa-pill--ghost">{{ documento.formato }}</span>
+            </div>
+            <h3>{{ documento.titulo }}</h3>
+            <p>{{ documento.descripcion }}</p>
+            <dl class="normativa-result-card__meta">
+              <div>
+                <dt>Número</dt>
+                <dd>{{ documento.numero }}</dd>
+              </div>
+              <div>
+                <dt>Fecha</dt>
+                <dd>{{ documento.fecha | date: 'dd MMM yyyy' }}</dd>
+              </div>
+              <div>
+                <dt>Dependencia</dt>
+                <dd>{{ documento.dependencia }}</dd>
+              </div>
+              <div>
+                <dt>Estado</dt>
+                <dd>{{ documento.estado }}</dd>
+              </div>
+            </dl>
+            <div class="normativa-actions">
+              <a class="normativa-link" [href]="documento.url" target="_blank" rel="noopener noreferrer">Ver</a>
+              <a class="normativa-link" [href]="documento.url" target="_blank" rel="noopener noreferrer">Descargar</a>
+            </div>
+          </article>
+
+          <div *ngIf="documentosFiltrados().length === 0" class="normativa-empty-state">
+            <span class="material-icons">search_off</span>
+            <p>No se encontraron documentos con los filtros seleccionados.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="normativa-grid normativa-grid--secondary">
+      <article class="normativa-card">
+        <div class="normativa-card__header">
+          <span class="normativa-chip">Normograma</span>
+          <h2>Consulta rápida por categoría</h2>
+        </div>
+        <div class="normativa-tag-list">
+          <span class="normativa-tag">Leyes</span>
+          <span class="normativa-tag">Decretos</span>
+          <span class="normativa-tag">Resoluciones</span>
+          <span class="normativa-tag">Circulares</span>
+          <span class="normativa-tag">Políticas</span>
+          <span class="normativa-tag">Planes</span>
+          <span class="normativa-tag">Manuales</span>
+        </div>
+      </article>
+
+      <article class="normativa-card">
+        <div class="normativa-card__header">
+          <span class="normativa-chip">Recomendado</span>
+          <h2>Recursos de consulta</h2>
+        </div>
+        <div class="normativa-resource-list">
+          <a class="normativa-resource-item" href="https://www.unp.gov.co/normativa/" target="_blank" rel="noopener noreferrer">
+            <span class="material-icons">link</span>
+            <span>Portal institucional de normativa</span>
+          </a>
+          <a class="normativa-resource-item" href="https://www.unp.gov.co/normativa/normograma/" target="_blank" rel="noopener noreferrer">
+            <span class="material-icons">timeline</span>
+            <span>Normograma de la UNP</span>
+          </a>
+          <a class="normativa-resource-item" href="https://www.unp.gov.co/normativa/politicas-de-seguridad-de-la-informacion-y-proteccion-de-datos-personales/" target="_blank" rel="noopener noreferrer">
+            <span class="material-icons">security</span>
+            <span>Política de seguridad y protección de datos</span>
+          </a>
+        </div>
+      </article>
+    </section>
+  </div>
+</section>

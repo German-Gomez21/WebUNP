@@ -73,6 +73,57 @@ body.modo_oscuro-govco * {
   color: var(--dark-text-primary) !important;
 }
 
+body.modo_oscuro-govco .about-page,
+body.modo_oscuro-govco .about-page__hero,
+body.modo_oscuro-govco .about-page__section,
+body.modo_oscuro-govco .about-page__highlight,
+body.modo_oscuro-govco .about-page__card,
+body.modo_oscuro-govco .about-page__function-card,
+body.modo_oscuro-govco .about-page__symbol-card,
+body.modo_oscuro-govco .about-page__org-node,
+body.modo_oscuro-govco .about-page__visual-card {
+  background: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.modo_oscuro-govco .about-page__title,
+body.modo_oscuro-govco .about-page__section-heading h2,
+body.modo_oscuro-govco .about-page__highlight h2,
+body.modo_oscuro-govco .about-page__closing-card h2,
+body.modo_oscuro-govco .about-page__card h3,
+body.modo_oscuro-govco .about-page__function-card h3,
+body.modo_oscuro-govco .about-page__symbol-card h3,
+body.modo_oscuro-govco .about-page__org-node h3 {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .about-page__intro,
+body.modo_oscuro-govco .about-page__section-heading p,
+body.modo_oscuro-govco .about-page__highlight p,
+body.modo_oscuro-govco .about-page__closing-card p,
+body.modo_oscuro-govco .about-page__card p,
+body.modo_oscuro-govco .about-page__function-card p,
+body.modo_oscuro-govco .about-page__symbol-card p,
+body.modo_oscuro-govco .about-page__org-node p,
+body.modo_oscuro-govco .about-page__symbol-card span {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .about-page__eyebrow,
+body.modo_oscuro-govco .about-page__breadcrumb-link,
+body.modo_oscuro-govco .about-page__card-icon,
+body.modo_oscuro-govco .about-page__function-icon,
+body.modo_oscuro-govco .about-page__symbol-badge,
+body.modo_oscuro-govco .about-page__org-level {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .about-page__hero {
+  background: linear-gradient(135deg, rgba(22, 37, 67, 0.92), rgba(47, 47, 47, 0.94)) !important;
+}
+
 /* Except for brand colors or specific states */
 body.modo_oscuro-govco .text-primary,
 body.modo_oscuro-govco .btn--primary,

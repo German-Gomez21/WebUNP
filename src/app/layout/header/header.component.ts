@@ -161,26 +161,26 @@ export class HeaderComponent {
     
     // Base de datos de búsqueda
     private searchDatabase = [
-        { title: 'PQRSD', description: 'Presenta tus solicitudes', icon: 'send', url: 'pqrsd.html' },
-        { title: 'La UNP', description: 'Conoce nuestra institución', icon: 'account_balance', url: 'index.html#la-unp' },
-        { title: 'Transparencia', description: 'Accede a información pública', icon: 'visibility', url: 'index.html#transparencia' },
-        { title: 'Normativa', description: 'Consulta el marco legal', icon: 'gavel', url: 'index.html#normativa' },
-        { title: 'Director', description: 'Información del director', icon: 'person', url: 'index.html#director' },
-        { title: '¿Quiénes somos?', description: 'Misión y visión', icon: 'help_outline', url: 'index.html#quienes-somos' },
-        { title: '¿Qué hacemos?', description: 'Nuestras funciones', icon: 'work', url: 'index.html#que-hacemos' },
-        { title: 'Sede Principal', description: 'Ubicación y contacto', icon: 'location_on', url: 'index.html#sede-principal' },
-        { title: 'Sedes Regionales', description: 'Oficinas en el país', icon: 'location_city', url: 'index.html#sedes-regionales' },
-        { title: 'Noticias', description: 'Últimas novedades', icon: 'article', url: 'index.html#noticias' },
-        { title: 'Contratación', description: 'Procesos de contratación', icon: 'description', url: 'index.html#contratacion' },
-        { title: 'Convocatorias', description: 'Oportunidades laborales', icon: 'work_outline', url: 'index.html#convocatorias' },
-        { title: 'Trámites', description: 'Servicios y trámites', icon: 'assignment', url: 'index.html#tramites' },
-        { title: 'Servicios', description: 'Oferta de servicios', icon: 'miscellaneous_services', url: 'index.html#servicios' },
-        { title: 'Contacto', description: 'Información de contacto', icon: 'phone', url: 'index.html#contacto' },
-        { title: 'Petición', description: 'Solicita información', icon: 'search', url: 'pqrsd.html#peticion' },
-        { title: 'Queja', description: 'Reporta conductas', icon: 'warning', url: 'pqrsd.html#queja' },
-        { title: 'Reclamo', description: 'Solicita soluciones', icon: 'report_problem', url: 'pqrsd.html#reclamo' },
-        { title: 'Sugerencia', description: 'Envía propuestas', icon: 'lightbulb', url: 'pqrsd.html#sugerencia' },
-        { title: 'Denuncia', description: 'Reporta irregularidades', icon: 'gavel', url: 'pqrsd.html#denuncia' }
+        { title: 'PQRSD', description: 'Presenta tus solicitudes', icon: 'send', url: '/pqrsd' },
+        { title: 'La UNP', description: 'Conoce nuestra institución', icon: 'account_balance', url: '/la-unp' },
+        { title: 'Transparencia', description: 'Accede a información pública', icon: 'visibility', url: '/transparencia' },
+        { title: 'Normativa', description: 'Consulta el marco legal', icon: 'gavel', url: '/normativa' },
+        { title: 'Director', description: 'Información del director', icon: 'person', url: '/la-unp' },
+        { title: '¿Quiénes somos?', description: 'Misión y visión', icon: 'help_outline', url: '/quienes-somos' },
+        { title: '¿Qué hacemos?', description: 'Nuestras funciones', icon: 'work', url: '/quienes-somos' },
+        { title: 'Sede Principal', description: 'Ubicación y contacto', icon: 'location_on', url: '/la-unp' },
+        { title: 'Sedes Regionales', description: 'Oficinas en el país', icon: 'location_city', url: '/la-unp' },
+        { title: 'Noticias', description: 'Últimas novedades', icon: 'article', url: '/noticias' },
+        { title: 'Contratación', description: 'Procesos de contratación', icon: 'description', url: '/transparencia' },
+        { title: 'Convocatorias', description: 'Oportunidades laborales', icon: 'work_outline', url: '/transparencia' },
+        { title: 'Trámites', description: 'Servicios y trámites', icon: 'assignment', url: '/atencion-servicios/tramites' },
+        { title: 'Servicios', description: 'Oferta de servicios', icon: 'miscellaneous_services', url: '/atencion-servicios/tramites' },
+        { title: 'Contacto', description: 'Información de contacto', icon: 'phone', url: '/la-unp' },
+        { title: 'Petición', description: 'Solicita información', icon: 'search', url: '/pqrsd' },
+        { title: 'Queja', description: 'Reporta conductas', icon: 'warning', url: '/pqrsd' },
+        { title: 'Reclamo', description: 'Solicita soluciones', icon: 'report_problem', url: '/pqrsd' },
+        { title: 'Sugerencia', description: 'Envía propuestas', icon: 'lightbulb', url: '/pqrsd' },
+        { title: 'Denuncia', description: 'Reporta irregularidades', icon: 'gavel', url: '/pqrsd' }
     ];
     
     // Datos del menú de navegación principal - Estructura UNP.gov.co
@@ -193,102 +193,102 @@ export class HeaderComponent {
         },
         {
             nombre: 'La UNP',
-            enlace: '#/la-unp',
+            enlace: '/la-unp',
             activo: false,
             submenu: [
-                { nombre: 'El director', enlace: '#/la-unp/el-director' },
-                { nombre: '¿Quiénes somos?', enlace: '#/la-unp/quienes-somos' },
-                { nombre: '¿Qué Hacemos?', enlace: '#/la-unp/que-hacemos' },
-                { nombre: '¿Cómo lo hacemos?', enlace: '#/la-unp/como-lo-hacemos' },
-                { nombre: 'Organigrama', enlace: '#/la-unp/organigrama' },
-                { nombre: 'Símbolos', enlace: '#/la-unp/simbolos' },
-                { nombre: 'Gestión Humana', enlace: '#/la-unp/gestion-humana' },
-                { nombre: 'Sistema de Gestión Integrada (SGI)', enlace: '#/la-unp/sgi' },
-                { nombre: 'Directorio funcionarios (SIGEP)', enlace: '#/la-unp/sigep' },
-                { nombre: 'Contratos colaboradores UNP', enlace: '#/la-unp/contratos' },
-                { nombre: 'Directorio Entidades Sector', enlace: '#/la-unp/directorio-entidades' },
-                { nombre: 'Directorio agremiaciones', enlace: '#/la-unp/agremiaciones' },
-                { nombre: 'Reconocimiento Elementos Identificación', enlace: '#/la-unp/reconocimiento' }
+                { nombre: 'El director', enlace: '/la-unp' },
+                { nombre: '¿Quiénes somos?', enlace: '/quienes-somos' },
+                { nombre: '¿Qué Hacemos?', enlace: '/quienes-somos' },
+                { nombre: '¿Cómo lo hacemos?', enlace: '/la-unp' },
+                { nombre: 'Organigrama', enlace: '/la-unp' },
+                { nombre: 'Símbolos', enlace: '/la-unp' },
+                { nombre: 'Gestión Humana', enlace: '/la-unp' },
+                { nombre: 'Sistema de Gestión Integrada (SGI)', enlace: '/la-unp' },
+                { nombre: 'Directorio funcionarios (SIGEP)', enlace: '/la-unp' },
+                { nombre: 'Contratos colaboradores UNP', enlace: '/la-unp' },
+                { nombre: 'Directorio Entidades Sector', enlace: '/la-unp' },
+                { nombre: 'Directorio agremiaciones', enlace: '/la-unp' },
+                { nombre: 'Reconocimiento Elementos Identificación', enlace: '/la-unp' }
             ]
         },
         {
             nombre: 'Transparencia y acceso',
-            enlace: '#/transparencia',
+            enlace: '/transparencia',
             activo: false,
             submenu: [
-                { nombre: '1. Información de la Entidad', enlace: '#/transparencia/informacion-entidad' },
-                { nombre: '2. Normativa', enlace: '#/transparencia/normativa' },
-                { nombre: '3. Contratación', enlace: '#/transparencia/contratacion' },
-                { nombre: '4. Planeación, Presupuesto e Informes', enlace: '#/transparencia/planeacion' },
-                { nombre: '5. Trámites', enlace: '#/transparencia/tramites' },
-                { nombre: '6. Participa', enlace: '#/transparencia/participa' },
-                { nombre: '7. Datos Abiertos', enlace: '#/transparencia/datos-abiertos' },
-                { nombre: '8. Información grupos interés', enlace: '#/transparencia/grupos-interes' },
-                { nombre: '9. Reporte información específica', enlace: '#/transparencia/reporte-especifico' }
+                { nombre: '1. Información de la Entidad', enlace: '/transparencia' },
+                { nombre: '2. Normativa', enlace: '/normativa' },
+                { nombre: '3. Contratación', enlace: '/transparencia' },
+                { nombre: '4. Planeación, Presupuesto e Informes', enlace: '/transparencia' },
+                { nombre: '5. Trámites', enlace: '/atencion-servicios/tramites' },
+                { nombre: '6. Participa', enlace: '/transparencia' },
+                { nombre: '7. Datos Abiertos', enlace: '/transparencia' },
+                { nombre: '8. Información grupos interés', enlace: '/transparencia' },
+                { nombre: '9. Reporte información específica', enlace: '/transparencia' }
             ]
         },
         {
             nombre: 'Atención y Servicios',
-            enlace: '#/atencion-servicios',
+            enlace: '/atencion-servicios/tramites',
             activo: false,
             submenu: [
-                { nombre: 'Trámites y Procedimientos', enlace: '#/atencion/tramites' },
-                { nombre: 'Canales de Atención', enlace: '#/atencion/canales' },
-                { nombre: 'Línea vida 103', enlace: '#/linea-vida-103' },
-                { nombre: 'Reportes Operativos COPP', enlace: '#/atencion/reportes-copp' },
-                { nombre: 'PQRSD', enlace: '#/atencion/pqrsd' },
-                { nombre: 'Los ABC de la protección', enlace: '#/atencion/abc-proteccion' },
-                { nombre: 'Preguntas frecuentes', enlace: '#/atencion/preguntas-frecuentes' },
-                { nombre: 'Glosario', enlace: '#/atencion/glosario' },
-                { nombre: 'Caracterizaciones de Usuarios', enlace: '#/atencion/caracterizaciones' },
-                { nombre: 'Ofertas de empleo', enlace: '#/atencion/empleo' },
-                { nombre: 'Notificaciones', enlace: '#/atencion/notificaciones' },
-                { nombre: 'Calendario de actividades', enlace: '#/atencion/calendario' },
-                { nombre: 'Datos Abiertos', enlace: '#/atencion/datos-abiertos' }
+                { nombre: 'Trámites y Procedimientos', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Canales de Atención', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Línea vida 103', enlace: '/linea-vida-103' },
+                { nombre: 'Reportes Operativos COPP', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'PQRSD', enlace: '/pqrsd' },
+                { nombre: 'Los ABC de la protección', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Preguntas frecuentes', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Glosario', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Caracterizaciones de Usuarios', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Ofertas de empleo', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Notificaciones', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Calendario de actividades', enlace: '/atencion-servicios/tramites' },
+                { nombre: 'Datos Abiertos', enlace: '/atencion-servicios/tramites' }
             ]
         },
         {
             nombre: 'Planeación, Gestión y Control',
-            enlace: '#/planeacion-gestion',
+            enlace: '/transparencia',
             activo: false,
             submenu: [
-                { nombre: 'Planes y Programas', enlace: '#/planeacion/planes-programas' },
-                { nombre: 'Informes Nacionales', enlace: '#/planeacion/informes-nacionales' },
-                { nombre: 'Informes Sentencia T-469', enlace: '#/planeacion/informes-t469' },
-                { nombre: 'Documentos Técnicos', enlace: '#/planeacion/documentos-tecnicos' },
-                { nombre: 'Reingeniería UNP', enlace: '#/planeacion/reingenieria' },
-                { nombre: 'Boletín de Reingeniería', enlace: '#/planeacion/boletin-reingenieria' }
+                { nombre: 'Planes y Programas', enlace: '/transparencia' },
+                { nombre: 'Informes Nacionales', enlace: '/transparencia' },
+                { nombre: 'Informes Sentencia T-469', enlace: '/transparencia' },
+                { nombre: 'Documentos Técnicos', enlace: '/transparencia' },
+                { nombre: 'Reingeniería UNP', enlace: '/transparencia' },
+                { nombre: 'Boletín de Reingeniería', enlace: '/transparencia' }
             ]
         },
         {
             nombre: 'Participa',
-            enlace: '#/participa',
+            enlace: '/transparencia',
             activo: false,
             submenu: [
-                { nombre: 'Descripción general menú participa', enlace: '#/participa/descripcion-general' },
-                { nombre: 'Identificación de problemas', enlace: '#/participa/identificacion-problemas' },
-                { nombre: 'Planeación presupuestario participativo', enlace: '#/participa/planeacion-presupuesto' },
-                { nombre: 'Consulta ciudadana', enlace: '#/participa/consulta-ciudadana' },
-                { nombre: 'Colaboración e innovación abierta', enlace: '#/participa/colaboracion-innovacion' },
-                { nombre: 'Rendición de Cuentas', enlace: '#/participa/rendicion-cuentas' },
-                { nombre: 'Control social', enlace: '#/participa/control-social' }
+                { nombre: 'Descripción general menú participa', enlace: '/transparencia' },
+                { nombre: 'Identificación de problemas', enlace: '/transparencia' },
+                { nombre: 'Planeación presupuestario participativo', enlace: '/transparencia' },
+                { nombre: 'Consulta ciudadana', enlace: '/transparencia' },
+                { nombre: 'Colaboración e innovación abierta', enlace: '/transparencia' },
+                { nombre: 'Rendición de Cuentas', enlace: '/transparencia' },
+                { nombre: 'Control social', enlace: '/transparencia' }
             ]
         },
         {
             nombre: 'Normativa',
-            enlace: '#/normativa',
+            enlace: '/normativa',
             activo: false,
             submenu: [
-                { nombre: 'Políticas de Seguridad y Datos', enlace: '#/normativa/politicas-seguridad' },
-                { nombre: 'Decreto Único Sectorial 1066', enlace: '#/normativa/decreto-1066' },
-                { nombre: 'Leyes y Decretos', enlace: '#/normativa/leyes-decretos' },
-                { nombre: 'Proyectos de normas', enlace: '#/normativa/proyectos-normas' },
-                { nombre: 'Sentencias y Directivas', enlace: '#/normativa/sentencias-directivas' },
-                { nombre: 'Resoluciones y Circulares', enlace: '#/normativa/resoluciones-circulares' },
-                { nombre: 'Sucop', enlace: '#/normativa/sucop' },
-                { nombre: 'Suin - Juriscol', enlace: '#/normativa/suin-juriscol' },
-                { nombre: 'Normograma', enlace: '#/normativa/normograma' },
-                { nombre: 'Información población vulnerable', enlace: '#/normativa/poblacion-vulnerable' }
+                { nombre: 'Políticas de Seguridad y Datos', enlace: '/normativa' },
+                { nombre: 'Decreto Único Sectorial 1066', enlace: '/normativa' },
+                { nombre: 'Leyes y Decretos', enlace: '/normativa' },
+                { nombre: 'Proyectos de normas', enlace: '/normativa' },
+                { nombre: 'Sentencias y Directivas', enlace: '/normativa' },
+                { nombre: 'Resoluciones y Circulares', enlace: '/normativa' },
+                { nombre: 'Sucop', enlace: '/normativa' },
+                { nombre: 'Suin - Juriscol', enlace: '/normativa' },
+                { nombre: 'Normograma', enlace: '/normativa' },
+                { nombre: 'Información población vulnerable', enlace: '/normativa' }
             ]
         }
     ]);
