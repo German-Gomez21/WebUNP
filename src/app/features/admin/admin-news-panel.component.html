@@ -7,7 +7,7 @@
     <button class="btn-primary" type="button" (click)="abrirCrear()">+ Crear noticia</button>
   </header>
 
-  <section class="summary-grid" *ngIf="modo === 'list'">
+  <section class="summary-grid" *ngIf="modo() === 'list'">
     <article class="summary-card">
       <span class="summary-label">Publicadas</span>
       <strong>{{ stats().publicadas }}</strong>
@@ -26,7 +26,7 @@
     </article>
   </section>
 
-  <section class="control-bar" *ngIf="modo === 'list'">
+  <section class="control-bar" *ngIf="modo() === 'list'">
     <input type="search" [(ngModel)]="busqueda" placeholder="Buscar por título, autor o categoría" />
     <select [(ngModel)]="filtroEstado">
       <option value="todos">Todos los estados</option>
@@ -40,7 +40,7 @@
     </select>
   </section>
 
-  <section class="table-card" *ngIf="modo === 'list'">
+  <section class="table-card" *ngIf="modo() === 'list'">
     <table>
       <thead>
         <tr>
@@ -70,7 +70,7 @@
     </table>
   </section>
 
-  <section class="editor-card" *ngIf="modo === 'form'">
+  <section class="editor-card" *ngIf="modo() === 'form'">
     <div class="editor-toolbar">
       <button class="btn-secondary" type="button" (click)="volverAlListado()">← Volver</button>
       <div class="toolbar-actions">
@@ -159,7 +159,7 @@
 
         <label>
           <span>Etiquetas</span>
-          <input type="text" [(ngModel)]="formulario.etiquetas" [ngModelOptions]="{ updateOn: 'blur' }" />
+          <input type="text" [(ngModel)]="etiquetasInput" [ngModelOptions]="{ updateOn: 'blur' }" />
         </label>
 
         <label>

@@ -26,7 +26,8 @@ export interface EditorialNoticia extends Noticia {
   providedIn: 'root'
 })
 export class AdminNewsService {
-  private readonly editorialNews = signal<EditorialNoticia[]>([
+  private readonly STORAGE_KEY = 'unp-admin-editorial-news';
+  private readonly defaultNews: EditorialNoticia[] = [
     {
       id: 1,
       titulo: 'UNP fortalece programa de protección para líderes sociales',
@@ -103,7 +104,9 @@ export class AdminNewsService {
       ],
       requiereRevision: true
     }
-  ]);
+  ];
+
+  private readonly editorialNews = signal<EditorialNoticia[]>(this.loadInitialNews());
 
   getNoticias(): EditorialNoticia[] {
     return this.editorialNews();
@@ -126,34 +129,36 @@ export class AdminNewsService {
 
   save(noticia: EditorialNoticia): EditorialNoticia {
     const existing = this.editorialNews().find(item => item.id === noticia.id);
+    const normalized = this.normalizeNoticia(noticia);
 
     if (existing) {
       const updated: EditorialNoticia = {
         ...existing,
-        ...noticia,
+        ...normalized,
         version: (existing.version ?? 1) + 1,
         auditoria: [
           ...(existing.auditoria ?? []),
           {
-            usuario: noticia.revisadoPor ?? 'Editor',
-            accion: noticia.estado,
-            fecha: noticia.fechaPublicacion ?? new Date().toISOString(),
+            usuario: normalized.revisadoPor ?? 'Editor',
+            accion: normalized.estado,
+            fecha: normalized.fechaPublicacion ?? new Date().toISOString(),
             detalle: 'Actualización desde el panel editorial'
           }
         ]
       };
 
       this.editorialNews.update(items => items.map(item => item.id === noticia.id ? updated : item));
+      this.persistNews();
       return updated;
     }
 
     const created: EditorialNoticia = {
-      ...noticia,
+      ...normalized,
       id: Date.now(),
       version: 1,
       auditoria: [
         {
-          usuario: noticia.revisadoPor ?? 'Editor',
+          usuario: normalized.revisadoPor ?? 'Editor',
           accion: 'creado',
           fecha: new Date().toISOString(),
           detalle: 'Nueva noticia creada desde el panel editorial'
@@ -162,6 +167,7 @@ export class AdminNewsService {
     };
 
     this.editorialNews.update(items => [created, ...items]);
+    this.persistNews();
     return created;
   }
 
@@ -187,5 +193,65 @@ export class AdminNewsService {
     };
 
     this.editorialNews.update(items => items.map(item => item.id === id ? updated : item));
+    this.persistNews();
+  }
+
+  private loadInitialNews(): EditorialNoticia[] {
+    if (typeof window === 'undefined') {
+      return this.defaultNews;
+    }
+
+    const stored = window.localStorage.getItem(this.STORAGE_KEY);
+    if (!stored) {
+      return this.defaultNews;
+    }
+
+    try {
+      const parsed = JSON.parse(stored) as EditorialNoticia[];
+      return Array.isArray(parsed) && parsed.length > 0 ? parsed : this.defaultNews;
+    } catch {
+      return this.defaultNews;
+    }
+  }
+
+  private persistNews(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.editorialNews()));
+    window.dispatchEvent(new CustomEvent('unp-editorial-news-changed'));
+  }
+
+  private normalizeNoticia(noticia: EditorialNoticia): EditorialNoticia {
+    const slug = noticia.slug?.trim() || this.createSlug(noticia.titulo);
+    const etiquetas = Array.isArray(noticia.etiquetas)
+      ? noticia.etiquetas.filter(Boolean)
+      : typeof noticia.etiquetas === 'string'
+        ? (noticia.etiquetas as string).split(',').map(item => item.trim()).filter(Boolean)
+        : [];
+
+    return {
+      ...noticia,
+      slug,
+      etiquetas,
+      fecha: noticia.fecha || new Date().toISOString().slice(0, 10),
+      fechaPublicacion: noticia.fechaPublicacion || noticia.fecha || new Date().toISOString().slice(0, 10),
+      contenidoHtml: noticia.contenidoHtml || noticia.contenido,
+      estado: noticia.estado || 'borrador',
+      dependencia: noticia.dependencia || 'Comunicaciones',
+      revisadoPor: noticia.revisadoPor || 'Editor'
+    };
+  }
+
+  private createSlug(value: string): string {
+    return value
+      .toLowerCase()
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
   }
 }

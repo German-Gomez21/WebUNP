@@ -210,6 +210,137 @@ body.modo_oscuro-govco .news-page__search .material-icons {
   color: var(--dark-text-primary) !important;
 }
 
+/* Transparencia / Normativa dark mode overrides for all cards and surfaces */
+//body.modo_oscuro-govco .transparencia-page,
+//body.modo_oscuro-govco .transparencia-hero,
+//body.modo_oscuro-govco .transparencia-main,
+//body.modo_oscuro-govco .transparencia-toolbox,
+body.modo_oscuro-govco .transparencia-search,
+body.modo_oscuro-govco .transparencia-filter,
+body.modo_oscuro-govco .transparencia-card,
+body.modo_oscuro-govco .transparencia-stat-card,
+body.modo_oscuro-govco .transparencia-feature-item,
+body.modo_oscuro-govco .transparencia-document-item,
+body.modo_oscuro-govco .transparencia-download-item,
+body.modo_oscuro-govco .transparencia-accordion__item,
+body.modo_oscuro-govco .transparencia-accordion__button,
+body.modo_oscuro-govco .transparencia-empty-state,
+//body.modo_oscuro-govco .normativa-page,
+//body.modo_oscuro-govco .normativa-hero,
+//body.modo_oscuro-govco .normativa-main,
+//body.modo_oscuro-govco .normativa-toolbox,
+body.modo_oscuro-govco .normativa-search,
+body.modo_oscuro-govco .normativa-filter-group select,
+body.modo_oscuro-govco .normativa-reset,
+body.modo_oscuro-govco .normativa-card,
+body.modo_oscuro-govco .normativa-stat-card,
+body.modo_oscuro-govco .normativa-feature-item,
+body.modo_oscuro-govco .normativa-result-card,
+body.modo_oscuro-govco .normativa-resource-item,
+body.modo_oscuro-govco .normativa-empty-state {
+  background-color: var(--dark-bg-secondary) !important;
+  background: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text-primary) !important;
+  //box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.modo_oscuro-govco .transparencia-eyebrow,
+body.modo_oscuro-govco .transparencia-chip,
+body.modo_oscuro-govco .transparencia-feature-item__type,
+body.modo_oscuro-govco .transparencia-document-item__meta span,
+body.modo_oscuro-govco .normativa-eyebrow,
+body.modo_oscuro-govco .normativa-chip,
+body.modo_oscuro-govco .normativa-pill,
+body.modo_oscuro-govco .normativa-tag {
+  background: rgba(104, 161, 255, 0.18) !important;
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .transparencia-breadcrumbs a,
+body.modo_oscuro-govco .transparencia-hero__title,
+body.modo_oscuro-govco .transparencia-hero__subtitle,
+body.modo_oscuro-govco .transparencia-card__header h2,
+body.modo_oscuro-govco .transparencia-feature-item h3,
+body.modo_oscuro-govco .transparencia-document-item h3,
+body.modo_oscuro-govco .transparencia-download-item strong,
+body.modo_oscuro-govco .normativa-breadcrumbs a,
+body.modo_oscuro-govco .normativa-hero__title,
+body.modo_oscuro-govco .normativa-hero__subtitle,
+body.modo_oscuro-govco .normativa-card__header h2,
+body.modo_oscuro-govco .normativa-feature-item h3,
+body.modo_oscuro-govco .normativa-result-card h3,
+body.modo_oscuro-govco .normativa-resource-item {
+  color: var(--dark-text-primary) !important;
+}
+
+body.modo_oscuro-govco .transparencia-hero,
+body.modo_oscuro-govco .normativa-hero {
+  background: linear-gradient(135deg, rgba(22, 37, 67, 0.96), rgba(47, 47, 47, 0.98)) !important;
+}
+
+body.modo_oscuro-govco .transparencia-eyebrow,
+body.modo_oscuro-govco .transparencia-stat-card__label,
+body.modo_oscuro-govco .normativa-eyebrow,
+body.modo_oscuro-govco .normativa-stat-card__label,
+body.modo_oscuro-govco .transparencia-hero__description,
+body.modo_oscuro-govco .normativa-hero__description {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .transparencia-stat-card__value,
+body.modo_oscuro-govco .normativa-stat-card__value {
+  color: #9fc3ff !important;
+}
+
+body.modo_oscuro-govco .transparencia-hero__subtitle,
+body.modo_oscuro-govco .normativa-hero__subtitle,
+body.modo_oscuro-govco .transparencia-hero__title,
+body.modo_oscuro-govco .normativa-hero__title {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+body.modo_oscuro-govco .transparencia-filter.is-active,
+body.modo_oscuro-govco .normativa-reset {
+  background: linear-gradient(135deg, #ff6b35, #ff8b53) !important;
+  border-color: #ff8b53 !important;
+  color: #ffffff !important;
+}
+
+body.modo_oscuro-govco .transparencia-feature-item p,
+body.modo_oscuro-govco .transparencia-document-item p,
+body.modo_oscuro-govco .transparencia-accordion__content,
+body.modo_oscuro-govco .transparencia-download-item small,
+body.modo_oscuro-govco .transparencia-search input,
+body.modo_oscuro-govco .normativa-feature-item p,
+body.modo_oscuro-govco .normativa-result-card p,
+body.modo_oscuro-govco .normativa-search input,
+body.modo_oscuro-govco .normativa-result-card__meta dt,
+body.modo_oscuro-govco .normativa-result-card__meta dd,
+body.modo_oscuro-govco .normativa-meta span {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .transparencia-search input::-webkit-input-placeholder,
+body.modo_oscuro-govco .normativa-search input::-webkit-input-placeholder,
+body.modo_oscuro-govco .transparencia-search input::placeholder,
+body.modo_oscuro-govco .normativa-search input::placeholder {
+  color: var(--dark-text-secondary) !important;
+}
+
+body.modo_oscuro-govco .transparencia-search input,
+body.modo_oscuro-govco .normativa-search input,
+body.modo_oscuro-govco .normativa-filter-group select {
+  background: transparent !important;
+}
+
+body.modo_oscuro-govco .transparencia-search .material-icons,
+body.modo_oscuro-govco .normativa-search .material-icons,
+body.modo_oscuro-govco .transparencia-download-item .material-icons,
+body.modo_oscuro-govco .normativa-resource-item .material-icons {
+  color: var(--dark-text-primary) !important;
+}
+
 /* Gray backgrounds to dark */
 body.modo_oscuro-govco .section--gray,
 body.modo_oscuro-govco .bg-gray,

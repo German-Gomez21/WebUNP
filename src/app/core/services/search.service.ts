@@ -1,86 +1,145 @@
-import { Injectable } from '@angular/core';
-import { signal } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
+import { forkJoin, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DataService } from './data.service';
 import { SearchResult } from '../models/noticia.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  // Base de datos de búsqueda migrada desde AngularJS
-  private readonly searchDatabase: SearchResult[] = [
-    { title: 'PQRSD', description: 'Presenta tus solicitudes', icon: 'send', url: '/atencion/pqrsd' },
+  private readonly router = inject(Router);
+  private readonly dataService = inject(DataService);
+
+  private readonly staticDatabase: SearchResult[] = [
+    { title: 'Inicio', description: 'Página principal del sitio', icon: 'home', url: '/' },
     { title: 'La UNP', description: 'Conoce nuestra institución', icon: 'account_balance', url: '/la-unp' },
     { title: 'Transparencia', description: 'Accede a información pública', icon: 'visibility', url: '/transparencia' },
     { title: 'Normativa', description: 'Consulta el marco legal', icon: 'gavel', url: '/normativa' },
-    { title: 'Director', description: 'Información del director', icon: 'person', url: '/la-unp/director' },
-    { title: '¿Quiénes somos?', description: 'Misión y visión', icon: 'help_outline', url: '/la-unp/quienes-somos' },
-    { title: '¿Qué hacemos?', description: 'Nuestras funciones', icon: 'work', url: '/la-unp/que-hacemos' },
-    { title: 'Sede Principal', description: 'Ubicación y contacto', icon: 'location_on', url: '/la-unp/sede-principal' },
-    { title: 'Sedes Regionales', description: 'Oficinas en el país', icon: 'location_city', url: '/la-unp/sedes-regionales' },
-    { title: 'Noticias', description: 'Últimas novedades', icon: 'article', url: '/noticias' },
-    { title: 'Contratación', description: 'Procesos de contratación', icon: 'description', url: '/transparencia/contratacion' },
-    { title: 'Convocatorias', description: 'Oportunidades laborales', icon: 'work_outline', url: '/atencion/convocatorias' },
-    { title: 'Trámites', description: 'Servicios y trámites', icon: 'assignment', url: '/atencion/tramites' },
-    { title: 'Servicios', description: 'Oferta de servicios', icon: 'miscellaneous_services', url: '/atencion/servicios' },
-    { title: 'Contacto', description: 'Información de contacto', icon: 'phone', url: '/contacto' },
-    { title: 'Petición', description: 'Solicita información', icon: 'search', url: '/atencion/pqrsd/peticion' },
-    { title: 'Queja', description: 'Reporta conductas', icon: 'warning', url: '/atencion/pqrsd/queja' },
-    { title: 'Reclamo', description: 'Solicita soluciones', icon: 'report_problem', url: '/atencion/pqrsd/reclamo' },
-    { title: 'Sugerencia', description: 'Envía propuestas', icon: 'lightbulb', url: '/atencion/pqrsd/sugerencia' },
-    { title: 'Denuncia', description: 'Reporta irregularidades', icon: 'gavel', url: '/atencion/pqrsd/denuncia' }
+    { title: 'Noticias', description: 'Últimas novedades e información institucional', icon: 'article', url: '/noticias' },
+    { title: 'Trámites y servicios', description: 'Consulta procedimientos y servicios de atención', icon: 'assignment', url: '/atencion-servicios/tramites' },
+    { title: 'Línea Vida 103', description: 'Canal de atención y apoyo', icon: 'phone', url: '/linea-vida-103' },
+    { title: 'PQRSD', description: 'Presenta tus solicitudes, quejas y felicitaciones', icon: 'send', url: '/pqrsd' },
+    { title: 'Contacto', description: 'Información de contacto institucional', icon: 'phone', url: '/contacto' }
   ];
 
-  // Signals para estado reactivo de búsqueda
+  private searchIndex: SearchResult[] = [...this.staticDatabase];
+
   public searchQuery = signal<string>('');
   public searchResults = signal<SearchResult[]>([]);
   public showSearchResults = signal<boolean>(false);
 
-  constructor() {}
+  constructor() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('unp-editorial-news-changed', () => this.loadSearchIndex());
+    }
 
-  // Método de búsqueda migrado desde AngularJS
+    this.loadSearchIndex();
+  }
+
+  private loadSearchIndex(): void {
+    forkJoin({
+      noticias: this.dataService.getNoticias(),
+      normativa: this.dataService.getNormativaDocumentos(),
+      accesos: this.dataService.getAccesosRapidos(),
+      faq: this.dataService.getFAQ(),
+      canales: this.dataService.getCanalesAtencion(),
+      tramites: this.dataService.getTramites()
+    }).pipe(
+      map(({ noticias, normativa, accesos, faq, canales, tramites }) => {
+        const dynamicEntries: SearchResult[] = [
+          ...noticias.map((noticia) => ({
+            title: noticia.titulo,
+            description: noticia.resumen,
+            icon: 'article',
+            url: `/noticias/${noticia.slug ?? noticia.id}`
+          })),
+          ...normativa.map((documento) => ({
+            title: documento.titulo,
+            description: documento.descripcion,
+            icon: 'gavel',
+            url: documento.url
+          })),
+          ...accesos.map((item) => ({
+            title: item.titulo,
+            description: item.descripcion,
+            icon: item.icono,
+            url: item.enlace
+          })),
+          ...faq.map((item) => ({
+            title: item.pregunta,
+            description: item.respuesta,
+            icon: 'help_outline',
+            url: '/atencion-servicios/tramites'
+          })),
+          ...canales.map((item) => ({
+            title: item.tipo,
+            description: item.descripcion,
+            icon: item.icono,
+            url: '/atencion-servicios/tramites'
+          })),
+          ...tramites.map((tramite) => ({
+            title: tramite.nombre,
+            description: tramite.descripcion,
+            icon: 'assignment',
+            url: '/atencion-servicios/tramites'
+          }))
+        ];
+
+        const deduplicatedEntries = [...this.staticDatabase, ...dynamicEntries].filter((entry, index, array) => {
+          return array.findIndex((item) => item.title === entry.title && item.url === entry.url) === index;
+        });
+
+        this.searchIndex = deduplicatedEntries;
+      })
+    ).subscribe();
+  }
+
   performSearch(query: string): Observable<SearchResult[]> {
-    const normalizedQuery = query.toLowerCase().trim();
-    
+    const normalizedQuery = this.normalize(query).trim();
+
     if (normalizedQuery.length < 2) {
       this.searchResults.set([]);
       this.showSearchResults.set(false);
       return of([]);
     }
 
-    // Filtrar resultados
-    const results = this.searchDatabase.filter(item => 
-      item.title.toLowerCase().includes(normalizedQuery) || 
-      item.description.toLowerCase().includes(normalizedQuery)
-    ).slice(0, 5); // Limitar a 5 resultados
+    const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
+    const results = this.searchIndex
+      .filter((item) => {
+        const haystack = this.normalize(`${item.title} ${item.description} ${item.url}`);
+        return tokens.every((token) => haystack.includes(token));
+      })
+      .slice(0, 8);
 
-    // Actualizar signals
     this.searchResults.set(results);
-    this.showSearchResults.set(true);
-
+    this.showSearchResults.set(results.length > 0);
     return of(results);
   }
 
-  // Seleccionar resultado de búsqueda
   selectResult(result: SearchResult): void {
     this.searchQuery.set(result.title);
     this.showSearchResults.set(false);
-    
-    // Navegación (implementar con Router)
-    window.location.href = result.url;
+    this.router.navigateByUrl(result.url);
   }
 
-  // Ocultar resultados
   hideResults(): void {
     setTimeout(() => {
       this.showSearchResults.set(false);
     }, 200);
   }
 
-  // Limpiar búsqueda
   clearSearch(): void {
     this.searchQuery.set('');
     this.searchResults.set([]);
     this.showSearchResults.set(false);
+  }
+
+  private normalize(value: string): string {
+    return value
+      .toLocaleLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
   }
 }

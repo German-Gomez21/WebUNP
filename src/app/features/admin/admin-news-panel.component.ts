@@ -23,10 +23,11 @@ export class AdminNewsPanelComponent {
     return id !== null ? this.adminNewsService.getById(id) : undefined;
   });
 
-  modo = this.editorMode();
+  modo = this.editorMode;
   filtroEstado = 'todos';
   busqueda = '';
   formulario: EditorialNoticia = this.createEmptyNews();
+  etiquetasInput = '';
 
   readonly estados: EditorialStatus[] = ['borrador', 'en_revision', 'aprobado', 'programado', 'publicado', 'archivado', 'rechazado'];
   readonly categorias = ['Protección', 'Convocatorias', 'Gestión', 'Protocolos', 'Formación', 'Territorio'];
@@ -35,32 +36,32 @@ export class AdminNewsPanelComponent {
 
   abrirCrear() {
     this.formulario = this.createEmptyNews();
+    this.etiquetasInput = '';
     this.editorMode.set('form');
     this.selectedId.set(null);
-    this.modo = 'form';
   }
 
   abrirEditar(id: number) {
     const noticia = this.adminNewsService.getById(id);
     if (noticia) {
       this.formulario = { ...noticia };
+      this.etiquetasInput = Array.isArray(noticia.etiquetas) ? noticia.etiquetas.join(', ') : '';
       this.selectedId.set(id);
       this.editorMode.set('form');
-      this.modo = 'form';
     }
   }
 
   volverAlListado() {
     this.editorMode.set('list');
-    this.modo = 'list';
   }
 
   guardar() {
+    this.formulario.etiquetas = this.parseEtiquetas(this.etiquetasInput);
     const noticiaGuardada = this.adminNewsService.save(this.formulario);
     this.formulario = { ...noticiaGuardada };
+    this.etiquetasInput = Array.isArray(noticiaGuardada.etiquetas) ? noticiaGuardada.etiquetas.join(', ') : '';
     this.selectedId.set(noticiaGuardada.id);
     this.editorMode.set('form');
-    this.modo = 'form';
   }
 
   cambiarEstado(id: number, estado: EditorialStatus) {
@@ -116,5 +117,12 @@ export class AdminNewsPanelComponent {
       revisadoPor: 'Editor',
       requiereRevision: true
     };
+  }
+
+  private parseEtiquetas(value: string): string[] {
+    return value
+      .split(',')
+      .map(item => item.trim())
+      .filter(Boolean);
   }
 }

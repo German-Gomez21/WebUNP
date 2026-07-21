@@ -15,6 +15,17 @@ import {
   CanalAtencionDetalle
 } from '../models/noticia.model';
 
+interface EditorialStoredNews extends Noticia {
+  estado?: string;
+  fechaPublicacion?: string;
+  dependencia?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  version?: number;
+  revisadoPor?: string;
+  requiereRevision?: boolean;
+}
+
 export interface NormativaDocumento {
   id: number;
   titulo: string;
@@ -40,8 +51,19 @@ export class DataService {
 
   // Método para obtener noticias - migrado de $q.when a Observable
   getNoticias(): Observable<Noticia[]> {
-    // Simulación de datos mock con Observable
-    return of([
+    const noticiasDesdeCms = this.readEditorialNewsFromStorage();
+
+    return of(noticiasDesdeCms).pipe(delay(10));
+  }
+
+  getNoticiaBySlug(slug: string): Observable<Noticia | undefined> {
+    return this.getNoticias().pipe(
+      map(noticias => noticias.find(noticia => noticia.slug === slug))
+    );
+  }
+
+  private readEditorialNewsFromStorage(): Noticia[] {
+    const fallback: Noticia[] = [
       {
         id: 1,
         titulo: "UNP fortalece programa de protección para líderes sociales",
@@ -128,13 +150,42 @@ export class DataService {
         etiquetas: ["Territorio", "Cobertura"],
         contenidoHtml: "<p>La UNP ha ampliado su red de acompañamiento territorial para garantizar una respuesta más cercana y oportuna en regiones de alta prioridad.</p><p>La estrategia busca fortalecer la coordinación con autoridades locales y mejorar el acceso a los servicios de protección.</p>"
       }
-    ]).pipe(delay(10));
-  }
+    ];
 
-  getNoticiaBySlug(slug: string): Observable<Noticia | undefined> {
-    return this.getNoticias().pipe(
-      map(noticias => noticias.find(noticia => noticia.slug === slug))
-    );
+    if (typeof window === 'undefined') {
+      return fallback;
+    }
+
+    try {
+      const stored = window.localStorage.getItem('unp-admin-editorial-news');
+      if (!stored) {
+        return fallback;
+      }
+
+      const parsed = JSON.parse(stored) as EditorialStoredNews[];
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        return fallback;
+      }
+
+      return parsed.map((item) => ({
+        id: item.id,
+        titulo: item.titulo,
+        fecha: item.fecha || item.fechaPublicacion || new Date().toISOString().slice(0, 10),
+        resumen: item.resumen,
+        categoria: item.categoria,
+        imagen: item.imagen,
+        slug: item.slug,
+        subtitulo: item.subtitulo,
+        contenido: item.contenido,
+        autor: item.autor,
+        etiquetas: item.etiquetas,
+        destacada: item.destacada,
+        tipo: item.tipo,
+        contenidoHtml: item.contenidoHtml || item.contenido
+      }));
+    } catch {
+      return fallback;
+    }
   }
 
   getNormativaDocumentos(): Observable<NormativaDocumento[]> {

@@ -2,6 +2,7 @@ import { Component, signal, computed, inject, ViewEncapsulation, ChangeDetection
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SearchService } from '../../core/services/search.service';
 
 @Component({
   selector: 'header-component',
@@ -36,7 +37,8 @@ import { FormsModule } from '@angular/forms';
                                class="header__search-input" 
                                placeholder="Buscar en UNP..."
                                aria-label="Buscar"
-                               [(ngModel)]="searchQuery"
+                               [ngModel]="searchQuery()"
+                               (ngModelChange)="searchQuery.set($event)"
                                (input)="handleSearch()"
                                (focus)="showSearchResults.set(true)"
                                (blur)="hideSearchResults()">
@@ -137,15 +139,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class HeaderComponent {
     private router = inject(Router);
+    private readonly searchService = inject(SearchService);
     
     // Estado del menú
     activeMenu = signal<number | null>(null);
     openSubmenus = signal<Record<number, boolean>>({});
     
     // Estado de búsqueda
-    searchQuery = signal('');
-    searchResults = signal<any[]>([]);
-    showSearchResults = signal(false);
+    searchQuery = this.searchService.searchQuery;
+    searchResults = this.searchService.searchResults;
+    showSearchResults = this.searchService.showSearchResults;
     
     // Estado del menú móvil
     mobileMenuOpen = signal(false);
@@ -159,29 +162,6 @@ export class HeaderComponent {
     private readonly HOVER_DELAY = 150;
     private readonly HIDE_DELAY = 200;
     
-    // Base de datos de búsqueda
-    private searchDatabase = [
-        { title: 'PQRSD', description: 'Presenta tus solicitudes', icon: 'send', url: '/pqrsd' },
-        { title: 'La UNP', description: 'Conoce nuestra institución', icon: 'account_balance', url: '/la-unp' },
-        { title: 'Transparencia', description: 'Accede a información pública', icon: 'visibility', url: '/transparencia' },
-        { title: 'Normativa', description: 'Consulta el marco legal', icon: 'gavel', url: '/normativa' },
-        { title: 'Director', description: 'Información del director', icon: 'person', url: '/la-unp' },
-        { title: '¿Quiénes somos?', description: 'Misión y visión', icon: 'help_outline', url: '/quienes-somos' },
-        { title: '¿Qué hacemos?', description: 'Nuestras funciones', icon: 'work', url: '/quienes-somos' },
-        { title: 'Sede Principal', description: 'Ubicación y contacto', icon: 'location_on', url: '/la-unp' },
-        { title: 'Sedes Regionales', description: 'Oficinas en el país', icon: 'location_city', url: '/la-unp' },
-        { title: 'Noticias', description: 'Últimas novedades', icon: 'article', url: '/noticias' },
-        { title: 'Contratación', description: 'Procesos de contratación', icon: 'description', url: '/transparencia' },
-        { title: 'Convocatorias', description: 'Oportunidades laborales', icon: 'work_outline', url: '/transparencia' },
-        { title: 'Trámites', description: 'Servicios y trámites', icon: 'assignment', url: '/atencion-servicios/tramites' },
-        { title: 'Servicios', description: 'Oferta de servicios', icon: 'miscellaneous_services', url: '/atencion-servicios/tramites' },
-        { title: 'Contacto', description: 'Información de contacto', icon: 'phone', url: '/la-unp' },
-        { title: 'Petición', description: 'Solicita información', icon: 'search', url: '/pqrsd' },
-        { title: 'Queja', description: 'Reporta conductas', icon: 'warning', url: '/pqrsd' },
-        { title: 'Reclamo', description: 'Solicita soluciones', icon: 'report_problem', url: '/pqrsd' },
-        { title: 'Sugerencia', description: 'Envía propuestas', icon: 'lightbulb', url: '/pqrsd' },
-        { title: 'Denuncia', description: 'Reporta irregularidades', icon: 'gavel', url: '/pqrsd' }
-    ];
     
     // Datos del menú de navegación principal - Estructura UNP.gov.co
     menuItems = signal([
@@ -432,36 +412,17 @@ export class HeaderComponent {
     
     // Función de búsqueda
     handleSearch() {
-        const query = this.searchQuery().toLowerCase().trim();
-        
-        if (query.length < 2) {
-            this.searchResults.set([]);
-            return;
-        }
-        
-        // Filtrar resultados
-        const results = this.searchDatabase.filter(item => 
-            item.title.toLowerCase().includes(query) || 
-            item.description.toLowerCase().includes(query)
-        ).slice(0, 5); // Limitar a 5 resultados
-        
-        this.searchResults.set(results);
+        this.searchService.performSearch(this.searchQuery()).subscribe();
     }
     
     // Función para seleccionar resultado de búsqueda
     selectSearchResult(result: any) {
-        this.searchQuery.set(result.title);
-        this.showSearchResults.set(false);
-        
-        // Redirigir a la URL del resultado
-        window.location.href = result.url;
+        this.searchService.selectResult(result);
     }
     
     // Función para ocultar resultados (con delay para permitir clics)
     hideSearchResults() {
-        setTimeout(() => {
-            this.showSearchResults.set(false);
-        }, 200);
+        this.searchService.hideResults();
     }
     
     // Track by functions
