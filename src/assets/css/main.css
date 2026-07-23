@@ -4329,11 +4329,11 @@ details.faq-item .faq-item__toggle-icon {
     animation: fadeIn 0.6s ease-out;
 }
 
-/* Floating Action Button (FAB) AI */
-.fab-ai {
+/* Floating Action Button (FAB) Base */
+.fab-ai,
+.fab-chat {
     position: fixed;
     bottom: 24px;
-    right: 24px;
     width: 60px;
     height: 60px;
     background: linear-gradient(135deg, #0056b3, #002244);
@@ -4346,28 +4346,57 @@ details.faq-item .faq-item__toggle-icon {
     text-decoration: none;
     color: white;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* FIX: Previene la franja/borde azul al hacer clic, clic derecho o focus */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
-.fab-ai__icon {
+.fab-ai {
+    right: 24px;
+}
+
+.fab-chat {
+    left: 24px;
+}
+
+/* Desactiva el borde azul nativo en estado focus/active */
+.fab-ai:focus,
+.fab-chat:focus,
+.fab-ai:active,
+.fab-chat:active {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Iconos */
+.fab-ai__icon,
+.fab-chat__icon {
     width: 28px;
     height: 28px;
     fill: currentColor;
     transition: transform 0.3s ease;
+    pointer-events: none; /* Evita interferencias en el click */
 }
 
-.fab-ai:hover {
+/* Hover estados */
+.fab-ai:hover,
+.fab-chat:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     background: linear-gradient(135deg, #007bff, #0056b3);
 }
 
-.fab-ai:hover .fab-ai__icon {
+.fab-ai:hover .fab-ai__icon,
+.fab-chat:hover .fab-chat__icon {
     animation: robot-bounce 1s infinite alternate;
 }
 
-.fab-ai__tooltip {
+/* Base de Tooltips */
+.fab-ai__tooltip,
+.fab-chat__tooltip {
     position: absolute;
-    right: 75px;
     background-color: #333;
     color: white;
     padding: 8px 12px;
@@ -4377,17 +4406,23 @@ details.faq-item .faq-item__toggle-icon {
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(10px);
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     pointer-events: none;
+    user-select: none;
+}
+
+/* Tooltip AI (Ubicado a la izquierda del botón derecho) */
+.fab-ai__tooltip {
+    right: 75px;
+    transform: translateX(10px);
 }
 
 .fab-ai__tooltip::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 100%;
+    left: 100%; /* La flecha va a la derecha del tooltip */
     transform: translateY(-50%);
     border-width: 6px;
     border-style: solid;
@@ -4395,6 +4430,29 @@ details.faq-item .faq-item__toggle-icon {
 }
 
 .fab-ai:hover .fab-ai__tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Tooltip CHAT (Ubicado a la derecha del botón izquierdo) */
+.fab-chat__tooltip {
+    left: 75px;
+    transform: translateX(-10px);
+}
+
+.fab-chat__tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%; /* La flecha va a la izquierda del tooltip */
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #333 transparent transparent; /* Apunta a la izquierda */
+}
+
+.fab-chat:hover .fab-chat__tooltip {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
