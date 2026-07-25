@@ -1,0 +1,165 @@
+// =============================================================================
+// _tokens.scss — Design System UNP v1.0.0
+// Fuente única de verdad para todos los custom properties del proyecto.
+// NUNCA hardcodear colores, radios, espaciados o sombras fuera de este archivo.
+// =============================================================================
+
+:root {
+  // ── COLOR: Primarios ────────────────────────────────────────────────────────
+  --color-primary:         #3366CC;
+  --color-primary-dark:    #2851A3;
+  --color-primary-light:   #E7F1FF;
+  --color-primary-muted:   rgba(51, 102, 204, 0.12);
+
+  // ── COLOR: Acento (naranja GOV.CO — solo énfasis decorativo, no CTAs) ───────
+  --color-accent:          #FF6B35;
+  --color-accent-dark:     #E55A2B;
+  --color-accent-light:    rgba(255, 107, 53, 0.12);
+
+  // ── COLOR: Texto ────────────────────────────────────────────────────────────
+  --color-text-primary:    #102A43;
+  --color-text-secondary:  #4B5563;
+  --color-text-muted:      #6B7280;
+  --color-text-disabled:   #9CA3AF;
+  --color-text-inverse:    #FFFFFF;
+  --color-text-link:       #3366CC;
+
+  // ── COLOR: Superficies / Fondos ─────────────────────────────────────────────
+  --color-surface-base:    #FFFFFF;
+  --color-surface-muted:   #F7F9FC;
+  --color-surface-subtle:  #F1F5F9;
+  --color-surface-card:    #FFFFFF;
+  --color-surface-overlay: rgba(0, 0, 0, 0.4);
+
+  // ── COLOR: Bordes ────────────────────────────────────────────────────────────
+  --color-border:          #DFE7F3;
+  --color-border-strong:   #C4CDD8;
+  --color-border-focus:    #3366CC;
+
+  // ── COLOR: Estado semántico ──────────────────────────────────────────────────
+  --color-success:         #17633A;
+  --color-success-bg:      #E7F7ED;
+  --color-warning:         #92400E;
+  --color-warning-bg:      #FEF3C7;
+  --color-error:           #DC3545;
+  --color-error-bg:        #FEE2E2;
+  --color-info:            #0057A3;
+  --color-info-bg:         #EDF5FF;
+
+  // ── COLOR: GOV.CO institucional (solo header gov-bar y footer decorativo) ───
+  --color-govco-bar:       #003366;
+
+  // ── TIPOGRAFÍA ───────────────────────────────────────────────────────────────
+  --font-family-base:      'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-normal:    400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+  --line-height-tight:     1.15;
+  --line-height-snug:      1.35;
+  --line-height-normal:    1.6;
+  --line-height-relaxed:   1.75;
+
+  // ── ESPACIADO (base 4px) ─────────────────────────────────────────────────────
+  --space-1:  0.25rem;  //  4px
+  --space-2:  0.5rem;   //  8px
+  --space-3:  0.75rem;  // 12px
+  --space-4:  1rem;     // 16px
+  --space-5:  1.25rem;  // 20px
+  --space-6:  1.5rem;   // 24px
+  --space-7:  2rem;     // 32px
+  --space-8:  3rem;     // 48px
+  --space-9:  4rem;     // 64px
+  --space-10: 6rem;     // 96px
+
+  // ── LAYOUT ───────────────────────────────────────────────────────────────────
+  --container-max:     1200px;
+  --container-padding: clamp(1rem, 3vw, 2rem);
+
+  // ── GEOMETRÍA: Border-radius ─────────────────────────────────────────────────
+  --radius-xs:     4px;
+  --radius-sm:     8px;
+  --radius-md:     12px;
+  --radius-lg:     18px;
+  --radius-xl:     24px;
+  --radius-pill:   999px;
+  --radius-circle: 50%;
+
+  // ── SOMBRAS / ELEVACIÓN ──────────────────────────────────────────────────────
+  --shadow-xs:    0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-focus: 0 0 0 3px rgba(51, 102, 204, 0.35);
+
+  // ── TRANSICIONES ─────────────────────────────────────────────────────────────
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-enter:  400ms cubic-bezier(0, 0, 0.2, 1);
+
+  // ── COMPATIBILIDAD: aliases legacy (evitan romper código existente de main.css)
+  --primary-color:        var(--color-primary);
+  --primary-dark:         var(--color-primary-dark);
+  --primary-light:        var(--color-primary-light);
+  --text-primary:         var(--color-text-primary);
+  --text-secondary:       var(--color-text-secondary);
+  --border-color:         var(--color-border);
+  --background-light:     var(--color-surface-muted);
+  --white:                var(--color-surface-base);
+  --border-radius-sm:     var(--radius-xs);
+  --border-radius-md:     var(--radius-sm);
+  --border-radius-lg:     var(--radius-md);
+  --shadow-sm:            var(--shadow-sm);
+  --shadow-md:            var(--shadow-md);
+  --shadow-lg:            var(--shadow-lg);
+  --transition-smooth:    var(--transition-smooth);
+}
+
+// =============================================================================
+// DARK MODE — override de tokens de color únicamente.
+// Los componentes que usen var(--color-*) heredan el modo oscuro de forma
+// automática sin necesidad de reglas adicionales.
+// =============================================================================
+body.modo_oscuro-govco {
+  color-scheme: dark;
+
+  --color-primary:         #68A1FF;
+  --color-primary-dark:    #4A85F0;
+  --color-primary-light:   rgba(104, 161, 255, 0.18);
+  --color-primary-muted:   rgba(104, 161, 255, 0.12);
+  --color-accent:          #FF8B53;
+  --color-accent-dark:     #FF6B35;
+
+  --color-text-primary:    #F5F7FA;
+  --color-text-secondary:  #D4DBE7;
+  --color-text-muted:      #8A97AA;
+  --color-text-disabled:   #5A6475;
+  --color-text-link:       #68A1FF;
+
+  --color-surface-base:    #1B2430;
+  --color-surface-muted:   #232D3B;
+  --color-surface-subtle:  #293445;
+  --color-surface-card:    #232D3B;
+
+  --color-border:          #3B4757;
+  --color-border-strong:   #4A5568;
+  --color-border-focus:    #68A1FF;
+
+  --shadow-focus:          0 0 0 3px rgba(104, 161, 255, 0.4);
+
+  // aliases legacy en dark mode
+  --primary-color:         var(--color-primary);
+  --primary-dark:          var(--color-primary-dark);
+  --text-primary:          var(--color-text-primary);
+  --text-secondary:        var(--color-text-secondary);
+
+  // dark aliases específicos (compatibilidad con componentes no migrados aún)
+  --dark-bg-primary:       var(--color-surface-base);
+  --dark-bg-secondary:     var(--color-surface-card);
+  --dark-text-primary:     var(--color-text-primary);
+  --dark-text-secondary:   var(--color-text-secondary);
+  --dark-border:           var(--color-border);
+  --dark-header-bg:        var(--color-surface-card);
+}

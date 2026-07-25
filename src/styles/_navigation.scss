@@ -1,0 +1,90 @@
+// =============================================================================
+// _navigation.scss — Design System UNP v1.0.0
+// Breadcrumbs, Tabs y estilos de navegación global.
+// =============================================================================
+
+// ── Breadcrumb ─────────────────────────────────────────────────────────────────
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+
+  &__link {
+    color: var(--color-text-link);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    transition: color var(--transition-fast);
+
+    &:hover { color: var(--color-primary-dark); }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+      border-radius: var(--radius-xs);
+    }
+  }
+
+  &__current {
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+  }
+
+  // Separador via CSS (no requiere elemento adicional en el DOM)
+  &__link + &__link::before,
+  &__link + &__current::before {
+    content: '/';
+    margin-right: var(--space-2);
+    color: var(--color-border-strong);
+  }
+}
+
+// ── Tabs ───────────────────────────────────────────────────────────────────────
+.tabs {
+  &__list {
+    display: flex;
+    border-bottom: 2px solid var(--color-border);
+    gap: var(--space-1);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-7);
+    overflow-x: auto;
+  }
+
+  &__trigger {
+    padding: var(--space-4) var(--space-5);
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast);
+    white-space: nowrap;
+
+    &:hover { color: var(--color-text-primary); }
+
+    &[aria-selected="true"] {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+      border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+    }
+  }
+
+  &__panel { padding: var(--space-7) 0; }
+}

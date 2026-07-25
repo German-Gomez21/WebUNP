@@ -1,0 +1,116 @@
+// =============================================================================
+// _forms.scss — Design System UNP v1.0.0
+// Sistema de campos de formulario con 5 estados accesibles.
+// AP-05: :focus-visible con var(--shadow-focus) obligatorio.
+// =============================================================================
+
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+  // AP-04: sin margin propio
+  margin: 0;
+
+  &__label {
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  &__required {
+    color: var(--color-error);
+    margin-left: var(--space-1);
+  }
+
+  &__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--color-surface-base);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    &:focus-within {
+      border-color: var(--color-border-focus);
+      border-width: 2px;
+      box-shadow: var(--shadow-focus);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: var(--space-4);
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    width: 100%;
+    padding: var(--space-5) var(--space-4);
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    background: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+
+    &::placeholder { color: var(--color-text-disabled); }
+  }
+
+  // Con icono izquierdo
+  &--has-icon &__input,
+  &--has-icon &__select {
+    padding-left: calc(var(--space-4) + 1.1rem + var(--space-3));
+  }
+
+  &__hint {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: var(--line-height-normal);
+  }
+
+  &__error {
+    font-size: 0.8rem;
+    color: var(--color-error);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+    display: none;
+    line-height: var(--line-height-normal);
+  }
+
+  // ── ESTADO: Error ───────────────────────────────────────────────────────────
+  &--error &__control {
+    border-color: var(--color-error);
+    border-width: 2px;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+  }
+  &--error &__error { display: block; }
+  &--error &__hint  { display: none; }
+
+  // ── ESTADO: Deshabilitado ───────────────────────────────────────────────────
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &--disabled &__control { background: var(--color-surface-subtle); }
+}
+
+// ── Select ─────────────────────────────────────────────────────────────────────
+.form-field__control--select::after {
+  content: 'expand_more';
+  font-family: 'Material Icons';
+  position: absolute;
+  right: var(--space-4);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,67 @@
+// =============================================================================
+// _cards.scss — Design System UNP v1.0.0
+// Sistema de tarjetas con 5 variantes. Regla de anidación: máx 3 niveles.
+// AP-04: sin margin propio en .card.
+// =============================================================================
+
+.card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  // AP-04: sin margin propio
+  margin: 0;
+
+  &__header {
+    padding: var(--space-6) var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-snug);
+  }
+
+  &__body {
+    padding: var(--space-5) var(--space-6);
+    flex: 1;
+  }
+
+  &__description {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+  }
+
+  &__footer {
+    padding: var(--space-4) var(--space-6) var(--space-6);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  // Hover solo en cards interactivas (añadir clase .card--interactive)
+  &--interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  // ── VARIANTES ──────────────────────────────────────────────────────────────
+  &--hero    { border-radius: var(--radius-lg);  box-shadow: var(--shadow-lg); }
+  &--stat    { border-radius: var(--radius-lg);  box-shadow: var(--shadow-md); }
+  &--feature { border-radius: var(--radius-xl);  box-shadow: var(--shadow-md); }
+  &--flat    { border-radius: var(--radius-xs);  box-shadow: none; }
+}

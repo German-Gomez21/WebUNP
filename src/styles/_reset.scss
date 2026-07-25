@@ -1,0 +1,63 @@
+// =============================================================================
+// _reset.scss — Design System UNP v1.0.0
+// Reset mínimo. Preserva los estilos de main.css (GOV.CO) sin duplicar.
+// =============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  // Color base de toda la página — los héroes oscuros lo sobreescriben con
+  // color: var(--color-text-inverse) en su propio bloque, los headings heredan.
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font-family-base);
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+// Focus accesible global — AP-05
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-xs);
+}
+
+// Suprimir focus de ratón (solo teclado)
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+}

@@ -1,0 +1,66 @@
+// =============================================================================
+// _layout.scss — Design System UNP v1.0.0
+// Definición ÚNICA y GLOBAL del contenedor y las secciones de layout.
+// AP-06: PROHIBIDO redefinir .container en SCSS de componentes individuales.
+// =============================================================================
+
+// ── Contenedor ────────────────────────────────────────────────────────────────
+.container {
+  width: min(var(--container-max), calc(100% - var(--container-padding) * 2));
+  margin-inline: auto;
+}
+
+// ── Sección genérica ─────────────────────────────────────────────────────────
+.section {
+  padding: var(--space-10) 0;
+
+  &--gray  { background-color: var(--color-surface-muted); }
+  &--white { background-color: var(--color-surface-base); }
+
+  // Gradiente institucional azul (hero de secciones especiales)
+  &--blue {
+    // Excepción documentada: gradiente de marca sin token equivalente
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-text-inverse);
+  }
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-9);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-5);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.section__subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: var(--line-height-relaxed);
+}
+
+.section__header--white {
+  .section__title    { color: var(--color-text-inverse); }
+  .section__subtitle { color: rgba(255, 255, 255, 0.9); }
+}
+
+@media (max-width: 768px) {
+  .section         { padding: var(--space-8) 0; }
+  .section__header { margin-bottom: var(--space-7); }
+}
+
+@media (max-width: 480px) {
+  .section         { padding: var(--space-7) 0; }
+  .section__header { margin-bottom: var(--space-6); }
+}

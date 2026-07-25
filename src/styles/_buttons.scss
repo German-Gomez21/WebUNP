@@ -1,0 +1,144 @@
+// =============================================================================
+// _buttons.scss — Design System UNP v1.0.0
+// Sistema unificado de botones. Reemplaza las 3 implementaciones ad-hoc
+// detectadas en la auditoría (pqrsd, tramites, quienes-somos).
+// AP-03: máximo 1 btn--primary por sección.
+// AP-04: sin margin externo en .btn — el layout contenedor gestiona el gap.
+// AP-05: :focus-visible obligatorio con var(--shadow-focus).
+// =============================================================================
+
+.btn {
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  // Tipografía
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  // Geometría
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  // Transición
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+  cursor: pointer;
+  // AP-04: sin margin propio
+  margin: 0;
+
+  // Focus accesible — AP-05
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  // Estado active
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-xs);
+  }
+
+  // Estado disabled
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // ── VARIANTES ──────────────────────────────────────────────────────────────
+
+  &--primary {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: var(--color-surface-subtle);
+      color: var(--color-text-primary);
+    }
+  }
+
+  &--danger {
+    background: var(--color-error);
+    color: var(--color-text-inverse);
+    border-color: var(--color-error);
+
+    &:hover:not(:disabled) {
+      background: #b91c1c;
+      border-color: #b91c1c;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  // Uso exclusivo sobre fondos de gradiente oscuro (héroes azules/navales)
+  &--white {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-primary);
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background: var(--color-surface-base);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+  }
+
+  // ── TAMAÑOS ────────────────────────────────────────────────────────────────
+
+  &--lg {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+  }
+
+  &--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: var(--radius-sm);
+  }
+
+  // ── ICONO ──────────────────────────────────────────────────────────────────
+
+  &__icon {
+    font-size: 1.1em;
+    flex-shrink: 0;
+
+    &--left  { margin-right: calc(var(--space-1) * -0.5); }
+    &--right { margin-left:  calc(var(--space-1) * -0.5); }
+  }
+}
