@@ -16,14 +16,14 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+  background: linear-gradient(90deg, var(--color-accent) 0%, #F7931E 50%, var(--color-accent) 100%);
 }
 
 /* Contenedor de caja blanca con efecto de desborde DRAMÁTICO */
 .footer__card-container {
-  background: #ffffff;
-  color: #000000;
-  border-radius: 12px;
+  background: var(--color-surface-card);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
   margin: -60px 30px 0;
   padding: 60px 40px 0;
   box-shadow: 

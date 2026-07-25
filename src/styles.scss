@@ -1,9 +1,17 @@
 /* Global styles for UNP Application */
-/* This file ensures compatibility with existing CSS structure */
-/* Updated: Fixed CSS duplication issue + Dark Mode Implementation */
+/* Design System UNP v1.0 — ITCSS + legacy main.css coexistence */
 
-/* Import existing main CSS */
+@use 'styles/tokens';
 @import 'assets/css/main.css';
+@import 'styles/reset';
+@import 'styles/typography';
+@import 'styles/layout';
+@import 'styles/buttons';
+@import 'styles/forms';
+@import 'styles/cards';
+@import 'styles/badges';
+@import 'styles/alerts';
+@import 'styles/navigation';
 
 /* Light mode explicit overrides for footer (Fix for white text issue) */
 body.modo_claro-govco .footer__card-container,
@@ -32,40 +40,10 @@ body.modo_claro-govco .footer__contact-item .material-icons {
   color: #FF6B35 !important;
 }
 
-/* Dark Mode CSS Variables */
-:root {
-  --dark-bg-primary: #333333;
-  --dark-bg-secondary: #2a2a2a;
-  --dark-text-primary: #ffffff;
-  --dark-text-secondary: #e0e0e0;
-  --dark-border: #555555;
-  --dark-header-bg: #2a2a2a;
-  --dark-section-gray: #2a2a2a;
-  --surface-bg: #f7f9fc;
-  --surface-card: #ffffff;
-  --surface-muted: #eef4ff;
-  --surface-border: #dfe7f3;
-  --text-primary: #102a43;
-  --text-secondary: #4b5563;
-  --accent: #3366CC;
-}
-
-/* Dark Mode Base Styles */
+/* Dark Mode Base Styles (theme engine — body class toggled by accessibility bar) */
 body.modo_oscuro-govco {
-  color-scheme: dark;
   background-color: var(--dark-bg-primary) !important;
   color: var(--dark-text-primary) !important;
-  --surface-bg: #1b2430;
-  --surface-card: #232d3b;
-  --surface-muted: #293445;
-  --surface-border: #3b4757;
-  --text-primary: #f5f7fa;
-  --text-secondary: #d4dbe7;
-  --accent: #68a1ff;
-}
-
-body.modo_claro-govco {
-  color-scheme: light;
 }
 
 body.modo_oscuro-govco,
@@ -1831,21 +1809,6 @@ router-outlet+* {
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-/* Ensure proper spacing for Angular components */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Responsive utilities */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 10px;
   }
 }
 

@@ -29,7 +29,7 @@
 *:focus-visible {
   outline: 3px solid #ffcc00 !important; /* GOV.CO standard yellow focus indicator */
   outline-offset: 2px !important;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Ensure service cards are fully uniform in this view */
@@ -53,7 +53,7 @@
 .service-card__icon {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,21 +92,21 @@
 
 .linea-page__hero {
   background: linear-gradient(135deg, #0f2c47 0%, #1f4b73 100%);
-  color: #fff;
-  padding: 3rem 0 4rem;
+  color: var(--color-text-inverse);
+  padding: var(--space-8) 0 var(--space-9);
 }
 
 .eyebrow {
-  font-size: 0.8rem;
+  font-size: var(--type-caption);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 700;
-  color: #ff7a1a;
-  margin-bottom: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
 }
 
 body.modo_oscuro-govco .eyebrow {
-  color: #ffb074;
+  color: var(--color-accent);
 }
 
 .breadcrumb {

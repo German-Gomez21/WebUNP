@@ -119,6 +119,29 @@
     }
   }
 
+  &--outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  // Icon-only — cuadrado compacto
+  &--icon {
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+
+    .btn__label { display: none; }
+  }
+
   // ── TAMAÑOS ────────────────────────────────────────────────────────────────
 
   &--lg {

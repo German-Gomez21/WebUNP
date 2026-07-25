@@ -1,4 +1,7 @@
-.container {
-  padding: 20px;
+:host {
+  display: block;
+  background: var(--color-surface-muted);
+  color: var(--color-text-primary);
   text-align: center;
+  padding: var(--space-8) 0;
 }

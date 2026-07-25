@@ -11,7 +11,7 @@
   --color-primary-light:   #E7F1FF;
   --color-primary-muted:   rgba(51, 102, 204, 0.12);
 
-  // ── COLOR: Acento (naranja GOV.CO — solo énfasis decorativo, no CTAs) ───────
+  // ── COLOR: Acento (naranja GOV.CO — énfasis decorativo, filtros activos) ────
   --color-accent:          #FF6B35;
   --color-accent-dark:     #E55A2B;
   --color-accent-light:    rgba(255, 107, 53, 0.12);
@@ -46,8 +46,21 @@
   --color-info:            #0057A3;
   --color-info-bg:         #EDF5FF;
 
-  // ── COLOR: GOV.CO institucional (solo header gov-bar y footer decorativo) ───
+  // ── COLOR: GOV.CO institucional ─────────────────────────────────────────────
   --color-govco-bar:       #003366;
+  --color-govco-blue:      #004884;
+
+  // ── SEMANTIC ALIASES (consumo preferido en componentes nuevos) ───────────────
+  --bg-background:         var(--color-surface-base);
+  --bg-muted:              var(--color-surface-muted);
+  --text-foreground:       var(--color-text-primary);
+  --primary:               var(--color-primary);
+  --secondary:             var(--color-text-secondary);
+  --muted:                 var(--color-text-muted);
+  --accent:                var(--color-accent);
+  --border-subtle:         var(--color-border);
+  --border-default:        var(--color-border-strong);
+  --border-active:         var(--color-border-focus);
 
   // ── TIPOGRAFÍA ───────────────────────────────────────────────────────────────
   --font-family-base:      'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -61,7 +74,19 @@
   --line-height-normal:    1.6;
   --line-height-relaxed:   1.75;
 
-  // ── ESPACIADO (base 4px) ─────────────────────────────────────────────────────
+  // Escala tipográfica fluida
+  --type-display-xl:       clamp(2.5rem, 5vw, 3.5rem);
+  --type-display-lg:       clamp(2rem, 4vw, 3.2rem);
+  --type-display-sm:       clamp(1.5rem, 2.5vw, 2rem);
+  --type-heading-lg:       clamp(1.2rem, 2vw, 1.5rem);
+  --type-heading-sm:       1.1rem;
+  --type-body-lg:          1.05rem;
+  --type-body:             1rem;
+  --type-body-sm:          0.95rem;
+  --type-caption:          0.8rem;
+  --type-tag:              0.78rem;
+
+  // ── ESPACIADO (base 4px / grid simétrico 4-8-12-16-24-32-48-64) ─────────────
   --space-1:  0.25rem;  //  4px
   --space-2:  0.5rem;   //  8px
   --space-3:  0.75rem;  // 12px
@@ -77,13 +102,14 @@
   --container-max:     1200px;
   --container-padding: clamp(1rem, 3vw, 2rem);
 
-  // ── GEOMETRÍA: Border-radius ─────────────────────────────────────────────────
+  // ── GEOMETRÍA: Border-radius (escala unificada) ─────────────────────────────
   --radius-xs:     4px;
-  --radius-sm:     8px;
-  --radius-md:     12px;
-  --radius-lg:     18px;
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     16px;
   --radius-xl:     24px;
-  --radius-pill:   999px;
+  --radius-pill:   9999px;
+  --radius-full:   9999px;
   --radius-circle: 50%;
 
   // ── SOMBRAS / ELEVACIÓN ──────────────────────────────────────────────────────
@@ -99,7 +125,7 @@
   --transition-smooth: 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-enter:  400ms cubic-bezier(0, 0, 0.2, 1);
 
-  // ── COMPATIBILIDAD: aliases legacy (evitan romper código existente de main.css)
+  // ── COMPATIBILIDAD: aliases legacy (main.css + componentes existentes) ───────
   --primary-color:        var(--color-primary);
   --primary-dark:         var(--color-primary-dark);
   --primary-light:        var(--color-primary-light);
@@ -108,19 +134,27 @@
   --border-color:         var(--color-border);
   --background-light:     var(--color-surface-muted);
   --white:                var(--color-surface-base);
+  --surface-bg:           var(--color-surface-muted);
+  --surface-card:         var(--color-surface-card);
+  --surface-muted:        #EEF4FF;
+  --surface-border:       var(--color-border);
   --border-radius-sm:     var(--radius-xs);
   --border-radius-md:     var(--radius-sm);
   --border-radius-lg:     var(--radius-md);
-  --shadow-sm:            var(--shadow-sm);
-  --shadow-md:            var(--shadow-md);
-  --shadow-lg:            var(--shadow-lg);
-  --transition-smooth:    var(--transition-smooth);
+
+  // dark aliases (light defaults — sobreescritos en modo oscuro)
+  --dark-bg-primary:       var(--color-surface-base);
+  --dark-bg-secondary:     var(--color-surface-card);
+  --dark-text-primary:     var(--color-text-primary);
+  --dark-text-secondary:   var(--color-text-secondary);
+  --dark-border:           var(--color-border);
+  --dark-header-bg:        var(--color-surface-card);
+  --dark-section-gray:     var(--color-surface-muted);
 }
 
 // =============================================================================
 // DARK MODE — override de tokens de color únicamente.
-// Los componentes que usen var(--color-*) heredan el modo oscuro de forma
-// automática sin necesidad de reglas adicionales.
+// Los componentes que usen var(--color-*) heredan el modo oscuro automáticamente.
 // =============================================================================
 body.modo_oscuro-govco {
   color-scheme: dark;
@@ -149,17 +183,37 @@ body.modo_oscuro-govco {
 
   --shadow-focus:          0 0 0 3px rgba(104, 161, 255, 0.4);
 
-  // aliases legacy en dark mode
+  // semantic aliases
+  --bg-background:         var(--color-surface-base);
+  --bg-muted:              var(--color-surface-muted);
+  --text-foreground:       var(--color-text-primary);
+  --primary:               var(--color-primary);
+  --secondary:             var(--color-text-secondary);
+  --muted:                 var(--color-text-muted);
+  --accent:                var(--color-accent);
+  --border-subtle:         var(--color-border);
+  --border-default:        var(--color-border-strong);
+  --border-active:         var(--color-border-focus);
+
+  // legacy aliases
   --primary-color:         var(--color-primary);
   --primary-dark:          var(--color-primary-dark);
   --text-primary:          var(--color-text-primary);
   --text-secondary:        var(--color-text-secondary);
+  --surface-bg:            var(--color-surface-base);
+  --surface-card:          var(--color-surface-card);
+  --surface-muted:         var(--color-surface-subtle);
+  --surface-border:        var(--color-border);
 
-  // dark aliases específicos (compatibilidad con componentes no migrados aún)
   --dark-bg-primary:       var(--color-surface-base);
   --dark-bg-secondary:     var(--color-surface-card);
   --dark-text-primary:     var(--color-text-primary);
   --dark-text-secondary:   var(--color-text-secondary);
   --dark-border:           var(--color-border);
   --dark-header-bg:        var(--color-surface-card);
+  --dark-section-gray:     var(--color-surface-muted);
+}
+
+body.modo_claro-govco {
+  color-scheme: light;
 }

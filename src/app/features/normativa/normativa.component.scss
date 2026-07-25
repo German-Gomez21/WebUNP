@@ -1,119 +1,121 @@
 .normativa-page {
-  background: #f4f7fb;
+  background: var(--color-surface-muted);
   min-height: 100vh;
 }
 
 .normativa-hero {
   background: linear-gradient(135deg, #003b6d 0%, #0a4f87 100%);
-  color: #fff;
-  padding: 56px 0 72px;
+  color: var(--color-text-inverse);
+  padding: var(--space-8) 0 var(--space-9);
 }
 
 .normativa-breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: 14px;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  font-size: var(--type-body-sm);
 
   a {
-    color: #fff;
+    color: var(--color-text-inverse);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 
   .material-icons {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 .normativa-eyebrow {
   display: inline-flex;
-  margin-bottom: 14px;
-  font-size: 0.78rem;
+  margin-bottom: var(--space-3);
+  font-size: var(--type-tag);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 800;
-  color: #cedfff;
+  font-weight: var(--font-weight-extrabold);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .normativa-hero__title {
-  margin: 0 0 12px;
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin: 0 0 var(--space-3);
+  font-size: var(--type-display-lg);
 }
 
 .normativa-hero__subtitle {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-  font-weight: 700;
+  margin: 0 0 var(--space-3);
+  font-size: var(--type-heading-sm);
+  font-weight: var(--font-weight-bold);
 }
 
 .normativa-hero__description {
   max-width: 760px;
   margin: 0;
-  color: #e4efff;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: var(--line-height-relaxed);
 }
 
 .normativa-hero__content {
   display: grid;
   grid-template-columns: 1.75fr 1fr;
-  gap: 24px;
+  gap: var(--space-6);
   align-items: end;
 }
 
 .normativa-hero__stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .normativa-stat-card,
 .normativa-card {
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 14px 36px rgba(7, 24, 57, 0.12);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-card);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
 }
 
 .normativa-stat-card {
-  padding: 22px;
-  color: #003b6d;
+  padding: var(--space-5);
+  color: var(--color-govco-blue);
 
   &__value {
     display: block;
     font-size: 1.9rem;
-    font-weight: 800;
-    margin-bottom: 8px;
+    font-weight: var(--font-weight-extrabold);
+    margin-bottom: var(--space-2);
   }
 
   &__label {
-    color: #56637a;
-    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    font-size: var(--type-body-sm);
   }
 }
 
 .normativa-main {
-  margin-top: -36px;
-  padding-bottom: 64px;
+  margin-top: calc(var(--space-8) * -1);
+  padding-bottom: var(--space-9);
 }
 
 .normativa-toolbox {
   display: grid;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .normativa-search {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 14px 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  gap: var(--space-3);
+  background: var(--color-surface-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
 
   .material-icons {
-    color: #66758c;
+    color: var(--color-text-muted);
   }
 
   input {
@@ -121,8 +123,8 @@
     border: 0;
     outline: 0;
     background: transparent;
-    font-size: 1rem;
-    color: #102a43;
+    font-size: var(--type-body);
+    color: var(--color-text-primary);
   }
 }
 
@@ -130,68 +132,73 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
   align-items: end;
-  gap: 14px;
+  gap: var(--space-3);
 }
 
 .normativa-filter-group {
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
 
   label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #32445d;
+    font-size: var(--type-body-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
   }
 
   select {
     width: 100%;
-    border-radius: 10px;
-    border: 1px solid #d7e0ee;
-    padding: 10px 12px;
-    background: #fff;
-    color: #102a43;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    padding: var(--space-3);
+    background: var(--color-surface-card);
+    color: var(--color-text-primary);
   }
 }
 
 .normativa-reset {
   border: 0;
-  border-radius: 10px;
-  background: #ff6b35;
-  color: #fff;
-  padding: 11px 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  padding: var(--space-3) var(--space-4);
   cursor: pointer;
-  font-weight: 800;
+  font-weight: var(--font-weight-extrabold);
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background: var(--color-accent-dark);
+  }
 }
 
 .normativa-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .normativa-card {
-  padding: 24px;
+  padding: var(--space-6);
 }
 
 .normativa-card__header {
-  margin-bottom: 18px;
+  margin-bottom: var(--space-4);
 
   h2 {
-    margin: 10px 0 0;
-    color: #0d2e4f;
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-primary);
   }
 }
 
 .normativa-chip {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #edf5ff;
-  color: #0057a3;
-  font-size: 0.76rem;
-  font-weight: 800;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  font-size: var(--type-tag);
+  font-weight: var(--font-weight-extrabold);
   text-transform: uppercase;
 }
 
@@ -199,30 +206,30 @@
 .normativa-results-grid,
 .normativa-resource-list {
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .normativa-feature-item,
 .normativa-result-card,
 .normativa-resource-item {
-  border: 1px solid #e0e8f4;
-  border-radius: 14px;
-  background: #fbfdff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-card);
 }
 
 .normativa-feature-item,
 .normativa-result-card {
-  padding: 18px;
+  padding: var(--space-4);
 
   h3 {
-    margin: 12px 0 8px;
-    color: #0d2e4f;
+    margin: var(--space-3) 0 var(--space-2);
+    color: var(--color-text-primary);
   }
 
   p {
-    margin: 0 0 12px;
-    color: #59657b;
-    line-height: 1.6;
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
   }
 }
 
@@ -230,107 +237,107 @@
 .normativa-result-card__top {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .normativa-pill,
 .normativa-tag {
   display: inline-flex;
   align-items: center;
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 0.74rem;
-  font-weight: 800;
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--type-tag);
+  font-weight: var(--font-weight-extrabold);
   text-transform: uppercase;
 }
 
 .normativa-pill {
-  background: #ecf4ff;
-  color: #0057a3;
+  background: var(--color-info-bg);
+  color: var(--color-info);
 }
 
 .normativa-pill--ghost,
 .normativa-tag {
-  background: #f2f5fa;
-  color: #556278;
+  background: var(--color-surface-subtle);
+  color: var(--color-text-muted);
 }
 
 .normativa-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
 
   span {
-    font-size: 0.78rem;
-    color: #59657b;
+    font-size: var(--type-tag);
+    color: var(--color-text-secondary);
   }
 }
 
 .normativa-actions {
   display: flex;
-  gap: 14px;
+  gap: var(--space-3);
 }
 
 .normativa-link {
-  color: #0057a3;
-  font-weight: 800;
+  color: var(--color-info);
+  font-weight: var(--font-weight-extrabold);
   text-decoration: none;
 }
 
 .normativa-result-card__meta {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0 0 14px;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
 
   div {
-    padding: 10px;
-    background: #f6f9fd;
-    border-radius: 10px;
+    padding: var(--space-3);
+    background: var(--color-surface-muted);
+    border-radius: var(--radius-md);
   }
 
   dt {
-    font-size: 0.74rem;
-    font-weight: 800;
+    font-size: var(--type-tag);
+    font-weight: var(--font-weight-extrabold);
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #51627a;
-    margin-bottom: 6px;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
   }
 
   dd {
     margin: 0;
-    color: #102a43;
-    font-weight: 700;
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
   }
 }
 
 .normativa-tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .normativa-resource-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
   color: inherit;
   text-decoration: none;
 
   .material-icons {
-    color: #ff6b35;
+    color: var(--color-accent);
   }
 }
 
 .normativa-empty-state {
   display: grid;
   place-items: center;
-  padding: 30px 12px;
+  padding: var(--space-7) var(--space-3);
   text-align: center;
-  color: #59657b;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 1024px) {
@@ -341,7 +348,7 @@
   }
 
   .normativa-main {
-    margin-top: -12px;
+    margin-top: calc(var(--space-3) * -1);
   }
 }
 
