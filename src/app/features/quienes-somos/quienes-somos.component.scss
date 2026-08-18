@@ -258,8 +258,8 @@
 }
 
 body.modo_oscuro-govco .about-page {
-  background: linear-gradient(180deg, #1e1e1e 0%, #2a2a2a 100%);
-  color: var(--dark-text-primary);
+  background: linear-gradient(180deg, var(--color-surface-muted) 0%, var(--color-surface-base) 100%);
+  color: var(--color-text-primary);
 }
 
 body.modo_oscuro-govco .about-page__hero,
@@ -270,34 +270,34 @@ body.modo_oscuro-govco .about-page__function-card,
 body.modo_oscuro-govco .about-page__symbol-card,
 body.modo_oscuro-govco .about-page__org-node,
 body.modo_oscuro-govco .about-page__visual-card {
-  background: var(--dark-bg-secondary) !important;
-  border-color: var(--dark-border) !important;
-  color: var(--dark-text-primary) !important;
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+  background: var(--color-surface-card) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+  box-shadow: var(--shadow-sm);
 }
 
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card {
-  background: linear-gradient(180deg, #323232 0%, #262626 100%) !important;
-  border-color: var(--dark-border) !important;
+  background: var(--color-surface-subtle) !important;
+  border-color: var(--color-border) !important;
 }
 
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card h3,
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card p,
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card span,
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card .material-icons {
-  color: var(--dark-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 body.modo_oscuro-govco .about-page__function-grid .about-page__function-card p {
-  color: var(--dark-text-secondary) !important;
+  color: var(--color-text-secondary) !important;
 }
 
 body.modo_oscuro-govco .about-page__hero {
-  background: linear-gradient(135deg, rgba(22, 37, 67, 0.92), rgba(47, 47, 47, 0.94));
+  background: var(--color-surface-card);
 }
 
 body.modo_oscuro-govco .about-page__breadcrumb-link + .about-page__breadcrumb-link::before {
-  color: var(--dark-text-secondary) !important;
+  color: var(--color-text-secondary) !important;
 }
 
 body.modo_oscuro-govco .about-page__title,
@@ -308,7 +308,7 @@ body.modo_oscuro-govco .about-page__card h3,
 body.modo_oscuro-govco .about-page__function-card h3,
 body.modo_oscuro-govco .about-page__symbol-card h3,
 body.modo_oscuro-govco .about-page__org-node h3 {
-  color: var(--dark-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 body.modo_oscuro-govco .about-page__intro,
@@ -320,7 +320,7 @@ body.modo_oscuro-govco .about-page__function-card p,
 body.modo_oscuro-govco .about-page__symbol-card p,
 body.modo_oscuro-govco .about-page__org-node p,
 body.modo_oscuro-govco .about-page__symbol-card span {
-  color: var(--dark-text-secondary) !important;
+  color: var(--color-text-secondary) !important;
 }
 
 body.modo_oscuro-govco .about-page__eyebrow,
@@ -331,33 +331,36 @@ body.modo_oscuro-govco .about-page__symbol-badge,
 body.modo_oscuro-govco .about-page__org-level,
 body.modo_oscuro-govco .about-page__primary-link,
 body.modo_oscuro-govco .about-page__secondary-link {
-  color: var(--dark-text-primary) !important;
+  color: var(--color-text-primary) !important;
 }
 
 body.modo_oscuro-govco .about-page__primary-link {
-  background: #1f5fd4;
+  background: var(--color-primary);
+  color: var(--color-text-inverse) !important;
 }
 
 body.modo_oscuro-govco .about-page__secondary-link {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--dark-border);
+  background: var(--color-primary-muted);
+  border-color: var(--color-border);
+  color: var(--color-primary) !important;
 }
 
 body.modo_oscuro-govco .about-page__card-icon,
 body.modo_oscuro-govco .about-page__function-icon,
 body.modo_oscuro-govco .about-page__symbol-badge {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-primary-muted);
+  color: var(--color-primary) !important;
 }
 
 body.modo_oscuro-govco .about-page__visual-card svg rect:first-of-type {
-  fill: #2f2f2f;
+  fill: var(--color-surface-muted);
 }
 
 body.modo_oscuro-govco .about-page__visual-card svg rect:nth-of-type(2),
 body.modo_oscuro-govco .about-page__visual-card svg rect:nth-of-type(3),
 body.modo_oscuro-govco .about-page__visual-card svg rect:nth-of-type(4),
 body.modo_oscuro-govco .about-page__visual-card svg rect:nth-of-type(5) {
-  fill: #4a78d8;
+  fill: var(--color-primary);
 }
 
 body.modo_oscuro-govco .about-page__visual-card svg path,

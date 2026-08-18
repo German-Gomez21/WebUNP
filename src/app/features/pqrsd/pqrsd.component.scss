@@ -340,7 +340,7 @@ body.modo_oscuro-govco .pqrsd-page {
 }
 
 body.modo_oscuro-govco .pqrsd-page__hero {
-  background: linear-gradient(135deg, #0f2c47 0%, #1f4b73 100%);
+  background: linear-gradient(180deg, var(--color-surface-muted) 0%, var(--color-surface-base) 100%);
 }
 
 body.modo_oscuro-govco .hero-card,

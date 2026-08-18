@@ -109,6 +109,18 @@ body.modo_oscuro-govco .eyebrow {
   color: var(--color-accent);
 }
 
+body.modo_oscuro-govco .linea-page__hero {
+  background: linear-gradient(180deg, var(--color-surface-muted) 0%, var(--color-surface-base) 100%);
+}
+
+body.modo_oscuro-govco .breadcrumb {
+  color: var(--color-text-secondary);
+}
+
+body.modo_oscuro-govco .breadcrumb a {
+  color: var(--color-text-link);
+}
+
 .breadcrumb {
   display: flex;
   gap: 0.5rem;

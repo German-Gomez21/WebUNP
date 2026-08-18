@@ -161,27 +161,37 @@ body.modo_oscuro-govco {
 
   --color-primary:         #68A1FF;
   --color-primary-dark:    #4A85F0;
-  --color-primary-light:   rgba(104, 161, 255, 0.18);
-  --color-primary-muted:   rgba(104, 161, 255, 0.12);
+  --color-primary-light:   rgba(104, 161, 255, 0.14);
+  --color-primary-muted:   rgba(104, 161, 255, 0.10);
   --color-accent:          #FF8B53;
   --color-accent-dark:     #FF6B35;
+  --color-accent-light:    rgba(255, 139, 83, 0.12);
 
-  --color-text-primary:    #F5F7FA;
-  --color-text-secondary:  #D4DBE7;
-  --color-text-muted:      #8A97AA;
-  --color-text-disabled:   #5A6475;
-  --color-text-link:       #68A1FF;
+  --color-text-primary:    #F1F3F6;
+  --color-text-secondary:  #B5BCC6;
+  --color-text-muted:      #808790;
+  --color-text-disabled:   #5C636C;
+  --color-text-link:       #7BAFFF;
 
-  --color-surface-base:    #1B2430;
-  --color-surface-muted:   #232D3B;
-  --color-surface-subtle:  #293445;
-  --color-surface-card:    #232D3B;
+  // Carbón frío unificado — misma familia tonal, solo cambia la luminosidad.
+  // Evita azules, grises planos o saltos de matiz entre páginas.
+  // base (lienzo) → muted (secciones) → card (superficies) → subtle/hover (elevado)
+  --color-surface-base:    #14161B;
+  --color-surface-muted:   #1A1D24;
+  --color-surface-card:    #22262E;
+  --color-surface-subtle:  #2A2F38;
+  --color-surface-hover:   #323740;
+  --color-surface-overlay: rgba(8, 10, 14, 0.72);
 
-  --color-border:          #3B4757;
-  --color-border-strong:   #4A5568;
+  --color-border:          #333944;
+  --color-border-strong:   #434A56;
   --color-border-focus:    #68A1FF;
 
-  --shadow-focus:          0 0 0 3px rgba(104, 161, 255, 0.4);
+  --shadow-focus:          0 0 0 3px rgba(104, 161, 255, 0.35);
+  --shadow-xs:             0 1px 3px rgba(0, 0, 0, 0.28);
+  --shadow-sm:             0 2px 8px rgba(0, 0, 0, 0.36);
+  --shadow-md:             0 4px 16px rgba(0, 0, 0, 0.44);
+  --shadow-lg:             0 8px 32px rgba(0, 0, 0, 0.52);
 
   // semantic aliases
   --bg-background:         var(--color-surface-base);
@@ -198,12 +208,16 @@ body.modo_oscuro-govco {
   // legacy aliases
   --primary-color:         var(--color-primary);
   --primary-dark:          var(--color-primary-dark);
+  --primary-light:         var(--color-primary-light);
   --text-primary:          var(--color-text-primary);
   --text-secondary:        var(--color-text-secondary);
   --surface-bg:            var(--color-surface-base);
   --surface-card:          var(--color-surface-card);
   --surface-muted:         var(--color-surface-subtle);
   --surface-border:        var(--color-border);
+  --background-light:      var(--color-surface-muted);
+  --white:                 var(--color-surface-card);
+  --border-color:          var(--color-border);
 
   --dark-bg-primary:       var(--color-surface-base);
   --dark-bg-secondary:     var(--color-surface-card);
@@ -212,6 +226,20 @@ body.modo_oscuro-govco {
   --dark-border:           var(--color-border);
   --dark-header-bg:        var(--color-surface-card);
   --dark-section-gray:     var(--color-surface-muted);
+
+  // Estados semánticos ajustados para fondo oscuro
+  --color-success:         #2DD47A;
+  --color-success-bg:      rgba(45, 212, 122, 0.12);
+  --color-warning:         #FBBF24;
+  --color-warning-bg:      rgba(251, 191, 36, 0.12);
+  --color-error:           #F87171;
+  --color-error-bg:        rgba(248, 113, 113, 0.12);
+  --color-info:            #7BAFFF;
+  --color-info-bg:         rgba(123, 175, 255, 0.12);
+
+  // Institucional: acero de la misma familia, no azul saturado de bloque
+  --color-govco-blue:      #9AADC2;
+  --color-govco-bar:       var(--color-surface-muted);
 }
 
 body.modo_claro-govco {
