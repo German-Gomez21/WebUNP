@@ -8,9 +8,16 @@
 .tramites-hero {
   background: linear-gradient(135deg, var(--color-govco-blue) 0%, #002d52 100%);
   padding: var(--space-8) 0 var(--space-9);
-  color: var(--color-text-inverse);
+  color: #ffffff;
   position: relative;
   overflow: hidden;
+
+  h1,
+  p,
+  span,
+  .material-icons {
+    color: #ffffff;
+  }
 
   &::after {
     content: '';
@@ -32,7 +39,7 @@
   opacity: 0.9;
 
   a {
-    color: var(--color-text-inverse);
+    color: #ffffff;
     text-decoration: none;
     &:hover { text-decoration: underline; }
   }
@@ -238,13 +245,33 @@
 .channels-section {
   background: var(--color-govco-blue);
   padding: var(--space-9) 0;
-  color: var(--color-text-inverse);
+  color: #ffffff;
 
   .section-title {
-    color: var(--color-text-inverse);
     text-align: center;
     margin-bottom: var(--space-8);
     font-size: var(--type-display-sm);
+    color: #ffffff;
+  }
+
+  h2,
+  h4,
+  p,
+  span,
+  .material-icons {
+    color: #ffffff;
+  }
+
+  .channel-card__info {
+    h4,
+    .value,
+    .horario {
+      color: #ffffff;
+    }
+
+    .horario {
+      opacity: 0.9;
+    }
   }
 }
 
@@ -272,12 +299,17 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: #ffffff;
+
+    .material-icons {
+      color: #ffffff;
+    }
   }
 
   &__info {
-    h4 { margin: 0 0 var(--space-2); font-size: var(--type-body-lg); }
-    .value { margin: 0 0 var(--space-1); font-size: var(--type-body); font-weight: var(--font-weight-bold); }
-    .horario { margin: 0; font-size: var(--type-body-sm); opacity: 0.8; }
+    h4 { margin: 0 0 var(--space-2); font-size: var(--type-body-lg); color: #ffffff; }
+    .value { margin: 0 0 var(--space-1); font-size: var(--type-body); font-weight: var(--font-weight-bold); color: #ffffff; }
+    .horario { margin: 0; font-size: var(--type-body-sm); color: #ffffff; opacity: 0.9; }
   }
 }
 

@@ -1,0 +1,355 @@
+// =============================================================================
+// _interactive.scss — Global sweep: ALL non-.btn interactive controls
+// Maps legacy / page-specific buttons to the Cursor minimal aesthetic.
+// =============================================================================
+
+@mixin minimal-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  margin: 0;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    border-color: var(--border-default);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+@mixin minimal-control-active {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+  }
+}
+
+// ── Filter / chip buttons ─────────────────────────────────────────────────────
+.category-btn,
+.news-page__filter,
+.news-page__clear,
+.news-page__pagination-btn,
+.transparencia-filter,
+.normativa-reset {
+  @include minimal-control;
+}
+
+.category-btn.active,
+.news-page__filter--active,
+.news-page__pagination-btn--active,
+.transparencia-filter.is-active {
+  @include minimal-control-active;
+}
+
+.normativa-reset {
+  @include minimal-control-active;
+  font-weight: var(--font-weight-semibold);
+}
+
+// ── FAQ / accordion triggers ──────────────────────────────────────────────────
+.faq-item__button,
+.faq-question,
+.transparencia-accordion__button {
+  @include minimal-control;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: var(--radius-lg);
+  border-color: transparent;
+  background: transparent;
+  padding: var(--space-4) var(--space-5);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
+    border-color: var(--border-subtle);
+  }
+}
+
+// ── Error / utility actions ───────────────────────────────────────────────────
+.error-button {
+  @include minimal-control;
+  @include minimal-control-active;
+}
+
+// ── About page links styled as buttons ────────────────────────────────────────
+.about-page__primary-link {
+  @include minimal-control;
+  @include minimal-control-active;
+  min-height: 2.5rem;
+  padding: var(--btn-padding-y) var(--btn-padding-x-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.about-page__secondary-link {
+  @include minimal-control;
+  min-height: 2.5rem;
+  padding: var(--btn-padding-y) var(--btn-padding-x-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+// ── Admin panel buttons ───────────────────────────────────────────────────────
+.btn-primary,
+.btn-upload {
+  @include minimal-control;
+  @include minimal-control-active;
+  font-weight: var(--font-weight-semibold);
+}
+
+.btn-secondary {
+  @include minimal-control;
+  color: var(--color-primary);
+  border-color: var(--border-subtle);
+  background: var(--color-primary-light);
+}
+
+.btn-link {
+  @include minimal-control;
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-text-link);
+  padding: var(--space-1) var(--space-2);
+}
+
+// ── Header controls ───────────────────────────────────────────────────────────
+.header__accessibility-btn {
+  @include minimal-control;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: transparent;
+  padding: var(--space-2) var(--space-4);
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary);
+  }
+}
+
+.header__mobile-menu-btn,
+.header__mobile-nav-close {
+  @include minimal-control;
+  border-radius: var(--radius-pill);
+  border-color: var(--border-subtle);
+  background: var(--color-surface-base);
+  padding: var(--space-2);
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  aspect-ratio: 1;
+}
+
+// ── Hero carousel (main.css overrides) ────────────────────────────────────────
+.hero-carousel__cta {
+  @include minimal-control;
+  padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
+  font-size: var(--type-body);
+  font-weight: var(--font-weight-semibold);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-none);
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: var(--color-surface-base);
+    border-color: var(--border-subtle);
+    transform: scale(1);
+    box-shadow: var(--shadow-none);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.hero-carousel__control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: var(--radius-circle);
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-none);
+  backdrop-filter: blur(8px);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: var(--color-surface-base);
+    border-color: var(--border-default);
+    transform: translateY(-50%) scale(1);
+    box-shadow: var(--shadow-none);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.96);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  .material-icons {
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+  }
+}
+
+.hero-carousel__control--prev { left: var(--space-6); }
+.hero-carousel__control--next { right: var(--space-6); }
+
+.hero-carousel__indicators {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-none);
+}
+
+.hero-carousel__indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border-radius: var(--radius-circle);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+  }
+
+  &--active {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.15);
+  }
+}
+
+.inst-carousel__cta {
+  @include minimal-control;
+  @include minimal-control-active;
+}
+
+// ── Institutional carousel nav ────────────────────────────────────────────────
+.news-carousel__control,
+.news-carousel__indicator {
+  @include minimal-control;
+  border-radius: var(--radius-circle);
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0;
+}
+
+// ── Minimal card surfaces (legacy main.css + feature pages) ───────────────────
+.service-card,
+.banner-card,
+.news-card,
+.tramite-card,
+.hero-card,
+.section-card,
+.search-box,
+.news-page__hero-card,
+.news-detail__article,
+.transparencia-stat-card,
+.transparencia-card,
+.normativa-stat-card,
+.normativa-card,
+.transparencia-search,
+.normativa-search,
+.transparencia-feature-item,
+.transparencia-document-item,
+.normativa-feature-item,
+.normativa-result-card,
+.pqrsd-card,
+.footer__card-container,
+.about-page__card,
+.about-page__highlight,
+.about-page__function-card,
+.about-page__symbol-card,
+.about-page__org-node,
+.about-page__visual-card,
+.info-section-card,
+.inst-carousel__slide {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-none);
+  padding: var(--card-padding);
+}
+
+.definition-box,
+.radication-card,
+.support-box,
+.channel-card,
+.list-card,
+.step-card,
+.table-card,
+.highlight-banner,
+.faq-item,
+.news-page__empty,
+.news-detail__related {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-none);
+  padding: var(--card-padding);
+}
+
+.news-detail__related-item {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-none);
+  padding: var(--space-4);
+}
+
+// Subtle hover for interactive cards only
+.service-card:hover,
+.banner-card:hover,
+.news-card:hover,
+.tramite-card:hover {
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-none);
+  transform: none;
+}

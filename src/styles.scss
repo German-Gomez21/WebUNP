@@ -1930,6 +1930,20 @@ body.modo_oscuro-govco {
   .tramites-page .loading-spinner p {
     color: var(--dark-text-secondary) !important;
   }
+
+  .tramites-page .tramites-hero,
+  .tramites-page .tramites-hero h1,
+  .tramites-page .tramites-hero p,
+  .tramites-page .tramites-hero span,
+  .tramites-page .tramites-hero a,
+  .tramites-page .channels-section,
+  .tramites-page .channels-section h2,
+  .tramites-page .channels-section h4,
+  .tramites-page .channels-section p,
+  .tramites-page .channels-section span,
+  .tramites-page .channels-section .material-icons {
+    color: #ffffff !important;
+  }
 }
 
 /* Logo changes for dark mode */
