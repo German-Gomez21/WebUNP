@@ -130,25 +130,7 @@
   gap: var(--space-3);
 }
 
-.transparencia-filter {
-  border: 1px solid var(--border-subtle);
-  background: var(--color-surface-card);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-pill);
-  padding: var(--space-2) var(--space-4);
-  font-weight: var(--font-weight-bold);
-  cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast);
-
-  &.is-active {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-text-inverse);
-  }
-}
+/* .transparencia-filter → _interactive.scss */
 
 .transparencia-grid {
   display: grid;

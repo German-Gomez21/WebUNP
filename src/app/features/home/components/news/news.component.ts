@@ -34,7 +34,10 @@ import { Noticia } from '../../../../core/models/noticia.model';
                                             </div>
                                             <h3 class="news-card__title">{{ item.titulo }}</h3>
                                             <p class="news-card__description">{{ item.resumen }}</p>
-                                            <a [routerLink]="item.slug ? ['/noticias', item.slug] : ['/noticias']" class="news-card__link">Leer más <i class="material-icons">arrow_forward</i></a>
+                                            <a [routerLink]="item.slug ? ['/noticias', item.slug] : ['/noticias']" class="btn btn--outline btn--sm">
+                                              Leer más
+                                              <i class="material-icons btn__icon btn__icon--right" aria-hidden="true">arrow_forward</i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -127,33 +127,7 @@
   gap: var(--space-3);
 }
 
-.news-page__filter,
-.news-page__clear,
-.news-page__pagination-btn {
-  border: 1px solid var(--border-subtle);
-  background: var(--color-surface-card);
-  color: var(--color-text-primary);
-  border-radius: var(--radius-pill);
-  padding: var(--space-3) var(--space-4);
-  cursor: pointer;
-  transition:
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    background-color var(--transition-fast);
-}
-
-.news-page__filter:hover,
-.news-page__clear:hover,
-.news-page__pagination-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.news-page__filter--active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-text-inverse);
-}
+/* Filtros / paginación → _interactive.scss */
 
 .news-page__grid {
   display: grid;
@@ -232,9 +206,12 @@
   color: var(--color-text-muted);
 }
 
-.news-card__read-more {
-  color: var(--color-text-link);
-  font-weight: var(--font-weight-bold);
+/* CTA visual dentro del link de la card — hover sutil (misma línea .btn) */
+.news-card__link:hover .btn--outline,
+.news-card__link:focus-visible .btn--outline {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
 }
 
 .news-page__empty,
@@ -262,11 +239,7 @@
   margin-top: var(--space-6);
 }
 
-.news-page__pagination-btn--active {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  border-color: var(--color-primary);
-}
+/* .news-page__pagination-btn--active → _interactive.scss */
 
 @keyframes shimmer {
   from { background-position: 200% 0; }

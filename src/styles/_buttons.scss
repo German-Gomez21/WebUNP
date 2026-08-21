@@ -1,53 +1,44 @@
 // =============================================================================
-// _buttons.scss — Design System UNP v1.0.0
-// Sistema unificado de botones. Reemplaza las 3 implementaciones ad-hoc
-// detectadas en la auditoría (pqrsd, tramites, quienes-somos).
-// AP-03: máximo 1 btn--primary por sección.
-// AP-04: sin margin externo en .btn — el layout contenedor gestiona el gap.
-// AP-05: :focus-visible obligatorio con var(--shadow-focus).
+// _buttons.scss — Design System UNP
+// Soft pill (filosofía ChatGPT): rounded + soft + compact + minimal.
+// Jerarquía: primary → secondary → outline → ghost → danger → success → white
+//            icon (circular) | chip (fully rounded) | sizes | loading
 // =============================================================================
 
 .btn {
-  // Layout
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  // Tipografía
+  gap: var(--btn-gap);
   font-family: var(--font-family-base);
-  font-size: 1rem;
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
+  font-size: var(--type-body-sm);
+  font-weight: var(--btn-font-weight);
+  line-height: 1.25;
+  letter-spacing: 0;
   white-space: nowrap;
   text-decoration: none;
-  // Geometría
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-pill);
-  border: 2px solid transparent;
-  // Transición
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast);
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  border: var(--btn-border-width) solid transparent;
+  background: transparent;
+  color: var(--color-text-primary);
+  box-shadow: none;
   cursor: pointer;
-  // AP-04: sin margin propio
   margin: 0;
+  box-sizing: border-box;
+  transition: var(--btn-transition);
+  -webkit-tap-highlight-color: transparent;
 
-  // Focus accesible — AP-05
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus);
+    box-shadow: var(--btn-focus-ring);
   }
 
-  // Estado active
-  &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: var(--shadow-xs);
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    opacity: 0.92;
   }
 
-  // Estado disabled
   &:disabled,
   &[aria-disabled="true"] {
     opacity: 0.45;
@@ -55,30 +46,74 @@
     pointer-events: none;
   }
 
-  // ── VARIANTES ──────────────────────────────────────────────────────────────
+  &--loading,
+  &[aria-busy="true"] {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+    cursor: wait;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 1rem;
+      height: 1rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-right-color: transparent;
+      border-radius: var(--radius-circle);
+      animation: btn-spin 0.6s linear infinite;
+    }
+  }
+
+  &--secondary.btn--loading::after,
+  &--outline.btn--loading::after,
+  &--ghost.btn--loading::after,
+  &--secondary[aria-busy="true"]::after,
+  &--outline[aria-busy="true"]::after,
+  &--ghost[aria-busy="true"]::after {
+    border-color: var(--color-text-muted);
+    border-right-color: transparent;
+  }
 
   &--primary {
     background: var(--color-primary);
     color: var(--color-text-inverse);
     border-color: var(--color-primary);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--color-primary-dark);
       border-color: var(--color-primary-dark);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-primary-dark);
+      opacity: 1;
+      filter: brightness(0.94);
     }
   }
 
   &--secondary {
+    background: var(--color-surface-base);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-surface-subtle);
+      border-color: var(--color-border-strong);
+    }
+  }
+
+  &--outline {
     background: transparent;
     color: var(--color-primary);
-    border-color: var(--color-primary);
+    border-color: var(--color-border-strong);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--color-primary-light);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
+      border-color: var(--color-primary);
+      color: var(--color-primary-dark);
     }
   }
 
@@ -87,7 +122,7 @@
     color: var(--color-text-secondary);
     border-color: transparent;
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--color-surface-subtle);
       color: var(--color-text-primary);
     }
@@ -98,70 +133,143 @@
     color: var(--color-text-inverse);
     border-color: var(--color-error);
 
-    &:hover:not(:disabled) {
-      background: #b91c1c;
-      border-color: #b91c1c;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-error-dark);
+      border-color: var(--color-error-dark);
     }
   }
 
-  // Uso exclusivo sobre fondos de gradiente oscuro (héroes azules/navales)
+  &--success {
+    background: var(--color-success);
+    color: var(--color-text-inverse);
+    border-color: var(--color-success);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-success-dark);
+      border-color: var(--color-success-dark);
+    }
+  }
+
   &--white {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--color-text-primary);
+    border-color: rgba(255, 255, 255, 0.5);
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: #fff;
+      border-color: #fff;
+    }
+  }
+
+  &--icon {
+    width: var(--btn-icon-size);
+    min-width: var(--btn-icon-size);
+    min-height: var(--btn-icon-size);
+    padding: 0;
+    aspect-ratio: 1;
+    border-radius: var(--btn-radius-icon);
+    color: var(--color-text-secondary);
+    background: transparent;
     border-color: transparent;
 
-    &:hover:not(:disabled) {
-      background: var(--color-surface-base);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-surface-subtle);
+      color: var(--color-text-primary);
     }
-  }
-
-  &--outline {
-    background: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-
-    &:hover:not(:disabled) {
-      background: var(--color-primary);
-      color: var(--color-text-inverse);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
-    }
-  }
-
-  // Icon-only — cuadrado compacto
-  &--icon {
-    padding: var(--space-3);
-    border-radius: var(--radius-sm);
-    min-width: 2.5rem;
-    min-height: 2.5rem;
 
     .btn__label { display: none; }
+
+    .material-icons,
+    .btn__icon {
+      font-size: 1.25rem;
+    }
   }
 
-  // ── TAMAÑOS ────────────────────────────────────────────────────────────────
+  // Soft surface — después de --icon para ganar en .btn--icon.btn--soft
+  // (header ☰/🔍, redes footer)
+  &--soft {
+    background: var(--color-surface-base);
+    color: var(--color-text-secondary);
+    border-color: var(--color-border);
+    box-shadow: none;
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-surface-subtle);
+      border-color: var(--color-border-strong);
+      color: var(--color-text-primary);
+    }
+
+    &:active:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 0.92;
+    }
+  }
+
+  &--chip {
+    min-height: var(--btn-min-height-sm);
+    padding: var(--btn-padding-y-sm) var(--btn-padding-x);
+    border-radius: var(--btn-radius-chip);
+    border-width: var(--btn-border-width);
+    border-color: var(--color-border);
+    background: var(--color-surface-base);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    box-shadow: none;
+
+    &:hover:not(:disabled):not([aria-disabled="true"]) {
+      background: var(--color-surface-subtle);
+      border-color: var(--color-border-strong);
+      color: var(--color-text-primary);
+    }
+
+    &.is-active,
+    &--active,
+    &[aria-pressed="true"] {
+      background: var(--color-primary-muted);
+      border-color: transparent;
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+
+      &:hover:not(:disabled):not([aria-disabled="true"]) {
+        background: var(--color-primary-light);
+        color: var(--color-primary-dark);
+      }
+    }
+  }
 
   &--lg {
-    padding: 1rem 2rem;
-    font-size: 1.05rem;
+    min-height: var(--btn-min-height-lg);
+    padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
+    font-size: var(--type-body);
+    border-radius: var(--btn-radius-lg);
   }
 
   &--sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    border-radius: var(--radius-sm);
+    min-height: var(--btn-min-height-sm);
+    padding: var(--btn-padding-y-sm) var(--btn-padding-x-sm);
+    font-size: 0.8125rem;
+    border-radius: var(--btn-radius-sm);
   }
 
-  // ── ICONO ──────────────────────────────────────────────────────────────────
-
   &__icon {
-    font-size: 1.1em;
+    font-size: 1.125em;
     flex-shrink: 0;
+    line-height: 1;
+    opacity: 0.9;
 
-    &--left  { margin-right: calc(var(--space-1) * -0.5); }
-    &--right { margin-left:  calc(var(--space-1) * -0.5); }
+    &--left  { margin-right: -0.125rem; }
+    &--right { margin-left:  -0.125rem; }
+  }
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .btn-group--stack > .btn,
+  .hero-actions > .btn,
+  .about-page__hero-actions > .btn,
+  .actions > .btn {
+    width: 100%;
   }
 }

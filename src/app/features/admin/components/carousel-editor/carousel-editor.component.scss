@@ -564,30 +564,7 @@ $warning-yellow: #f59e0b;
   }
 }
 
-// Botones de icono
-.btn-icon {
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    background: $light-gray;
-  }
-  
-  &--danger {
-    &:hover {
-      background: rgba($error-red, 0.1);
-      color: $error-red;
-    }
-  }
-}
+// Botones de icono — estilos en _interactive.scss / .btn--icon
 
 // Responsive
 @media (max-width: 1024px) {

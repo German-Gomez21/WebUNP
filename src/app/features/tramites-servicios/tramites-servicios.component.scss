@@ -126,32 +126,7 @@
   justify-content: center;
 }
 
-.category-btn {
-  padding: var(--space-2) var(--space-5);
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-default);
-  background: var(--color-surface-card);
-  cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    box-shadow var(--transition-fast);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-secondary);
-
-  &:hover {
-    background: var(--color-surface-subtle);
-    border-color: var(--border-default);
-  }
-
-  &.active {
-    background: var(--color-accent);
-    color: var(--color-text-inverse);
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-sm);
-  }
-}
+/* .category-btn → estilos en _interactive.scss */
 
 .results-grid {
   display: grid;

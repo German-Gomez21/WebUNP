@@ -60,15 +60,20 @@
   margin: var(--space-6) 0;
 }
 
-// CTAs sobre fondo oscuro del hero — variante contextual sin redefinir .btn base
+// CTAs sobre fondo oscuro del hero — secondary glass minimal
 .pqrsd-page__hero .btn--secondary {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--color-text-inverse);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.28);
 
   &:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.16);
     color: var(--color-text-inverse);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px transparent, 0 0 0 4px rgba(255, 255, 255, 0.35);
   }
 }
 

@@ -45,7 +45,7 @@ import { SeccionInformativa } from '../../../../core/models/noticia.model';
                                     {{item}}
                                 </li>
                             </ul>
-                            <a [href]="section.enlace" class="info-section-card__link">Ver más</a>
+                            <a [href]="section.enlace" class="btn btn--outline btn--sm">Ver más</a>
                         </div>
                     </div>
                 </div>

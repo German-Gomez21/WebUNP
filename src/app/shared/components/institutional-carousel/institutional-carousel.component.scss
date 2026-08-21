@@ -160,39 +160,12 @@
   }
 }
 
-/* ─── CTA Button ──────────────────────────────────────── */
+/* ─── CTA Button → geometría del design system; accent = énfasis de marca ─── */
 .inst-carousel__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: #FF6B35;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background 0.25s ease,
-    transform 0.2s ease,
-    box-shadow 0.25s ease;
   align-self: flex-start;
-  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
-
-  &:hover {
-    background: #e85a2b;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.45);
-  }
-
-  &:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 3px;
-  }
 
   .material-icons {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 }
 

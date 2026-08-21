@@ -40,49 +40,6 @@ $accent-strong: #dce8ff;
   }
 }
 
-.btn-primary,
-.btn-secondary,
-.btn-link,
-.btn-upload {
-  border: 0;
-  cursor: pointer;
-  border-radius: 10px;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-  }
-}
-
-.btn-primary {
-  background: $primary-blue;
-  color: #fff;
-  padding: 10px 16px;
-  font-weight: 600;
-}
-
-.btn-secondary {
-  background: $accent;
-  color: $primary-blue;
-  padding: 10px 14px;
-}
-
-.btn-upload {
-  background: $primary-blue;
-  color: #fff;
-  padding: 10px 14px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.btn-link {
-  background: transparent;
-  color: $secondary-blue;
-  padding: 4px 8px;
-  font-size: 0.9rem;
-}
-
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

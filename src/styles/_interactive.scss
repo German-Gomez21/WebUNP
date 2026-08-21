@@ -1,52 +1,155 @@
 // =============================================================================
-// _interactive.scss — Global sweep: ALL non-.btn interactive controls
-// Maps legacy / page-specific buttons to the Cursor minimal aesthetic.
+// _interactive.scss — Controles legacy → soft pill (misma familia que .btn)
 // =============================================================================
 
-@mixin minimal-control {
+@mixin control-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: var(--btn-gap);
   font-family: var(--font-family-base);
-  font-size: var(--type-body-sm);
+  font-size: 0.8125rem;
   font-weight: var(--font-weight-medium);
-  line-height: 1;
+  line-height: 1.25;
   text-decoration: none;
-  padding: var(--btn-padding-y) var(--btn-padding-x);
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-subtle);
+  min-height: var(--btn-min-height-sm);
+  padding: var(--btn-padding-y-sm) var(--btn-padding-x);
+  border-radius: var(--btn-radius-chip);
+  border: var(--btn-border-width) solid var(--color-border);
   background: var(--color-surface-base);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   cursor: pointer;
   margin: 0;
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast);
+  box-sizing: border-box;
+  box-shadow: none;
+  transition: var(--btn-transition);
 
-  &:hover:not(:disabled) {
-    background: var(--color-surface-hover);
-    border-color: var(--border-default);
+  &:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-primary);
   }
 
-  &:active:not(:disabled) {
-    transform: scale(0.98);
+  &:active:not(:disabled):not([aria-disabled="true"]) {
+    opacity: 0.92;
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--shadow-focus);
+    box-shadow: var(--btn-focus-ring);
   }
 
-  &:disabled {
+  &:disabled,
+  &[aria-disabled="true"] {
     opacity: 0.45;
     cursor: not-allowed;
+    pointer-events: none;
   }
 }
 
-@mixin minimal-control-active {
+@mixin control-active {
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  border-color: transparent;
+  font-weight: var(--font-weight-semibold);
+
+  &:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-color: transparent;
+  }
+}
+
+@mixin btn-core {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  font-family: var(--font-family-base);
+  font-size: var(--type-body-sm);
+  font-weight: var(--btn-font-weight);
+  line-height: 1.25;
+  white-space: nowrap;
+  text-decoration: none;
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  border: var(--btn-border-width) solid transparent;
+  margin: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: none;
+  transition: var(--btn-transition);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.category-btn,
+.news-page__filter,
+.news-page__clear,
+.news-page__pagination-btn,
+.transparencia-filter {
+  @include control-base;
+}
+
+.category-btn.active,
+.news-page__filter--active,
+.news-page__pagination-btn--active,
+.transparencia-filter.is-active {
+  @include control-active;
+}
+
+.normativa-reset {
+  @include btn-core;
+  min-height: var(--btn-min-height-sm);
+  padding: var(--btn-padding-y-sm) var(--btn-padding-x-sm);
+  border-radius: var(--btn-radius-sm);
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+  font-size: 0.8125rem;
+
+  &:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-strong);
+  }
+}
+
+.faq-item__button,
+.faq-question,
+.transparencia-accordion__button {
+  @include control-base;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: var(--btn-radius);
+  border-color: transparent;
+  background: transparent;
+  min-height: var(--btn-min-height);
+  padding: var(--space-4) var(--space-5);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--type-body);
+  text-align: left;
+  color: var(--color-text-primary);
+  white-space: normal;
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
+    border-color: transparent;
+  }
+}
+
+.error-button {
+  @include btn-core;
   background: var(--color-primary);
   color: var(--color-text-inverse);
   border-color: var(--color-primary);
@@ -57,299 +160,130 @@
   }
 }
 
-// ── Filter / chip buttons ─────────────────────────────────────────────────────
-.category-btn,
-.news-page__filter,
-.news-page__clear,
-.news-page__pagination-btn,
-.transparencia-filter,
-.normativa-reset {
-  @include minimal-control;
-}
-
-.category-btn.active,
-.news-page__filter--active,
-.news-page__pagination-btn--active,
-.transparencia-filter.is-active {
-  @include minimal-control-active;
-}
-
-.normativa-reset {
-  @include minimal-control-active;
-  font-weight: var(--font-weight-semibold);
-}
-
-// ── FAQ / accordion triggers ──────────────────────────────────────────────────
-.faq-item__button,
-.faq-question,
-.transparencia-accordion__button {
-  @include minimal-control;
-  width: 100%;
-  justify-content: space-between;
-  border-radius: var(--radius-lg);
-  border-color: transparent;
-  background: transparent;
-  padding: var(--space-4) var(--space-5);
-  font-weight: var(--font-weight-semibold);
-  text-align: left;
-
-  &:hover:not(:disabled) {
-    background: var(--color-surface-subtle);
-    border-color: var(--border-subtle);
-  }
-}
-
-// ── Error / utility actions ───────────────────────────────────────────────────
-.error-button {
-  @include minimal-control;
-  @include minimal-control-active;
-}
-
-// ── About page links styled as buttons ────────────────────────────────────────
-.about-page__primary-link {
-  @include minimal-control;
-  @include minimal-control-active;
-  min-height: 2.5rem;
-  padding: var(--btn-padding-y) var(--btn-padding-x-lg);
-  font-weight: var(--font-weight-semibold);
-}
-
-.about-page__secondary-link {
-  @include minimal-control;
-  min-height: 2.5rem;
-  padding: var(--btn-padding-y) var(--btn-padding-x-lg);
-  font-weight: var(--font-weight-semibold);
-}
-
-// ── Admin panel buttons ───────────────────────────────────────────────────────
 .btn-primary,
 .btn-upload {
-  @include minimal-control;
-  @include minimal-control-active;
-  font-weight: var(--font-weight-semibold);
+  @include btn-core;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+  }
 }
 
 .btn-secondary {
-  @include minimal-control;
-  color: var(--color-primary);
-  border-color: var(--border-subtle);
-  background: var(--color-primary-light);
+  @include btn-core;
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-strong);
+  }
 }
 
 .btn-link {
-  @include minimal-control;
-  border-color: transparent;
-  background: transparent;
-  color: var(--color-text-link);
+  @include btn-core;
+  min-height: auto;
   padding: var(--space-1) var(--space-2);
-}
-
-// ── Header controls ───────────────────────────────────────────────────────────
-.header__accessibility-btn {
-  @include minimal-control;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-medium);
   background: transparent;
-  padding: var(--space-2) var(--space-4);
-  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  border-color: transparent;
+  border-radius: var(--btn-radius-sm);
 
-  &:hover {
-    background: var(--color-primary);
-    color: var(--color-text-inverse);
-    border-color: var(--color-primary);
-  }
-}
-
-.header__mobile-menu-btn,
-.header__mobile-nav-close {
-  @include minimal-control;
-  border-radius: var(--radius-pill);
-  border-color: var(--border-subtle);
-  background: var(--color-surface-base);
-  padding: var(--space-2);
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  aspect-ratio: 1;
-}
-
-// ── Hero carousel (main.css overrides) ────────────────────────────────────────
-.hero-carousel__cta {
-  @include minimal-control;
-  padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
-  font-size: var(--type-body);
-  font-weight: var(--font-weight-semibold);
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--color-text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--shadow-none);
-  backdrop-filter: blur(8px);
-
-  &:hover {
-    background: var(--color-surface-base);
-    border-color: var(--border-subtle);
-    transform: scale(1);
-    box-shadow: var(--shadow-none);
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-}
-
-.hero-carousel__control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 4;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0;
-  border-radius: var(--radius-circle);
-  border: 1px solid var(--border-subtle);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--shadow-none);
-  backdrop-filter: blur(8px);
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
-
-  &:hover {
-    background: var(--color-surface-base);
-    border-color: var(--border-default);
-    transform: translateY(-50%) scale(1);
-    box-shadow: var(--shadow-none);
-  }
-
-  &:active {
-    transform: translateY(-50%) scale(0.96);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
-  }
-
-  .material-icons {
-    font-size: 1.25rem;
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
     color: var(--color-text-primary);
   }
 }
 
-.hero-carousel__control--prev { left: var(--space-6); }
-.hero-carousel__control--next { right: var(--space-6); }
+.btn-logout {
+  border-color: var(--color-border);
 
-.hero-carousel__indicators {
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.15);
-  box-shadow: var(--shadow-none);
+  &:hover:not(:disabled) {
+    background: var(--color-error-bg) !important;
+    color: var(--color-error) !important;
+    border-color: var(--color-border) !important;
+  }
 }
 
-.hero-carousel__indicator {
-  width: 0.5rem;
-  height: 0.5rem;
+.btn-icon,
+.btn-remove {
+  @include btn-core;
+  width: var(--btn-icon-size);
+  min-width: var(--btn-icon-size);
+  min-height: var(--btn-icon-size);
   padding: 0;
-  border-radius: var(--radius-circle);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.35);
-  transition:
-    background-color var(--transition-fast),
-    transform var(--transition-fast);
+  aspect-ratio: 1;
+  border-radius: var(--btn-radius-icon);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.7);
-    transform: scale(1.1);
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
+    color: var(--color-text-primary);
   }
+}
 
-  &--active {
-    background: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 0.9);
-    transform: scale(1.15);
+.btn-remove:hover:not(:disabled) {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.header__accessibility-btn {
+  @include btn-core;
+  min-height: var(--btn-min-height-sm);
+  padding: var(--btn-padding-y-sm) var(--btn-padding-x);
+  border-radius: var(--btn-radius-sm);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+  background: var(--color-surface-base);
+  font-size: 0.8125rem;
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-strong);
+  }
+}
+
+.hero-carousel__cta {
+  @include btn-core;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.5);
+
+  &:hover:not(:disabled) {
+    background: #fff;
+    border-color: #fff;
+  }
+}
+
+.hero-carousel__control,
+.inst-carousel__nav,
+.news-carousel__btn,
+.news-carousel__control {
+  border-radius: var(--btn-radius-icon) !important;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--btn-focus-ring);
   }
 }
 
 .inst-carousel__cta {
-  @include minimal-control;
-  @include minimal-control-active;
-}
+  @include btn-core;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
 
-// ── Institutional carousel nav ────────────────────────────────────────────────
-.news-carousel__control,
-.news-carousel__indicator {
-  @include minimal-control;
-  border-radius: var(--radius-circle);
-  min-width: 2.25rem;
-  min-height: 2.25rem;
-  padding: 0;
-}
-
-// ── Minimal card surfaces (legacy main.css + feature pages) ───────────────────
-.service-card,
-.banner-card,
-.news-card,
-.tramite-card,
-.hero-card,
-.section-card,
-.search-box,
-.news-page__hero-card,
-.news-detail__article,
-.transparencia-stat-card,
-.transparencia-card,
-.normativa-stat-card,
-.normativa-card,
-.transparencia-search,
-.normativa-search,
-.transparencia-feature-item,
-.transparencia-document-item,
-.normativa-feature-item,
-.normativa-result-card,
-.pqrsd-card,
-.footer__card-container,
-.about-page__card,
-.about-page__highlight,
-.about-page__function-card,
-.about-page__symbol-card,
-.about-page__org-node,
-.about-page__visual-card,
-.info-section-card,
-.inst-carousel__slide {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-none);
-  padding: var(--card-padding);
-}
-
-.definition-box,
-.radication-card,
-.support-box,
-.channel-card,
-.list-card,
-.step-card,
-.table-card,
-.highlight-banner,
-.faq-item,
-.news-page__empty,
-.news-detail__related {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-none);
-  padding: var(--card-padding);
-}
-
-.news-detail__related-item {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-none);
-  padding: var(--space-4);
-}
-
-// Subtle hover for interactive cards only
-.service-card:hover,
-.banner-card:hover,
-.news-card:hover,
-.tramite-card:hover {
-  border-color: var(--border-default);
-  box-shadow: var(--shadow-none);
-  transform: none;
+  &:hover:not(:disabled) {
+    background: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
 }

@@ -4,7 +4,7 @@
       <p class="eyebrow">Gestión editorial</p>
       <h2>Panel de noticias</h2>
     </div>
-    <button class="btn-primary" type="button" (click)="abrirCrear()">+ Crear noticia</button>
+    <button class="btn btn--primary" type="button" (click)="abrirCrear()">+ Crear noticia</button>
   </header>
 
   <section class="summary-grid" *ngIf="modo() === 'list'">
@@ -61,9 +61,9 @@
           <td>{{ noticia.autor }} / {{ noticia.dependencia }}</td>
           <td>{{ noticia.fechaPublicacion || noticia.fecha }}</td>
           <td class="actions-cell">
-            <button class="btn-link" type="button" (click)="abrirEditar(noticia.id)">Editar</button>
-            <button class="btn-link" type="button" (click)="cambiarEstado(noticia.id, 'publicado')">Publicar</button>
-            <button class="btn-link" type="button" (click)="cambiarEstado(noticia.id, 'programado')">Programar</button>
+            <button class="btn btn--ghost btn--sm" type="button" (click)="abrirEditar(noticia.id)">Editar</button>
+            <button class="btn btn--ghost btn--sm" type="button" (click)="cambiarEstado(noticia.id, 'publicado')">Publicar</button>
+            <button class="btn btn--ghost btn--sm" type="button" (click)="cambiarEstado(noticia.id, 'programado')">Programar</button>
           </td>
         </tr>
       </tbody>
@@ -72,10 +72,10 @@
 
   <section class="editor-card" *ngIf="modo() === 'form'">
     <div class="editor-toolbar">
-      <button class="btn-secondary" type="button" (click)="volverAlListado()">← Volver</button>
+      <button class="btn btn--secondary" type="button" (click)="volverAlListado()">← Volver</button>
       <div class="toolbar-actions">
-        <button class="btn-secondary" type="button" (click)="formulario.estado = 'borrador'">Guardar borrador</button>
-        <button class="btn-primary" type="button" (click)="guardar()">Guardar y revisar</button>
+        <button class="btn btn--secondary" type="button" (click)="formulario.estado = 'borrador'">Guardar borrador</button>
+        <button class="btn btn--primary" type="button" (click)="guardar()">Guardar y revisar</button>
       </div>
     </div>
 
@@ -119,7 +119,7 @@
             <span>Imagen principal</span>
             <div class="image-input-row">
               <input type="text" [(ngModel)]="formulario.imagen" placeholder="assets/images/uploads/mi-imagen.jpg" />
-              <button class="btn-upload" type="button" (click)="triggerImageUpload()">Subir imagen</button>
+              <button class="btn btn--primary btn--sm" type="button" (click)="triggerImageUpload()">Subir imagen</button>
             </div>
             <input #imageInput id="news-image-input" type="file" accept="image/*" hidden (change)="onImageSelected($event)" />
             <small class="helper-text">La imagen se almacenará en la ruta indicada y podrá usarse en la vista pública.</small>

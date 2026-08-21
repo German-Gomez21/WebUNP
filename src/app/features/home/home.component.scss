@@ -60,21 +60,7 @@
   max-width: 400px;
 }
 
-.error-button {
-  background: var(--color-accent);
-  color: var(--color-text-inverse);
-  border: none;
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-xs);
-  font-size: var(--type-body-sm);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-
-  &:hover {
-    background: var(--color-accent-dark);
-  }
-}
+/* .error-button → _interactive.scss / .btn */
 
 .faq-container {
   max-width: 800px;
@@ -105,6 +91,11 @@
 
   &:hover {
     background: var(--color-surface-subtle);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
   }
 }
 

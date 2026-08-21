@@ -9,19 +9,19 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="access-denied-container">
       <div class="access-denied-content">
-        <div class="error-icon">
+        <div class="error-icon" aria-hidden="true">
           <i class="material-icons">security</i>
         </div>
         <h1>Acceso Denegado</h1>
         <p>No tienes los permisos necesarios para acceder a esta página.</p>
         <p>Por favor, contacta al administrador del sistema si crees que esto es un error.</p>
         <div class="actions">
-          <button (click)="goHome()" class="btn-primary">
-            <i class="material-icons">home</i>
+          <button type="button" (click)="goHome()" class="btn btn--primary">
+            <i class="material-icons btn__icon btn__icon--left" aria-hidden="true">home</i>
             Ir al Inicio
           </button>
-          <button (click)="goBack()" class="btn-secondary">
-            <i class="material-icons">arrow_back</i>
+          <button type="button" (click)="goBack()" class="btn btn--secondary">
+            <i class="material-icons btn__icon btn__icon--left" aria-hidden="true">arrow_back</i>
             Volver
           </button>
         </div>
@@ -34,95 +34,62 @@ import { CommonModule } from '@angular/common';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 20px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      padding: var(--space-5);
     }
 
     .access-denied-content {
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      background: var(--color-surface-card);
+      padding: var(--space-8);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
       text-align: center;
       max-width: 500px;
       width: 100%;
+      border: 1px solid var(--color-border);
     }
 
     .error-icon {
-      font-size: 64px;
-      color: #dc3545;
-      margin-bottom: 20px;
+      font-size: 4rem;
+      color: var(--color-error);
+      margin-bottom: var(--space-5);
+      line-height: 1;
+    }
+
+    .error-icon .material-icons {
+      font-size: inherit;
     }
 
     h1 {
-      color: #333;
-      margin-bottom: 20px;
-      font-size: 2.5em;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-5);
+      font-size: var(--type-display-sm);
+      font-family: var(--font-family-base);
     }
 
     p {
-      color: #666;
-      margin-bottom: 15px;
-      line-height: 1.6;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-4);
+      line-height: var(--line-height-normal);
+      font-family: var(--font-family-base);
     }
 
     .actions {
-      margin-top: 30px;
+      margin-top: var(--space-7);
       display: flex;
-      gap: 15px;
+      gap: var(--space-4);
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .btn-primary, .btn-secondary {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary {
-      background: #007bff;
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #0056b3;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: #6c757d;
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: #545b62;
-      transform: translateY(-2px);
-    }
-
     @media (max-width: 768px) {
       .access-denied-content {
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 2em;
+        padding: var(--space-6);
       }
 
       .actions {
         flex-direction: column;
-        align-items: center;
-      }
-
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        max-width: 200px;
+        align-items: stretch;
       }
     }
   `]

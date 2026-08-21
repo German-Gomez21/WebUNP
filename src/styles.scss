@@ -7,6 +7,7 @@
 @import 'styles/typography';
 @import 'styles/layout';
 @import 'styles/buttons';
+@import 'styles/interactive';
 @import 'styles/forms';
 @import 'styles/cards';
 @import 'styles/badges';
@@ -86,12 +87,6 @@ body.modo_oscuro-govco .about-page__org-node {
 body.modo_oscuro-govco .about-page__visual-card {
   background: var(--color-surface-subtle) !important;
   border-color: var(--color-border) !important;
-}
-
-body.modo_oscuro-govco .about-page__secondary-link {
-  background: var(--color-primary-muted);
-  border-color: var(--color-border);
-  color: var(--color-primary);
 }
 
 body.modo_oscuro-govco .about-page__card-icon,
@@ -174,7 +169,6 @@ body.modo_oscuro-govco .news-card__category,
 body.modo_oscuro-govco .news-page__eyebrow,
 body.modo_oscuro-govco .news-page__pill,
 body.modo_oscuro-govco .news-detail__eyebrow,
-body.modo_oscuro-govco .news-card__read-more,
 body.modo_oscuro-govco .news-page__hero-link,
 body.modo_oscuro-govco .news-detail__back-link {
   color: var(--accent) !important;
@@ -277,10 +271,12 @@ body.modo_oscuro-govco .normativa-hero__title {
 }
 
 body.modo_oscuro-govco .transparencia-filter.is-active,
-body.modo_oscuro-govco .normativa-reset {
-  background: var(--color-accent) !important;
-  border-color: var(--color-accent) !important;
-  color: var(--color-text-inverse) !important;
+body.modo_oscuro-govco .news-page__filter--active,
+body.modo_oscuro-govco .news-page__pagination-btn--active,
+body.modo_oscuro-govco .category-btn.active {
+  background: var(--color-primary-muted) !important;
+  border-color: transparent !important;
+  color: var(--color-primary) !important;
 }
 
 body.modo_oscuro-govco .transparencia-feature-item p,
@@ -336,6 +332,14 @@ body.modo_oscuro-govco .header {
 
 body.modo_oscuro-govco .header__search-container {
   background-color: var(--dark-bg-secondary) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.modo_oscuro-govco .header__search-field {
+  background-color: var(--color-surface-subtle) !important;
+}
+
+body.modo_oscuro-govco .header__search--expanded .header__search-field {
   border-color: var(--dark-border) !important;
 }
 
@@ -709,9 +713,8 @@ body.modo_oscuro-govco .footer__contact-value:hover {
     color: var(--primary-color) !important;
   }
 
-  /* Mantener iconos naranja en modo oscuro */
-  body.modo_oscuro-govco .footer__card-container .material-icons,
-  body.modo_oscuro-govco .footer__card-container .footer__social-icon {
+  /* Mantener iconos de contacto con acento; redes usan filtro SVG del bloque social */
+  body.modo_oscuro-govco .footer__card-container .material-icons {
     color: var(--color-accent) !important;
   }
 }
@@ -722,35 +725,46 @@ body.modo_oscuro-govco .footer__bottom {
   border-top: 1px solid var(--dark-border) !important;
 }
 
-/* Social media icons in dark mode */
+/* Social media buttons — misma línea gráfica soft pill en dark */
+body.modo_oscuro-govco .footer__social-link {
+  background: var(--color-surface-subtle) !important;
+  border-color: var(--color-border) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.modo_oscuro-govco .footer__social-link:hover {
+  background: var(--color-surface-hover) !important;
+  border-color: var(--color-border-strong) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.modo_oscuro-govco .footer__social-link:focus-visible {
+  box-shadow: var(--btn-focus-ring) !important;
+}
+
 body.modo_oscuro-govco .social__icon,
 body.modo_oscuro-govco .footer__social-icon,
 body.modo_oscuro-govco .social-icon,
 body.modo_oscuro-govco .footer-social-icon {
-  color: var(--dark-text-primary) !important;
-  fill: var(--dark-text-primary) !important;
+  color: var(--color-text-secondary) !important;
+  fill: var(--color-text-secondary) !important;
 }
 
-/* SVG social media icons - change to white in dark mode */
 body.modo_oscuro-govco .footer__social-icon img,
 body.modo_oscuro-govco img.footer__social-icon {
-  filter: brightness(0) invert(1) !important;
-  -webkit-filter: brightness(0) invert(1) !important;
+  filter: brightness(0) invert(0.85) !important;
+  -webkit-filter: brightness(0) invert(0.85) !important;
+  opacity: 0.9;
 }
 
-body.modo_oscuro-govco .social__icon:hover,
-body.modo_oscuro-govco .footer__social-icon:hover,
-body.modo_oscuro-govco .social-icon:hover,
-body.modo_oscuro-govco .footer-social-icon:hover {
-  color: var(--primary-color) !important;
-  fill: var(--primary-color) !important;
-}
-
-/* SVG social media icons hover - change to blue in dark mode */
 body.modo_oscuro-govco .footer__social-link:hover .footer__social-icon img,
 body.modo_oscuro-govco .footer__social-link:hover img.footer__social-icon {
-  filter: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(200deg) !important;
-  -webkit-filter: brightness(0) invert(1) sepia(1) saturate(100) hue-rotate(200deg) !important;
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+  opacity: 1;
+  transform: none !important;
 }
 
 body.modo_oscuro-govco .gov-bar {
@@ -1066,15 +1080,16 @@ body.modo_oscuro-govco .carousel__description {
   color: var(--dark-text-secondary) !important;
 }
 
-/* Buttons — dark mode: respetar variantes del sistema de diseño */
-/* btn--primary y btn--accent ya toman color del token, no sobreescribir */
+/* Buttons — dark mode: superficie sutil, sin fill agresivo en secondary/outline */
 body.modo_oscuro-govco .btn--secondary {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
 }
 
 body.modo_oscuro-govco .btn--secondary:hover:not(:disabled) {
-  background: var(--color-primary-muted);
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
 }
 
 body.modo_oscuro-govco .btn--ghost {
@@ -1086,14 +1101,28 @@ body.modo_oscuro-govco .btn--ghost:hover:not(:disabled) {
   color: var(--color-text-primary);
 }
 
+body.modo_oscuro-govco .btn--soft {
+  background: var(--color-surface-subtle);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+
+body.modo_oscuro-govco .btn--soft:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+
 body.modo_oscuro-govco .btn--outline {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
 }
 
 body.modo_oscuro-govco .btn--outline:hover:not(:disabled) {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
+  background: var(--color-surface-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
 }
 
 /* Lists and Navigation Items */
@@ -1169,14 +1198,6 @@ body.modo_oscuro-govco .info-section-card__item-icon {
   color: #fff !important;
 }
 
-body.modo_oscuro-govco .info-section-card__link {
-  color: var(--primary-color) !important;
-}
-
-body.modo_oscuro-govco .info-section-card__link:hover {
-  color: var(--primary-light) !important;
-}
-
 /* Banner Cards (Servicios Principales) */
 body.modo_oscuro-govco .banner-card {
   background-color: var(--dark-bg-secondary) !important;
@@ -1230,12 +1251,15 @@ body.modo_oscuro-govco .banner-card__description {
   color: var(--dark-text-secondary) !important;
 }
 
-body.modo_oscuro-govco .banner-card__link {
-  color: var(--primary-color) !important;
+body.modo_oscuro-govco .banner-card .btn--outline {
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-strong) !important;
+  background: transparent !important;
 }
 
-body.modo_oscuro-govco .banner-card__link:hover {
-  color: var(--primary-light) !important;
+body.modo_oscuro-govco .banner-card .btn--outline:hover {
+  background: var(--color-surface-subtle) !important;
+  color: var(--color-text-primary) !important;
 }
 
 body.modo_oscuro-govco .banner-card__arrow-icon {
@@ -1260,12 +1284,9 @@ body.modo_oscuro-govco .banner-card--destacado .banner-card__description {
   color: var(--dark-text-secondary) !important;
 }
 
-body.modo_oscuro-govco .banner-card--destacado .banner-card__link {
-  color: var(--primary-color) !important;
-}
-
-body.modo_oscuro-govco .banner-card--destacado .banner-card__link:hover {
-  color: var(--primary-light) !important;
+body.modo_oscuro-govco .banner-card--destacado .btn--outline {
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border-strong) !important;
 }
 
 body.modo_oscuro-govco .banner-card--destacado .banner-card__arrow-icon {
@@ -1342,14 +1363,6 @@ body.modo_oscuro-govco .news-card__description {
 body.modo_oscuro-govco .news-card__date,
 body.modo_oscuro-govco .news-card__category {
   color: var(--dark-text-secondary) !important;
-}
-
-body.modo_oscuro-govco .news-card__link {
-  color: var(--primary-color) !important;
-}
-
-body.modo_oscuro-govco .news-card__link:hover {
-  color: var(--primary-light) !important;
 }
 
 /* News Carousel Controls */
@@ -1743,13 +1756,13 @@ body.modo_oscuro-govco {
 
   .tramites-page .category-btn:hover {
     background-color: var(--color-surface-hover) !important;
-    border-color: var(--color-accent) !important;
+    border-color: var(--color-border-strong) !important;
   }
 
   .tramites-page .category-btn.active {
-    background-color: var(--color-accent) !important;
-    color: var(--color-text-inverse) !important;
-    border-color: var(--color-accent) !important;
+    background-color: var(--color-primary-muted) !important;
+    color: var(--color-primary) !important;
+    border-color: transparent !important;
   }
 
   .tramites-page .tramite-card {
@@ -1788,13 +1801,13 @@ body.modo_oscuro-govco {
   }
 
   .tramites-page .tramite-card__footer .btn--outline {
-    border-color: var(--color-accent) !important;
-    color: var(--color-accent) !important;
+    border-color: var(--color-border-strong) !important;
+    color: var(--color-text-primary) !important;
   }
 
   .tramites-page .tramite-card__footer .btn--outline:hover {
-    background: var(--color-accent) !important;
-    color: var(--color-text-inverse) !important;
+    background: var(--color-surface-subtle) !important;
+    color: var(--color-text-primary) !important;
   }
 
   .tramites-page .empty-state {
