@@ -169,7 +169,7 @@
   }
 }
 
-/* ─── Navigation Arrows ───────────────────────────────── */
+/* ─── Navigation Arrows — solo icono, contraste sobre la imagen ─ */
 .inst-carousel__nav {
   position: absolute;
   top: 50%;
@@ -178,32 +178,33 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  background: transparent;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-  backdrop-filter: blur(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: none;
+  box-shadow: none;
 
   .material-icons {
-    font-size: 28px;
+    font-size: 2rem;
+    color: #ffffff;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 6px rgba(0, 0, 0, 0.45));
   }
 
   &:hover {
-    background: rgba(255, 107, 53, 0.85);
-    border-color: #FF6B35;
+    background: transparent;
+    border: none;
     transform: translateY(-50%) scale(1.08);
+    opacity: 0.9;
   }
 
   &:focus-visible {
-    outline: 3px solid #ffffff;
-    outline-offset: 3px;
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
   }
 
   &--prev {
@@ -219,7 +220,7 @@
     height: 38px;
 
     .material-icons {
-      font-size: 22px;
+      font-size: 1.5rem;
     }
   }
 }
@@ -277,5 +278,5 @@ body.modo_oscuro-govco .inst-carousel__subtitle {
 }
 
 body.modo_oscuro-govco .inst-carousel {
-  box-shadow: var(--shadow-lg) !important;
+  box-shadow: var(--elevation-2) !important;
 }

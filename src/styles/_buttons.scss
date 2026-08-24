@@ -1,8 +1,9 @@
 // =============================================================================
 // _buttons.scss — Design System UNP
-// Soft pill (filosofía ChatGPT): rounded + soft + compact + minimal.
+// Pill completamente redondo + padding generoso (inspiración Linear).
+// Sin sombra decorativa — la elevación vive en paneles/cajones, no en controles.
 // Jerarquía: primary → secondary → outline → ghost → danger → success → white
-//            icon (circular) | chip (fully rounded) | sizes | loading
+//            icon (circular) | chip (pill) | sizes | loading
 // =============================================================================
 
 .btn {
@@ -11,7 +12,7 @@
   justify-content: center;
   gap: var(--btn-gap);
   font-family: var(--font-family-base);
-  font-size: var(--type-body-sm);
+  font-size: 0.875rem;
   font-weight: var(--btn-font-weight);
   line-height: 1.25;
   letter-spacing: 0;
@@ -36,12 +37,12 @@
   }
 
   &:active:not(:disabled):not([aria-disabled="true"]) {
-    opacity: 0.92;
+    opacity: 0.88;
   }
 
   &:disabled,
   &[aria-disabled="true"] {
-    opacity: 0.45;
+    opacity: 0.4;
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -58,21 +59,23 @@
       position: absolute;
       inset: 0;
       margin: auto;
-      width: 1rem;
-      height: 1rem;
+      width: 0.875rem;
+      height: 0.875rem;
       border: 1.5px solid rgba(255, 255, 255, 0.85);
       border-right-color: transparent;
       border-radius: var(--radius-circle);
-      animation: btn-spin 0.6s linear infinite;
+      animation: btn-spin 0.55s linear infinite;
     }
   }
 
   &--secondary.btn--loading::after,
   &--outline.btn--loading::after,
   &--ghost.btn--loading::after,
+  &--soft.btn--loading::after,
   &--secondary[aria-busy="true"]::after,
   &--outline[aria-busy="true"]::after,
-  &--ghost[aria-busy="true"]::after {
+  &--ghost[aria-busy="true"]::after,
+  &--soft[aria-busy="true"]::after {
     border-color: var(--color-text-muted);
     border-right-color: transparent;
   }
@@ -183,10 +186,12 @@
     .btn__icon {
       font-size: 1.25rem;
     }
+
+    &.btn--circle {
+      border-radius: var(--btn-radius-circle);
+    }
   }
 
-  // Soft surface — después de --icon para ganar en .btn--icon.btn--soft
-  // (header ☰/🔍, redes footer)
   &--soft {
     background: var(--color-surface-base);
     color: var(--color-text-secondary);
@@ -200,7 +205,7 @@
     }
 
     &:active:not(:disabled):not([aria-disabled="true"]) {
-      opacity: 0.92;
+      opacity: 0.88;
     }
   }
 
@@ -239,7 +244,7 @@
   &--lg {
     min-height: var(--btn-min-height-lg);
     padding: var(--btn-padding-y-lg) var(--btn-padding-x-lg);
-    font-size: var(--type-body);
+    font-size: 0.9375rem;
     border-radius: var(--btn-radius-lg);
   }
 
@@ -256,8 +261,8 @@
     line-height: 1;
     opacity: 0.9;
 
-    &--left  { margin-right: -0.125rem; }
-    &--right { margin-left:  -0.125rem; }
+    &--left  { margin-right: -0.0625rem; }
+    &--right { margin-left:  -0.0625rem; }
   }
 }
 

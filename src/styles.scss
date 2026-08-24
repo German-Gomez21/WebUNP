@@ -64,7 +64,7 @@ body.modo_oscuro-govco .about-page__hero {
 body.modo_oscuro-govco .about-page__section {
   background: var(--color-surface-card) !important;
   border-color: var(--color-border) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: var(--elevation-1) !important;
 }
 
 body.modo_oscuro-govco .about-page__highlight {
@@ -458,7 +458,7 @@ body.modo_oscuro-govco .active-barra-accesibilidad-govco {
 body.modo_oscuro-govco .header__search-results {
   background-color: var(--dark-bg-secondary) !important;
   border: 1px solid var(--dark-border) !important;
-  box-shadow: var(--shadow-lg) !important;
+  box-shadow: var(--elevation-2) !important;
 }
 
 body.modo_oscuro-govco .header__search-item {
@@ -886,14 +886,19 @@ body.modo_oscuro-govco .hero-carousel__cta-text {
 
 /* Preserve hero controls original design */
 body.modo_oscuro-govco .hero-carousel__control {
-  background: inherit !important;
-  color: inherit !important;
-  border: inherit !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 body.modo_oscuro-govco .hero-carousel__control:hover {
-  background: inherit !important;
-  color: inherit !important;
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__control .material-icons {
+  color: #ffffff !important;
 }
 
 /* Preserve hero indicators original design */
@@ -910,6 +915,10 @@ body.modo_oscuro-govco .hero-carousel__indicator--active {
 body.modo_oscuro-govco .hero .material-icons,
 body.modo_oscuro-govco .hero-carousel .material-icons {
   color: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__control .material-icons {
+  color: #ffffff !important;
 }
 
 /* Comprehensive preservation of hero section in dark mode */
@@ -929,11 +938,21 @@ body.modo_oscuro-govco .hero-carousel__caption,
 body.modo_oscuro-govco .hero-carousel__title,
 body.modo_oscuro-govco .hero-carousel__subtitle,
 body.modo_oscuro-govco .hero-carousel__cta,
-body.modo_oscuro-govco .hero-carousel__control,
 body.modo_oscuro-govco .hero-carousel__indicator {
   background: inherit !important;
   color: inherit !important;
   border: inherit !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__control {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.modo_oscuro-govco .hero-carousel__control .material-icons {
+  color: #ffffff !important;
 }
 
 /* Allow specific hover effects for hero controls */
@@ -1367,14 +1386,15 @@ body.modo_oscuro-govco .news-card__category {
 
 /* News Carousel Controls */
 body.modo_oscuro-govco .news-carousel__btn {
-  background-color: var(--dark-bg-secondary) !important;
-  border: 1px solid var(--dark-border) !important;
-  color: var(--dark-text-primary) !important;
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
 }
 
 body.modo_oscuro-govco .news-carousel__btn:hover {
-  background-color: var(--primary-color) !important;
-  color: white !important;
+  background: transparent !important;
+  color: #ffffff !important;
 }
 
 body.modo_oscuro-govco .news-carousel__indicator {
@@ -1732,7 +1752,7 @@ body.modo_oscuro-govco {
 
   .tramites-page .search-box {
     background-color: var(--dark-bg-secondary) !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
+    box-shadow: var(--elevation-2) !important;
   }
 
   .tramites-page .search-box__input-wrapper {

@@ -116,14 +116,15 @@ body.modo_oscuro-govco .gov-bar {
 // ── Header, menús, dropdowns, búsqueda ───────────────────────────────────────
 body.modo_oscuro-govco .header {
   background-color: var(--color-surface-card) !important;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--elevation-1);
+  border-bottom-color: var(--color-border);
 }
 
 body.modo_oscuro-govco .header__dropdown-content,
 body.modo_oscuro-govco .header__search-results {
   background: var(--color-surface-card) !important;
   border-color: var(--color-border) !important;
-  box-shadow: var(--shadow-lg) !important;
+  box-shadow: var(--elevation-2) !important;
 }
 
 body.modo_oscuro-govco .header__dropdown-item {

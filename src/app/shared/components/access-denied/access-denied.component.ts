@@ -42,7 +42,7 @@ import { CommonModule } from '@angular/common';
       background: var(--color-surface-card);
       padding: var(--space-8);
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--elevation-2);
       text-align: center;
       max-width: 500px;
       width: 100%;

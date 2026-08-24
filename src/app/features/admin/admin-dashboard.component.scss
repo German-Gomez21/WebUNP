@@ -19,7 +19,7 @@ $error-red: #dc3545;
   background: white;
   padding: 16px 24px;
   border-bottom: 1px solid $border-color;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--elevation-1);
   display: flex;
   justify-content: space-between;
   align-items: center;

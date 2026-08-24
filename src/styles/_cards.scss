@@ -1,21 +1,20 @@
 // =============================================================================
 // _cards.scss — Design System UNP v1.0.0
-// Sistema de tarjetas con 5 variantes. Regla de anidación: máx 3 niveles.
-// AP-04: sin margin propio en .card.
+// Cajones gráficos: borde + sombra visible para separarlos del fondo.
 // =============================================================================
 
 .card {
   background: var(--color-surface-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--elevation-1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base);
-  // AP-04: sin margin propio
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
   margin: 0;
 
   &__header {
@@ -53,15 +52,14 @@
     align-items: center;
   }
 
-  // Hover solo en cards interactivas (añadir clase .card--interactive)
   &--interactive:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--elevation-2);
   }
 
-  // ── VARIANTES ──────────────────────────────────────────────────────────────
-  &--hero    { border-radius: var(--radius-lg);  box-shadow: var(--shadow-lg); }
-  &--stat    { border-radius: var(--radius-lg);  box-shadow: var(--shadow-md); }
-  &--feature { border-radius: var(--radius-xl);  box-shadow: var(--shadow-md); }
-  &--flat    { border-radius: var(--radius-xs);  box-shadow: none; }
+  &--hero    { border-radius: var(--radius-lg);  box-shadow: var(--elevation-3); }
+  &--stat    { border-radius: var(--radius-lg);  box-shadow: var(--elevation-1); }
+  &--feature { border-radius: var(--radius-xl);  box-shadow: var(--elevation-2); }
+  &--flat    { border-radius: var(--radius-xs);  box-shadow: var(--elevation-0); }
 }

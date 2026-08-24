@@ -80,7 +80,7 @@
   background: var(--color-surface-card);
   padding: var(--space-6);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--elevation-2);
   border: 1px solid var(--border-subtle);
 
   &__input-wrapper {
@@ -139,17 +139,19 @@
   background: var(--color-surface-card);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--elevation-1);
   border: 1px solid var(--border-subtle);
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base);
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
   display: flex;
   flex-direction: column;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--elevation-2);
   }
 
   &__header {

@@ -22,7 +22,7 @@ $accent-strong: #dce8ff;
   border: 1px solid $border;
   border-radius: 16px;
   padding: 20px 24px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  box-shadow: var(--elevation-1);
 
   .eyebrow {
     text-transform: uppercase;
@@ -53,7 +53,7 @@ $accent-strong: #dce8ff;
   background: $surface;
   border: 1px solid $border;
   border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--elevation-1);
 }
 
 .summary-card {
@@ -93,14 +93,13 @@ textarea {
   color: $dark;
   background: #ffffff;
   min-height: 50px;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--elevation-1);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 
   &:focus {
     outline: none;
     border-color: $secondary-blue;
-    box-shadow: 0 0 0 4px rgba(51, 102, 204, 0.15);
-    transform: translateY(-1px);
+    box-shadow: var(--shadow-focus);
   }
 }
 
@@ -237,7 +236,7 @@ label {
   border: 1px solid $accent-strong;
   border-radius: 18px;
   padding: 14px;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--elevation-1);
 }
 
 .image-input-row {

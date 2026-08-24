@@ -20,15 +20,19 @@ $warning-yellow: #f59e0b;
 }
 
 @mixin button-styles {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border: var(--btn-border-width) solid transparent;
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-font-weight);
+  font-size: 0.875rem;
+  min-height: var(--btn-min-height);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--btn-transition);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: var(--btn-gap);
+  box-shadow: none;
 }
 
 .carousel-editor {
@@ -41,7 +45,7 @@ $warning-yellow: #f59e0b;
     background: white;
     padding: 20px 30px;
     border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--elevation-1);
     
     .editor-title {
       display: flex;
@@ -70,8 +74,6 @@ $warning-yellow: #f59e0b;
           
           &:hover {
             background: darken($primary-blue, 10%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
           }
           
           &.active {
@@ -111,7 +113,7 @@ $warning-yellow: #f59e0b;
     
     &.editing {
       width: 400px;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--elevation-1);
     }
     
     .slide-navigation {
@@ -430,8 +432,6 @@ $warning-yellow: #f59e0b;
           
           &:hover:not(:disabled) {
             background: darken($primary-blue, 10%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
           }
           
           &:disabled {
@@ -554,8 +554,6 @@ $warning-yellow: #f59e0b;
             
             &:hover {
               background: rgba(255, 255, 255, 0.3);
-              transform: translateY(-2px);
-              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             }
           }
         }
