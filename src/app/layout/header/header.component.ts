@@ -180,7 +180,7 @@ export class HeaderComponent implements AfterViewChecked {
       label: 'Principal',
       items: [
         { nombre: 'Inicio', enlace: '/' },
-        { nombre: 'La UNP', enlace: '/la-unp' },
+        /*{ nombre: 'La UNP', enlace: '/la-unp' },*/
         { nombre: 'Quiénes somos', enlace: '/quienes-somos' },
         { nombre: 'Noticias', enlace: '/noticias' }
       ]
