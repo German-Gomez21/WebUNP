@@ -41,8 +41,14 @@ button {
 a {
   color: var(--color-text-link);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 
-  &:hover { text-decoration: underline; }
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    text-decoration: none;
+  }
 }
 
 // Focus accesible global — AP-05

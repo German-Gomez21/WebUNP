@@ -41,7 +41,12 @@
   a {
     color: #ffffff;
     text-decoration: none;
-    &:hover { text-decoration: underline; }
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
   }
 
   .material-icons {
