@@ -564,6 +564,10 @@ body.modo_oscuro-govco .inst-carousel-section {
   background-color: var(--color-surface-base) !important;
 }
 
+body.modo_oscuro-govco .inst-carousel-section__title {
+  color: #ffffff !important;
+}
+
 body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]),
 body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]):nth-child(2),
 body.modo_oscuro-govco .hero-carousel__item:not([style*="url"]):nth-child(3) {
