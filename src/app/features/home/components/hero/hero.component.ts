@@ -86,7 +86,7 @@ export class HeroComponent implements AfterViewInit {
       gradient: "linear-gradient(135deg, #1e3a8a, #3b82f6)",
       ctaText: "Solicitar ahora",
       ctaIcon: "shield",
-      ctaLink: "/solicitar-proteccion"
+      ctaLink: "/atencion-servicios/tramites"
     },
     {
       id: 1,
@@ -134,12 +134,7 @@ export class HeroComponent implements AfterViewInit {
   }
 
   public navigateToSlide(link: string): void {
-    if (link.includes('pqrsd.html')) {
-      // Para PQRSD, abrir en nueva ventana o manejar especial
-      window.location.href = link;
-    } else {
-      this.router.navigate([link]);
-    }
+    this.router.navigateByUrl(link);
   }
 
   private startAutoRotate(): void {

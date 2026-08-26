@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'services-component',
     standalone: true,
+    imports: [RouterLink],
     template: `
         <!-- Servicios y Rutas de Atención -->
         <section class="section">
@@ -38,7 +40,7 @@ import { Component } from '@angular/core';
                
                         
                     <!--Seccion funcional para agregar link-->
-                    <a href="/linea-vida-103/" target="_blank" class="service-card">
+                    <a routerLink="/linea-vida-103" class="service-card">
                         <div class="service-card__icon">
                             <i class="material-icons service-card__icon-text">call</i>
                         </div>
@@ -96,7 +98,7 @@ import { Component } from '@angular/core';
                         </div>
                     </div>
                     
-                    <a href="pqrsd.html" class="service-card">
+                    <a routerLink="/pqrsd" class="service-card">
                         <div class="service-card__icon">
                             <i class="material-icons service-card__icon-text">question_answer</i>
                         </div>

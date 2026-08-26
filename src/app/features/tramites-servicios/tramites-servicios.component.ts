@@ -1,6 +1,7 @@
 import { Component, signal, computed, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { Tramite, CanalAtencionDetalle } from '../../core/models/noticia.model';
 import { InstitutionalCarouselComponent } from '../../shared/components/institutional-carousel/institutional-carousel.component';
@@ -8,7 +9,7 @@ import { InstitutionalCarouselComponent } from '../../shared/components/institut
 @Component({
     selector: 'app-tramites-servicios',
     standalone: true,
-    imports: [CommonModule, FormsModule, InstitutionalCarouselComponent],
+    imports: [CommonModule, FormsModule, RouterLink, InstitutionalCarouselComponent],
     template: `
 <div class="tramites-page">
     <!-- Hero Section -->
@@ -16,7 +17,7 @@ import { InstitutionalCarouselComponent } from '../../shared/components/institut
         <div class="container">
             <div class="tramites-hero__content">
                 <nav class="breadcrumbs">
-                    <a href="/">Inicio</a>
+                    <a routerLink="/">Inicio</a>
                     <span class="material-icons">chevron_right</span>
                     <span>Atención y Servicios a la Ciudadanía</span>
                 </nav>

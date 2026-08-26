@@ -1,14 +1,15 @@
 import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FooterBrandData } from '../../../shared/interfaces/footer.interfaces';
 
 @Component({
   selector: 'app-footer-brand',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   template: `
     <div class="footer__brand">
-      <a href="/" class="footer__logo-link" aria-label="Ir a la página de inicio">
+      <a routerLink="/" class="footer__logo-link" aria-label="Ir a la página de inicio">
         <img [src]="brandData().logoPath" 
              [alt]="brandData().logoAlt" 
              class="footer__logo">

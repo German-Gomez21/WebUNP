@@ -1,12 +1,13 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { DataService } from '../../../../core/services/data.service';
 import { BannerPrincipal } from '../../../../core/models/noticia.model';
 
 @Component({
   selector: 'banners-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   template: `
         <!-- Banners Principales -->
         <section class="section">
@@ -27,7 +28,7 @@ import { BannerPrincipal } from '../../../../core/models/noticia.model';
                         <div class="banner-card__content">
                             <h3 class="banner-card__title">{{banner.titulo}}</h3>
                             <p class="banner-card__description">{{banner.descripcion}}</p>
-                            <a [href]="banner.enlace" class="btn btn--outline btn--sm">Ir al servicio</a>
+                            <a [routerLink]="banner.enlace" class="btn btn--outline btn--sm">Ir al servicio</a>
                         </div>
                         <div class="banner-card__arrow">
                             <i class="material-icons banner-card__arrow-icon">arrow_forward</i>

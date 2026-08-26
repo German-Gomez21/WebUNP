@@ -461,13 +461,13 @@ export class DataService {
         },
         {
           texto: "Línea vida 103",
-          enlace: "/atencion-servicios/linea-vida-103",
+          enlace: "/linea-vida-103",
           tipo: "secundario" as const,
           aria: "Llamar a línea vida 103"
         },
         {
           texto: "PQRSD",
-          enlace: "/atencion-servicios/pqrsd",
+          enlace: "/pqrsd",
           tipo: "terciario" as const,
           aria: "Presentar PQRSD"
         }
@@ -499,7 +499,7 @@ export class DataService {
         descripcion: "Presenta tus Peticiones, Quejas, Reclamos, Sugerencias y Denuncias",
         icono: "mail",
         color: "#dc2626",
-        enlace: "/atencion-servicios/pqrsd",
+        enlace: "/pqrsd",
         destacado: false
       }
     ]).pipe(delay(30)); // Reducido de 200ms
@@ -512,7 +512,7 @@ export class DataService {
         titulo: "La UNP",
         descripcion: "Conoce nuestra misión, visión y estructura organizacional",
         imagen: "assets/images/unp-institution.jpg",
-        enlace: "/quienes-somos ",
+        enlace: "/quienes-somos",
         items: [
           "¿Quiénes somos?",
           "¿Qué hacemos?",

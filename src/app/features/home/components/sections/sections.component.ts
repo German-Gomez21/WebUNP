@@ -1,12 +1,13 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { DataService } from '../../../../core/services/data.service';
 import { SeccionInformativa } from '../../../../core/models/noticia.model';
 
 @Component({
   selector: 'sections-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   template: `
         <!-- Secciones Informativas -->
         <section class="section">
@@ -45,7 +46,7 @@ import { SeccionInformativa } from '../../../../core/models/noticia.model';
                                     {{item}}
                                 </li>
                             </ul>
-                            <a [href]="section.enlace" class="btn btn--outline btn--sm">Ver más</a>
+                            <a [routerLink]="section.enlace" class="btn btn--outline btn--sm">Ver más</a>
                         </div>
                     </div>
                 </div>

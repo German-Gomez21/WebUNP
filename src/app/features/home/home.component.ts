@@ -73,13 +73,13 @@ export class HomeComponent implements OnInit {
       },
       {
         texto: "Línea vida 103",
-        enlace: "/atencion-servicios/linea-vida-103",
+        enlace: "/linea-vida-103",
         tipo: "secundario",
         aria: "Llamar a línea vida 103"
       },
       {
         texto: "PQRSD",
-        enlace: "/atencion-servicios/pqrsd",
+        enlace: "/pqrsd",
         tipo: "terciario",
         aria: "Presentar PQRSD"
       }
@@ -208,7 +208,7 @@ export class HomeComponent implements OnInit {
     console.log('CTA clickeado:', boton.texto);
     // Analytics o lógica adicional aquí
     if (boton.enlace) {
-      this.router.navigate([boton.enlace]);
+      this.router.navigateByUrl(boton.enlace);
     }
   }
 
@@ -216,7 +216,7 @@ export class HomeComponent implements OnInit {
     console.log('Acceso rápido:', acceso.titulo);
     // Analytics o lógica adicional aquí
     if (acceso.enlace) {
-      this.router.navigate([acceso.enlace]);
+      this.router.navigateByUrl(acceso.enlace);
     }
   }
 
@@ -240,7 +240,7 @@ export class HomeComponent implements OnInit {
 
   // Navegación
   public navigateTo(path: string): void {
-    this.router.navigate([path]);
+    this.router.navigateByUrl(path);
   }
 
   // Computed properties para estado derivado
