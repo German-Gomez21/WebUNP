@@ -118,13 +118,13 @@
   --radius-circle: 50%;
 
   // ── SOMBRAS / ELEVACIÓN ──────────────────────────────────────────────────────
-  // Sombra visible en cajones/paneles para separarlos del fondo.
+  // Sombra visible en cajones/paneles (+2px respecto a la versión anterior).
   // Botones: sin sombra. Elevación 0–3.
   --shadow-none:  none;
-  --shadow-xs:    0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-sm:    0 2px 8px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
-  --shadow-md:    0 4px 16px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(15, 23, 42, 0.06);
-  --shadow-lg:    0 8px 28px rgba(15, 23, 42, 0.12), 0 3px 8px rgba(15, 23, 42, 0.06);
+  --shadow-xs:    0 2px 4px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-sm:    0 4px 10px rgba(15, 23, 42, 0.1), 0 2px 5px rgba(15, 23, 42, 0.06);
+  --shadow-md:    0 6px 18px rgba(15, 23, 42, 0.12), 0 3px 8px rgba(15, 23, 42, 0.07);
+  --shadow-lg:    0 10px 30px rgba(15, 23, 42, 0.14), 0 4px 10px rgba(15, 23, 42, 0.07);
   --shadow-focus: 0 0 0 2px var(--color-surface-base), 0 0 0 3px rgba(51, 102, 204, 0.28);
 
   --elevation-0:  var(--shadow-none);
@@ -227,11 +227,11 @@ body.modo_oscuro-govco {
 
   --shadow-focus:          0 0 0 2px var(--color-surface-base), 0 0 0 3px rgba(104, 161, 255, 0.32);
   --btn-focus-ring:        0 0 0 2px var(--color-surface-base), 0 0 0 3px rgba(104, 161, 255, 0.32);
-  // Dark: sombras visibles pero cortas — separan cajones sin peso excesivo
-  --shadow-xs:             0 1px 3px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(0, 0, 0, 0.14);
-  --shadow-sm:             0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.18);
-  --shadow-md:             0 4px 16px rgba(0, 0, 0, 0.36), 0 2px 6px rgba(0, 0, 0, 0.2);
-  --shadow-lg:             0 8px 28px rgba(0, 0, 0, 0.42), 0 3px 8px rgba(0, 0, 0, 0.22);
+  // Dark: +2px de offset/blur para separar cajones del fondo
+  --shadow-xs:             0 2px 4px rgba(0, 0, 0, 0.26), 0 1px 3px rgba(0, 0, 0, 0.16);
+  --shadow-sm:             0 4px 10px rgba(0, 0, 0, 0.34), 0 2px 5px rgba(0, 0, 0, 0.2);
+  --shadow-md:             0 6px 18px rgba(0, 0, 0, 0.4), 0 3px 8px rgba(0, 0, 0, 0.22);
+  --shadow-lg:             0 10px 30px rgba(0, 0, 0, 0.46), 0 4px 10px rgba(0, 0, 0, 0.24);
 
   --elevation-0:           var(--shadow-none);
   --elevation-1:           var(--shadow-sm);
