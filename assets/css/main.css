@@ -2109,7 +2109,7 @@ body {
 
 .banner-card__link:hover {
     color: #2851a3;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .banner-card__arrow {
@@ -2436,9 +2436,10 @@ body {
 }
 
 /* Search Input Enhanced */
-.header__search-input:focus {
+.header__search-input:focus,
+.header__search-input:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--primary-color);
+    box-shadow: none;
 }
 
 /* Responsive Service Cards */
@@ -3581,7 +3582,7 @@ details.faq-item .faq-item__toggle-icon {
 
 .footer__link:hover {
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .footer__contact-info {
@@ -3617,7 +3618,7 @@ details.faq-item .faq-item__toggle-icon {
 
 .footer__contact-value a:hover {
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Barra inferior GOV.CO */
@@ -3653,7 +3654,7 @@ details.faq-item .faq-item__toggle-icon {
 
 .footer__gov-link:hover {
     color: #fff;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Copyright */
@@ -3688,7 +3689,7 @@ details.faq-item .faq-item__toggle-icon {
 
 .footer__bottom-link:hover {
     color: #bdc3c7;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Loader */
@@ -4074,7 +4075,7 @@ details.faq-item .faq-item__toggle-icon {
 
     .footer__contact-value a {
         color: #fff;
-        text-decoration: underline;
+        text-decoration: none;
         font-weight: 500;
         word-wrap: break-word;
     }
